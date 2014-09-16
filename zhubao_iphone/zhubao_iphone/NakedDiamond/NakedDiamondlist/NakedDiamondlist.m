@@ -10,6 +10,7 @@
 #import "NakedDiamondsrCell.h"
 #import "AppDelegate.h"
 #import "MJRefresh.h"
+#import "NakedDiamonddetail.h"
 
 @interface NakedDiamondlist ()
 
@@ -149,7 +150,10 @@
 //tableview点击操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+    NSArray *result=[list objectAtIndex:[indexPath row]];
+    NakedDiamonddetail *_NakedDiamonddetail=[[NakedDiamonddetail alloc]init];
+    _NakedDiamonddetail.nid=[result objectAtIndex:0];
+    [self.navigationController pushViewController:_NakedDiamonddetail animated:NO];
 }
 
 

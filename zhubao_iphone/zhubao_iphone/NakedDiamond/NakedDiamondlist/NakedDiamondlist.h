@@ -32,4 +32,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *nksrTView;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
+-(NSArray *)showmodelandimg:(NSString *)modeltype;
+
 @end

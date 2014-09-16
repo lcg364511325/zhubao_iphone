@@ -305,6 +305,8 @@
 		2C42EE1019C7DBAE00BB4692 /* NakedDiamondlist.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EE0E19C7DBAE00BB4692 /* NakedDiamondlist.xib */; };
 		2C42EE1519C7DCD100BB4692 /* NakedDiamondsrCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C42EE1319C7DCD100BB4692 /* NakedDiamondsrCell.m */; };
 		2C42EE1619C7DCD100BB4692 /* NakedDiamondsrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */; };
+		2CF6C19719C8098700A18793 /* NakedDiamonddetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6C19519C8098700A18793 /* NakedDiamonddetail.m */; };
+		2CF6C19819C8098700A18793 /* NakedDiamonddetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF6C19619C8098700A18793 /* NakedDiamonddetail.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -743,6 +745,9 @@
 		2C42EE1219C7DCD100BB4692 /* NakedDiamondsrCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NakedDiamondsrCell.h; path = NakedDiamondsrCell/NakedDiamondsrCell.h; sourceTree = "<group>"; };
 		2C42EE1319C7DCD100BB4692 /* NakedDiamondsrCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NakedDiamondsrCell.m; path = NakedDiamondsrCell/NakedDiamondsrCell.m; sourceTree = "<group>"; };
 		2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NakedDiamondsrCell.xib; path = NakedDiamondsrCell/NakedDiamondsrCell.xib; sourceTree = "<group>"; };
+		2CF6C19419C8098700A18793 /* NakedDiamonddetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NakedDiamonddetail.h; path = NakedDiamonddetail/NakedDiamonddetail.h; sourceTree = "<group>"; };
+		2CF6C19519C8098700A18793 /* NakedDiamonddetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NakedDiamonddetail.m; path = NakedDiamonddetail/NakedDiamonddetail.m; sourceTree = "<group>"; };
+		2CF6C19619C8098700A18793 /* NakedDiamonddetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NakedDiamonddetail.xib; path = NakedDiamonddetail/NakedDiamonddetail.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1480,6 +1485,7 @@
 		2C42ECC219C7D10B00BB4692 /* NakedDiamond */ = {
 			isa = PBXGroup;
 			children = (
+				2CF6C19119C8095C00A18793 /* NakedDiamonddetail */,
 				2C42EE0B19C7DB8900BB4692 /* NakedDiamondlist */,
 				2C42ECC319C7D10B00BB4692 /* NakedDiamond */,
 				2C42ECC719C7D10B00BB4692 /* NakedDiamondselecttype */,
@@ -1575,6 +1581,16 @@
 				2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */,
 			);
 			name = NakedDiamondsrCell;
+			sourceTree = "<group>";
+		};
+		2CF6C19119C8095C00A18793 /* NakedDiamonddetail */ = {
+			isa = PBXGroup;
+			children = (
+				2CF6C19419C8098700A18793 /* NakedDiamonddetail.h */,
+				2CF6C19519C8098700A18793 /* NakedDiamonddetail.m */,
+				2CF6C19619C8098700A18793 /* NakedDiamonddetail.xib */,
+			);
+			name = NakedDiamonddetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1809,6 +1825,7 @@
 				2C42ED5E19C7D10B00BB4692 /* Seq_v04_640x378_51.jpg in Resources */,
 				2C42EDC919C7D10B00BB4692 /* TabBar3Sel.png in Resources */,
 				2C42ED9619C7D10B00BB4692 /* diamond07.png in Resources */,
+				2CF6C19819C8098700A18793 /* NakedDiamonddetail.xib in Resources */,
 				2C42ED5B19C7D10B00BB4692 /* Seq_v04_640x378_49.jpg in Resources */,
 				2C42EDD119C7D10B00BB4692 /* up_positivebth.png in Resources */,
 				2C42EDC319C7D10B00BB4692 /* submitbth.png in Resources */,
@@ -1870,6 +1887,7 @@
 				2C42ECFC19C7D10B00BB4692 /* MJRefreshFooterView.m in Sources */,
 				2C42ECF319C7D10B00BB4692 /* WebService.m in Sources */,
 				2C42ECE319C7D10B00BB4692 /* NakedDiamondlistCell.m in Sources */,
+				2CF6C19719C8098700A18793 /* NakedDiamonddetail.m in Sources */,
 				2C42EDE819C7D10B00BB4692 /* productdetail.m in Sources */,
 				2C42ECF019C7D10B00BB4692 /* Commons.m in Sources */,
 				2C42ED1D19C7D10B00BB4692 /* NSData+ImageContentType.m in Sources */,
