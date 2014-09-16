@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C42EB0519C7D06300BB4692 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB0419C7D06300BB4692 /* Foundation.framework */; };
+		2C42EB0719C7D06300BB4692 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB0619C7D06300BB4692 /* CoreGraphics.framework */; };
+		2C42EB0919C7D06300BB4692 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB0819C7D06300BB4692 /* UIKit.framework */; };
+		2C42EB0F19C7D06300BB4692 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EB0D19C7D06300BB4692 /* InfoPlist.strings */; };
+		2C42EB1119C7D06300BB4692 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C42EB1019C7D06300BB4692 /* main.m */; };
+		2C42EB1519C7D06300BB4692 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C42EB1419C7D06300BB4692 /* AppDelegate.m */; };
+		2C42EB1819C7D06300BB4692 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EB1619C7D06300BB4692 /* Main.storyboard */; };
+		2C42EB1B19C7D06300BB4692 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C42EB1A19C7D06300BB4692 /* ViewController.m */; };
+		2C42EB1D19C7D06300BB4692 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EB1C19C7D06300BB4692 /* Images.xcassets */; };
+		2C42EB2419C7D06300BB4692 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB2319C7D06300BB4692 /* XCTest.framework */; };
+		2C42EB2519C7D06300BB4692 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB0419C7D06300BB4692 /* Foundation.framework */; };
+		2C42EB2619C7D06300BB4692 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB0819C7D06300BB4692 /* UIKit.framework */; };
+		2C42EB2E19C7D06300BB4692 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EB2C19C7D06300BB4692 /* InfoPlist.strings */; };
+		2C42EB3019C7D06300BB4692 /* zhubao_iphoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C42EB2F19C7D06300BB4692 /* zhubao_iphoneTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C42EB2719C7D06300BB4692 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C42EAF919C7D06300BB4692 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C42EB0019C7D06300BB4692;
+			remoteInfo = zhubao_iphone;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2C42EB0119C7D06300BB4692 /* zhubao_iphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zhubao_iphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C42EB0419C7D06300BB4692 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2C42EB0619C7D06300BB4692 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2C42EB0819C7D06300BB4692 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2C42EB0C19C7D06300BB4692 /* zhubao_iphone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zhubao_iphone-Info.plist"; sourceTree = "<group>"; };
+		2C42EB0E19C7D06300BB4692 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C42EB1019C7D06300BB4692 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2C42EB1219C7D06300BB4692 /* zhubao_iphone-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "zhubao_iphone-Prefix.pch"; sourceTree = "<group>"; };
+		2C42EB1319C7D06300BB4692 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2C42EB1419C7D06300BB4692 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2C42EB1719C7D06300BB4692 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2C42EB1919C7D06300BB4692 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2C42EB1A19C7D06300BB4692 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2C42EB1C19C7D06300BB4692 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2C42EB2219C7D06300BB4692 /* zhubao_iphoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zhubao_iphoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C42EB2319C7D06300BB4692 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		2C42EB2B19C7D06300BB4692 /* zhubao_iphoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zhubao_iphoneTests-Info.plist"; sourceTree = "<group>"; };
+		2C42EB2D19C7D06300BB4692 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C42EB2F19C7D06300BB4692 /* zhubao_iphoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zhubao_iphoneTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C42EAFE19C7D06300BB4692 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C42EB0719C7D06300BB4692 /* CoreGraphics.framework in Frameworks */,
+				2C42EB0919C7D06300BB4692 /* UIKit.framework in Frameworks */,
+				2C42EB0519C7D06300BB4692 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C42EB1F19C7D06300BB4692 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C42EB2419C7D06300BB4692 /* XCTest.framework in Frameworks */,
+				2C42EB2619C7D06300BB4692 /* UIKit.framework in Frameworks */,
+				2C42EB2519C7D06300BB4692 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C42EAF819C7D06300BB4692 = {
+			isa = PBXGroup;
+			children = (
+				2C42EB0A19C7D06300BB4692 /* zhubao_iphone */,
+				2C42EB2919C7D06300BB4692 /* zhubao_iphoneTests */,
+				2C42EB0319C7D06300BB4692 /* Frameworks */,
+				2C42EB0219C7D06300BB4692 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2C42EB0219C7D06300BB4692 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C42EB0119C7D06300BB4692 /* zhubao_iphone.app */,
+				2C42EB2219C7D06300BB4692 /* zhubao_iphoneTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C42EB0319C7D06300BB4692 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C42EB0419C7D06300BB4692 /* Foundation.framework */,
+				2C42EB0619C7D06300BB4692 /* CoreGraphics.framework */,
+				2C42EB0819C7D06300BB4692 /* UIKit.framework */,
+				2C42EB2319C7D06300BB4692 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C42EB0A19C7D06300BB4692 /* zhubao_iphone */ = {
+			isa = PBXGroup;
+			children = (
+				2C42EB1319C7D06300BB4692 /* AppDelegate.h */,
+				2C42EB1419C7D06300BB4692 /* AppDelegate.m */,
+				2C42EB1619C7D06300BB4692 /* Main.storyboard */,
+				2C42EB1919C7D06300BB4692 /* ViewController.h */,
+				2C42EB1A19C7D06300BB4692 /* ViewController.m */,
+				2C42EB1C19C7D06300BB4692 /* Images.xcassets */,
+				2C42EB0B19C7D06300BB4692 /* Supporting Files */,
+			);
+			path = zhubao_iphone;
+			sourceTree = "<group>";
+		};
+		2C42EB0B19C7D06300BB4692 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C42EB0C19C7D06300BB4692 /* zhubao_iphone-Info.plist */,
+				2C42EB0D19C7D06300BB4692 /* InfoPlist.strings */,
+				2C42EB1019C7D06300BB4692 /* main.m */,
+				2C42EB1219C7D06300BB4692 /* zhubao_iphone-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2C42EB2919C7D06300BB4692 /* zhubao_iphoneTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C42EB2F19C7D06300BB4692 /* zhubao_iphoneTests.m */,
+				2C42EB2A19C7D06300BB4692 /* Supporting Files */,
+			);
+			path = zhubao_iphoneTests;
+			sourceTree = "<group>";
+		};
+		2C42EB2A19C7D06300BB4692 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C42EB2B19C7D06300BB4692 /* zhubao_iphoneTests-Info.plist */,
+				2C42EB2C19C7D06300BB4692 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2C42EB0019C7D06300BB4692 /* zhubao_iphone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C42EB3319C7D06300BB4692 /* Build configuration list for PBXNativeTarget "zhubao_iphone" */;
+			buildPhases = (
+				2C42EAFD19C7D06300BB4692 /* Sources */,
+				2C42EAFE19C7D06300BB4692 /* Frameworks */,
+				2C42EAFF19C7D06300BB4692 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = zhubao_iphone;
+			productName = zhubao_iphone;
+			productReference = 2C42EB0119C7D06300BB4692 /* zhubao_iphone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2C42EB2119C7D06300BB4692 /* zhubao_iphoneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C42EB3619C7D06300BB4692 /* Build configuration list for PBXNativeTarget "zhubao_iphoneTests" */;
+			buildPhases = (
+				2C42EB1E19C7D06300BB4692 /* Sources */,
+				2C42EB1F19C7D06300BB4692 /* Frameworks */,
+				2C42EB2019C7D06300BB4692 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C42EB2819C7D06300BB4692 /* PBXTargetDependency */,
+			);
+			name = zhubao_iphoneTests;
+			productName = zhubao_iphoneTests;
+			productReference = 2C42EB2219C7D06300BB4692 /* zhubao_iphoneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C42EAF919C7D06300BB4692 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "SUNYEARS___FULLUSERNAME";
+				TargetAttributes = {
+					2C42EB2119C7D06300BB4692 = {
+						TestTargetID = 2C42EB0019C7D06300BB4692;
+					};
+				};
+			};
+			buildConfigurationList = 2C42EAFC19C7D06300BB4692 /* Build configuration list for PBXProject "zhubao_iphone" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2C42EAF819C7D06300BB4692;
+			productRefGroup = 2C42EB0219C7D06300BB4692 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C42EB0019C7D06300BB4692 /* zhubao_iphone */,
+				2C42EB2119C7D06300BB4692 /* zhubao_iphoneTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2C42EAFF19C7D06300BB4692 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C42EB1D19C7D06300BB4692 /* Images.xcassets in Resources */,
+				2C42EB0F19C7D06300BB4692 /* InfoPlist.strings in Resources */,
+				2C42EB1819C7D06300BB4692 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C42EB2019C7D06300BB4692 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C42EB2E19C7D06300BB4692 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C42EAFD19C7D06300BB4692 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C42EB1B19C7D06300BB4692 /* ViewController.m in Sources */,
+				2C42EB1519C7D06300BB4692 /* AppDelegate.m in Sources */,
+				2C42EB1119C7D06300BB4692 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C42EB1E19C7D06300BB4692 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C42EB3019C7D06300BB4692 /* zhubao_iphoneTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2C42EB2819C7D06300BB4692 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C42EB0019C7D06300BB4692 /* zhubao_iphone */;
+			targetProxy = 2C42EB2719C7D06300BB4692 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2C42EB0D19C7D06300BB4692 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C42EB0E19C7D06300BB4692 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2C42EB1619C7D06300BB4692 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C42EB1719C7D06300BB4692 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2C42EB2C19C7D06300BB4692 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C42EB2D19C7D06300BB4692 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2C42EB3119C7D06300BB4692 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2C42EB3219C7D06300BB4692 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C42EB3419C7D06300BB4692 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "zhubao_iphone/zhubao_iphone-Prefix.pch";
+				INFOPLIST_FILE = "zhubao_iphone/zhubao_iphone-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2C42EB3519C7D06300BB4692 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "zhubao_iphone/zhubao_iphone-Prefix.pch";
+				INFOPLIST_FILE = "zhubao_iphone/zhubao_iphone-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		2C42EB3719C7D06300BB4692 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/zhubao_iphone.app/zhubao_iphone";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "zhubao_iphone/zhubao_iphone-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "zhubao_iphoneTests/zhubao_iphoneTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		2C42EB3819C7D06300BB4692 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/zhubao_iphone.app/zhubao_iphone";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "zhubao_iphone/zhubao_iphone-Prefix.pch";
+				INFOPLIST_FILE = "zhubao_iphoneTests/zhubao_iphoneTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C42EAFC19C7D06300BB4692 /* Build configuration list for PBXProject "zhubao_iphone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C42EB3119C7D06300BB4692 /* Debug */,
+				2C42EB3219C7D06300BB4692 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C42EB3319C7D06300BB4692 /* Build configuration list for PBXNativeTarget "zhubao_iphone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C42EB3419C7D06300BB4692 /* Debug */,
+				2C42EB3519C7D06300BB4692 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2C42EB3619C7D06300BB4692 /* Build configuration list for PBXNativeTarget "zhubao_iphoneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C42EB3719C7D06300BB4692 /* Debug */,
+				2C42EB3819C7D06300BB4692 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C42EAF919C7D06300BB4692 /* Project object */;
+}
