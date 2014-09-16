@@ -301,6 +301,10 @@
 		2C42EE0319C7D1D600BB4692 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EE0219C7D1D600BB4692 /* QuartzCore.framework */; };
 		2C42EE0519C7D1E100BB4692 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EE0419C7D1E100BB4692 /* AudioToolbox.framework */; };
 		2C42EE0719C7D1F000BB4692 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EE0619C7D1F000BB4692 /* SystemConfiguration.framework */; };
+		2C42EE0F19C7DBAE00BB4692 /* NakedDiamondlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C42EE0D19C7DBAE00BB4692 /* NakedDiamondlist.m */; };
+		2C42EE1019C7DBAE00BB4692 /* NakedDiamondlist.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EE0E19C7DBAE00BB4692 /* NakedDiamondlist.xib */; };
+		2C42EE1519C7DCD100BB4692 /* NakedDiamondsrCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C42EE1319C7DCD100BB4692 /* NakedDiamondsrCell.m */; };
+		2C42EE1619C7DCD100BB4692 /* NakedDiamondsrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -733,6 +737,12 @@
 		2C42EE0219C7D1D600BB4692 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2C42EE0419C7D1E100BB4692 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2C42EE0619C7D1F000BB4692 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2C42EE0C19C7DBAE00BB4692 /* NakedDiamondlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NakedDiamondlist.h; path = NakedDiamondlist/NakedDiamondlist.h; sourceTree = "<group>"; };
+		2C42EE0D19C7DBAE00BB4692 /* NakedDiamondlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NakedDiamondlist.m; path = NakedDiamondlist/NakedDiamondlist.m; sourceTree = "<group>"; };
+		2C42EE0E19C7DBAE00BB4692 /* NakedDiamondlist.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NakedDiamondlist.xib; path = NakedDiamondlist/NakedDiamondlist.xib; sourceTree = "<group>"; };
+		2C42EE1219C7DCD100BB4692 /* NakedDiamondsrCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NakedDiamondsrCell.h; path = NakedDiamondsrCell/NakedDiamondsrCell.h; sourceTree = "<group>"; };
+		2C42EE1319C7DCD100BB4692 /* NakedDiamondsrCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NakedDiamondsrCell.m; path = NakedDiamondsrCell/NakedDiamondsrCell.m; sourceTree = "<group>"; };
+		2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NakedDiamondsrCell.xib; path = NakedDiamondsrCell/NakedDiamondsrCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -861,6 +871,7 @@
 		2C42EB3A19C7D10B00BB4692 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				2C42EE1119C7DCB200BB4692 /* NakedDiamondsrCell */,
 				2C42EB3B19C7D10B00BB4692 /* NakedDiamondlistCell */,
 				2C42EB3F19C7D10B00BB4692 /* productCell */,
 			);
@@ -1469,6 +1480,7 @@
 		2C42ECC219C7D10B00BB4692 /* NakedDiamond */ = {
 			isa = PBXGroup;
 			children = (
+				2C42EE0B19C7DB8900BB4692 /* NakedDiamondlist */,
 				2C42ECC319C7D10B00BB4692 /* NakedDiamond */,
 				2C42ECC719C7D10B00BB4692 /* NakedDiamondselecttype */,
 			);
@@ -1543,6 +1555,26 @@
 				2C42ECE219C7D10B00BB4692 /* productApi.m */,
 			);
 			path = ServiceApi;
+			sourceTree = "<group>";
+		};
+		2C42EE0B19C7DB8900BB4692 /* NakedDiamondlist */ = {
+			isa = PBXGroup;
+			children = (
+				2C42EE0C19C7DBAE00BB4692 /* NakedDiamondlist.h */,
+				2C42EE0D19C7DBAE00BB4692 /* NakedDiamondlist.m */,
+				2C42EE0E19C7DBAE00BB4692 /* NakedDiamondlist.xib */,
+			);
+			name = NakedDiamondlist;
+			sourceTree = "<group>";
+		};
+		2C42EE1119C7DCB200BB4692 /* NakedDiamondsrCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C42EE1219C7DCD100BB4692 /* NakedDiamondsrCell.h */,
+				2C42EE1319C7DCD100BB4692 /* NakedDiamondsrCell.m */,
+				2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */,
+			);
+			name = NakedDiamondsrCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1680,6 +1712,7 @@
 				2C42ED4C19C7D10B00BB4692 /* Seq_v04_640x378_35.jpg in Resources */,
 				2C42ED4419C7D10B00BB4692 /* Seq_v04_640x378_28.jpg in Resources */,
 				2C42EDA219C7D10B00BB4692 /* imagez.png in Resources */,
+				2C42EE1019C7DBAE00BB4692 /* NakedDiamondlist.xib in Resources */,
 				2C42EDCC19C7D10B00BB4692 /* TabBar5.png in Resources */,
 				2C42ED7419C7D10B00BB4692 /* Seq_v04_640x378_71.jpg in Resources */,
 				2C42ED2E19C7D10B00BB4692 /* FVImageSequenceDemoViewController.xib in Resources */,
@@ -1769,6 +1802,7 @@
 				2C42EDCA19C7D10B00BB4692 /* TabBar4.png in Resources */,
 				2C42ED3419C7D10B00BB4692 /* Seq_v04_640x378_13.jpg in Resources */,
 				2C42ED4919C7D10B00BB4692 /* Seq_v04_640x378_32.jpg in Resources */,
+				2C42EE1619C7DCD100BB4692 /* NakedDiamondsrCell.xib in Resources */,
 				2C42ED7019C7D10B00BB4692 /* Seq_v04_640x378_68.jpg in Resources */,
 				2C42ED7519C7D10B00BB4692 /* Seq_v04_640x378_72.jpg in Resources */,
 				2C42ED8519C7D10B00BB4692 /* add_to_cartbtn.png in Resources */,
@@ -1831,6 +1865,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C42EE0F19C7DBAE00BB4692 /* NakedDiamondlist.m in Sources */,
 				2C42ED2D19C7D10B00BB4692 /* FVImageSequenceDemoViewController.m in Sources */,
 				2C42ECFC19C7D10B00BB4692 /* MJRefreshFooterView.m in Sources */,
 				2C42ECF319C7D10B00BB4692 /* WebService.m in Sources */,
@@ -1873,6 +1908,7 @@
 				2C42ED2819C7D10B00BB4692 /* UIImage+WebP.m in Sources */,
 				2C42EDE419C7D10B00BB4692 /* NakedDiamondindex.m in Sources */,
 				2C42EDEF19C7D10B00BB4692 /* LoginApi.m in Sources */,
+				2C42EE1519C7DCD100BB4692 /* NakedDiamondsrCell.m in Sources */,
 				2C42ED8119C7D10B00BB4692 /* zip.c in Sources */,
 				2C42ED1319C7D10B00BB4692 /* PSTCollectionViewLayout.m in Sources */,
 				2C42ED1719C7D10B00BB4692 /* PSTGridLayoutRow.m in Sources */,

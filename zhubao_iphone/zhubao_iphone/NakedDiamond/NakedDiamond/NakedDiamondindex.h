@@ -11,7 +11,14 @@
 
 @interface NakedDiamondindex : UIViewController<UIViewPassValueDelegate>
 {
-    NSMutableArray *list;
+    NSString *modelvalue;
+    NSString *colorvalue;
+    NSString *netvalue;
+    NSString *cutvalue;
+    NSString *chasingvalue;
+    NSString *symmetryvalue;
+    NSString *fluorescencevalue;
+    NSString *diplomavalue;
 }
 
 @property (retain, nonatomic) NSString *pkey;
@@ -26,6 +33,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *symmetryButton;
 @property (weak, nonatomic) IBOutlet UIButton *fluorescenceButton;
 @property (weak, nonatomic) IBOutlet UIButton *diplomaButton;
+@property (weak, nonatomic) IBOutlet UITextField *noText;
+@property (weak, nonatomic) IBOutlet UITextField *minheight;
+@property (weak, nonatomic) IBOutlet UITextField *maxheight;
+@property (weak, nonatomic) IBOutlet UITextField *minprice;
+@property (weak, nonatomic) IBOutlet UITextField *maxprice;
+
+
 
 
 

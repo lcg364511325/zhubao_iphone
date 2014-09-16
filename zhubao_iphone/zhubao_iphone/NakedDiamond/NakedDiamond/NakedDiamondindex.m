@@ -9,6 +9,7 @@
 #import "NakedDiamondindex.h"
 #import "NakedDiamondselecttype.h"
 #import "getNowTime.h"
+#import "NakedDiamondlist.h"
 
 @interface NakedDiamondindex ()
 
@@ -27,6 +28,11 @@
 @synthesize symmetryButton;
 @synthesize fluorescenceButton;
 @synthesize diplomaButton;
+@synthesize noText;
+@synthesize minheight;
+@synthesize maxheight;
+@synthesize minprice;
+@synthesize maxprice;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,7 +47,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    list=[[NSMutableArray alloc]initWithCapacity:1];
+    
+    modelvalue=@"";
+    colorvalue=@"";
+    netvalue=@"";
+    cutvalue=@"";
+    chasingvalue=@"";
+    symmetryvalue=@"";
+    fluorescencevalue=@"";
+    diplomavalue=@"";
     
 }
 
@@ -55,28 +69,36 @@
     NSString *name=@"";
     if (tagint==0) {
         name=@"形状";
+        modelvalue=value;
         
     }else if(tagint==1)
     {
         name=@"颜色";
+        colorvalue=value;
     }else if(tagint==2)
     {
         name=@"净度";
+        netvalue=value;
     }else if(tagint==3)
     {
         name=@"切工";
+        cutvalue=value;
     }else if(tagint==4)
     {
         name=@"抛光";
+        chasingvalue=value;
     }else if(tagint==5)
     {
         name=@"对称";
+        symmetryvalue=value;
     }else if(tagint==6)
     {
         name=@"荧光";
+        fluorescencevalue=value;
     }else if(tagint==7)
     {
         name=@"证书";
+        diplomavalue=value;
     }
     
     NSArray *btnarray=[[NSArray alloc]initWithObjects:modelButton,colorButton,netButton,cutButton,chasingButton,symmetryButton,fluorescenceButton,diplomaButton, nil];
@@ -99,29 +121,27 @@
     [self.navigationController pushViewController:_NakedDiamondselecttype animated:NO];
 }
 
+
+//搜索结果页面跳转
 -(IBAction)searchresult:(id)sender
 {
-//    getNowTime * time=[[getNowTime alloc] init];
-//    NSString * nowt=[time nowTime];
-//    
-//    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
-//    
-//    NSString * uId=myDelegate.entityl.uId;
-//    NSString * Upt=@"";//获取上一次的更新时间
-//    if (myDelegate.entityl.puptime) {
-//        Upt=myDelegate.entityl.puptime;
-//    }
-//    
-//    //Kstr=md5(uId|type|Upt|Key|Nowt|cid)
-//    NSString * Kstr=[Commons md5:[NSString stringWithFormat:@"%@|%@|%@|%@|%@",uId,@"1011",Upt,apikey,nowt]];
-//    
-//    NSString * surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1011&Upt=%@&Nowt=%@&Kstr=%@&cid=0&MaxPerPage=%d&Ptype=%@&Pmetrial=%@&Pxk=%@&Pxilie=%@&twid=%@&page=%d",uId,Upt,nowt,Kstr,MaxPerPage,Ptype,Pmetrial,Pxk,Pxilie,twid,page];
-//    
-//    
-//    NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
-//    NSMutableDictionary * dict = [DataService GetDataService:URL];
-//    NSArray *productlist=[dict objectForKey:@"result"];
-//    [list addObjectsFromArray:productlist];
+    NSMutableDictionary *condition = [NSMutableDictionary dictionaryWithCapacity:10];
+    [condition setValue:modelvalue forKey:@"modelvalue"];
+    [condition setValue:colorvalue forKey:@"colorvalue"];
+    [condition setValue:netvalue forKey:@"netvalue"];
+    [condition setValue:cutvalue forKey:@"cutvalue"];
+    [condition setValue:chasingvalue forKey:@"chasingvalue"];
+    [condition setValue:symmetryvalue forKey:@"symmetryvalue"];
+    [condition setValue:fluorescencevalue forKey:@"fluorescencevalue"];
+    [condition setValue:diplomavalue forKey:@"diplomavalue"];
+    [condition setValue:noText.text forKey:@"no"];
+    [condition setValue:minheight.text forKey:@"minheight"];
+    [condition setValue:maxheight.text forKey:@"maxheight"];
+    [condition setValue:minprice.text forKey:@"minprice"];
+    [condition setValue:maxprice.text forKey:@"maxprice"];
+    NakedDiamondlist *_NakedDiamondlist=[[NakedDiamondlist alloc]init];
+    _NakedDiamondlist.condition=condition;
+    [self.navigationController pushViewController:_NakedDiamondlist animated:NO];
 }
 
 - (void)didReceiveMemoryWarning

@@ -11,8 +11,13 @@
                 <outlet property="cutButton" destination="Ojs-Nz-QsG" id="2yU-0F-zlb"/>
                 <outlet property="diplomaButton" destination="MIl-Qj-h8a" id="4AZ-ND-IL7"/>
                 <outlet property="fluorescenceButton" destination="BFz-JJ-e6M" id="td4-fQ-LU7"/>
+                <outlet property="maxheight" destination="xHf-9p-Awc" id="OMA-xi-zbm"/>
+                <outlet property="maxprice" destination="cJq-aN-MtJ" id="mC5-J0-Mt0"/>
+                <outlet property="minheight" destination="uqq-8y-AYZ" id="CjB-NM-4XC"/>
+                <outlet property="minprice" destination="nTA-n9-8IH" id="Gek-eo-oeJ"/>
                 <outlet property="modelButton" destination="foh-ER-h6B" id="nM0-BV-Gix"/>
                 <outlet property="netButton" destination="dPN-Gl-R2O" id="nn3-OS-Exb"/>
+                <outlet property="noText" destination="bCG-ap-6Pc" id="FLC-X7-Jxw"/>
                 <outlet property="symmetryButton" destination="0To-BW-tap" id="WAW-6y-Fr7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -192,6 +197,9 @@
                     <state key="normal" image="searchbth.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="searchresult:" destination="-1" eventType="touchDown" id="EDh-1m-NUc"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6e-m1-aMz">
                     <rect key="frame" x="186" y="468" width="81" height="30"/>
