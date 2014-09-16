@@ -12,6 +12,7 @@
 #import "productindex.h"
 #import "NakedDiamondindex.h"
 #import "diplomaselect.h"
+#import "membercenter.h"
 
 @interface decorateView ()
 
@@ -62,8 +63,9 @@
     productindex *_productindex=[[productindex alloc]init];
     NakedDiamondindex *_NakedDiamondindex=[[NakedDiamondindex alloc]init];
     diplomaselect *_diplomaselect=[[diplomaselect alloc]init];
+    membercenter *_membercenter=[[membercenter alloc]init];
     
-    self.viewControllers=[NSArray arrayWithObjects:_frontindex,_productindex,_NakedDiamondindex,_diplomaselect, nil];
+    self.viewControllers=[NSArray arrayWithObjects:_frontindex,_productindex,_NakedDiamondindex,_diplomaselect,_diplomaselect,_membercenter, nil];
 }
 
 

@@ -7,9 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="login">
             <connections>
-                <outlet property="account" destination="50C-IR-ifK" id="SCj-XU-xgu"/>
+                <outlet property="account" destination="w8W-HP-5fB" id="YRc-O4-aJk"/>
                 <outlet property="logoshengyu" destination="GFm-dN-LRw" id="uK0-F0-Yqa"/>
-                <outlet property="password" destination="w8W-HP-5fB" id="7Ah-dg-ZWE"/>
+                <outlet property="password" destination="50C-IR-ifK" id="0yj-Gu-QNz"/>
                 <outlet property="passwordbtn" destination="pfZ-mP-s6M" id="RdH-PQ-13Q"/>
                 <outlet property="view" destination="5aN-y0-klI" id="Ovs-YZ-Oey"/>
             </connections>
@@ -31,16 +31,16 @@
                             <rect key="frame" x="16" y="35" width="288" height="68"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" background="categorybg.png" translatesAutoresizingMaskIntoConstraints="NO" id="w8W-HP-5fB">
+                            <rect key="frame" x="60" y="172" width="240" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" background="categorybg.png" translatesAutoresizingMaskIntoConstraints="NO" id="50C-IR-ifK">
                             <rect key="frame" x="60" y="255" width="240" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" background="categorybg.png" translatesAutoresizingMaskIntoConstraints="NO" id="w8W-HP-5fB">
-                            <rect key="frame" x="60" y="172" width="240" height="35"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>

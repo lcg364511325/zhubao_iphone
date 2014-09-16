@@ -311,6 +311,14 @@
 		2CF6C19F19C81A0D00A18793 /* diplomaselect.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF6C19D19C81A0D00A18793 /* diplomaselect.xib */; };
 		2CF6C1A419C81E9D00A18793 /* diplomaWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6C1A219C81E9D00A18793 /* diplomaWeb.m */; };
 		2CF6C1A519C81E9D00A18793 /* diplomaWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF6C1A319C81E9D00A18793 /* diplomaWeb.xib */; };
+		2CF6C1AB19C821FA00A18793 /* membercenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6C1A919C821FA00A18793 /* membercenter.m */; };
+		2CF6C1AC19C821FA00A18793 /* membercenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF6C1AA19C821FA00A18793 /* membercenter.xib */; };
+		2CF6C1B119C8288A00A18793 /* updatememberdata.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6C1AF19C8288A00A18793 /* updatememberdata.m */; };
+		2CF6C1B219C8288A00A18793 /* updatememberdata.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF6C1B019C8288A00A18793 /* updatememberdata.xib */; };
+		2CF6C1B719C8298E00A18793 /* checkorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6C1B519C8298E00A18793 /* checkorder.m */; };
+		2CF6C1B819C8298E00A18793 /* checkorder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF6C1B619C8298E00A18793 /* checkorder.xib */; };
+		2CF6C1BD19C82B7D00A18793 /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6C1BC19C82B7D00A18793 /* CustomIOS7AlertView.m */; };
+		2CF6C1BF19C840F200A18793 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CF6C1BE19C840F200A18793 /* city.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -758,6 +766,18 @@
 		2CF6C1A119C81E9D00A18793 /* diplomaWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = diplomaWeb.h; path = diploma/diplomaWeb/diplomaWeb.h; sourceTree = "<group>"; };
 		2CF6C1A219C81E9D00A18793 /* diplomaWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = diplomaWeb.m; path = diploma/diplomaWeb/diplomaWeb.m; sourceTree = "<group>"; };
 		2CF6C1A319C81E9D00A18793 /* diplomaWeb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = diplomaWeb.xib; path = diploma/diplomaWeb/diplomaWeb.xib; sourceTree = "<group>"; };
+		2CF6C1A819C821FA00A18793 /* membercenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = membercenter.h; path = member/membercenter/membercenter.h; sourceTree = "<group>"; };
+		2CF6C1A919C821FA00A18793 /* membercenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = membercenter.m; path = member/membercenter/membercenter.m; sourceTree = "<group>"; };
+		2CF6C1AA19C821FA00A18793 /* membercenter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = membercenter.xib; path = member/membercenter/membercenter.xib; sourceTree = "<group>"; };
+		2CF6C1AE19C8288A00A18793 /* updatememberdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = updatememberdata.h; path = member/updatememberdata/updatememberdata.h; sourceTree = "<group>"; };
+		2CF6C1AF19C8288A00A18793 /* updatememberdata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = updatememberdata.m; path = member/updatememberdata/updatememberdata.m; sourceTree = "<group>"; };
+		2CF6C1B019C8288A00A18793 /* updatememberdata.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = updatememberdata.xib; path = member/updatememberdata/updatememberdata.xib; sourceTree = "<group>"; };
+		2CF6C1B419C8298E00A18793 /* checkorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = checkorder.h; path = member/checkorder/checkorder.h; sourceTree = "<group>"; };
+		2CF6C1B519C8298E00A18793 /* checkorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = checkorder.m; path = member/checkorder/checkorder.m; sourceTree = "<group>"; };
+		2CF6C1B619C8298E00A18793 /* checkorder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = checkorder.xib; path = member/checkorder/checkorder.xib; sourceTree = "<group>"; };
+		2CF6C1BB19C82B7D00A18793 /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
+		2CF6C1BC19C82B7D00A18793 /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
+		2CF6C1BE19C840F200A18793 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -833,6 +853,7 @@
 		2C42EB0A19C7D06300BB4692 /* zhubao_iphone */ = {
 			isa = PBXGroup;
 			children = (
+				2CF6C1A619C821CD00A18793 /* member */,
 				2CF6C19919C819DC00A18793 /* diploma */,
 				2C42EB3A19C7D10B00BB4692 /* Cell */,
 				2C42EB4319C7D10B00BB4692 /* decorateView */,
@@ -858,6 +879,7 @@
 		2C42EB0B19C7D06300BB4692 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2CF6C1BE19C840F200A18793 /* city.plist */,
 				2C42EB0C19C7D06300BB4692 /* zhubao_iphone-Info.plist */,
 				2C42EB0D19C7D06300BB4692 /* InfoPlist.strings */,
 				2C42EB1019C7D06300BB4692 /* main.m */,
@@ -926,6 +948,7 @@
 		2C42EB4619C7D10B00BB4692 /* extend */ = {
 			isa = PBXGroup;
 			children = (
+				2CF6C1BA19C82B7D00A18793 /* CustomIOS7AlertView */,
 				2C42EB4719C7D10B00BB4692 /* ASIHTTPRequest */,
 				2C42EB5B19C7D10B00BB4692 /* Helper */,
 				2C42EB6419C7D10B00BB4692 /* ImageCacher */,
@@ -1633,6 +1656,55 @@
 			name = diplomaWeb;
 			sourceTree = "<group>";
 		};
+		2CF6C1A619C821CD00A18793 /* member */ = {
+			isa = PBXGroup;
+			children = (
+				2CF6C1B319C8290200A18793 /* checkorder */,
+				2CF6C1AD19C8285800A18793 /* updatememberdata */,
+				2CF6C1A719C821DE00A18793 /* membercenter */,
+			);
+			name = member;
+			sourceTree = "<group>";
+		};
+		2CF6C1A719C821DE00A18793 /* membercenter */ = {
+			isa = PBXGroup;
+			children = (
+				2CF6C1A819C821FA00A18793 /* membercenter.h */,
+				2CF6C1A919C821FA00A18793 /* membercenter.m */,
+				2CF6C1AA19C821FA00A18793 /* membercenter.xib */,
+			);
+			name = membercenter;
+			sourceTree = "<group>";
+		};
+		2CF6C1AD19C8285800A18793 /* updatememberdata */ = {
+			isa = PBXGroup;
+			children = (
+				2CF6C1AE19C8288A00A18793 /* updatememberdata.h */,
+				2CF6C1AF19C8288A00A18793 /* updatememberdata.m */,
+				2CF6C1B019C8288A00A18793 /* updatememberdata.xib */,
+			);
+			name = updatememberdata;
+			sourceTree = "<group>";
+		};
+		2CF6C1B319C8290200A18793 /* checkorder */ = {
+			isa = PBXGroup;
+			children = (
+				2CF6C1B419C8298E00A18793 /* checkorder.h */,
+				2CF6C1B519C8298E00A18793 /* checkorder.m */,
+				2CF6C1B619C8298E00A18793 /* checkorder.xib */,
+			);
+			name = checkorder;
+			sourceTree = "<group>";
+		};
+		2CF6C1BA19C82B7D00A18793 /* CustomIOS7AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				2CF6C1BB19C82B7D00A18793 /* CustomIOS7AlertView.h */,
+				2CF6C1BC19C82B7D00A18793 /* CustomIOS7AlertView.m */,
+			);
+			path = CustomIOS7AlertView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1779,6 +1851,7 @@
 				2C42ED3E19C7D10B00BB4692 /* Seq_v04_640x378_22.jpg in Resources */,
 				2C42EDD719C7D10B00BB4692 /* voice_rcd_btn_nor.9.png in Resources */,
 				2C42ED8919C7D10B00BB4692 /* categorybg.png in Resources */,
+				2CF6C1B219C8288A00A18793 /* updatememberdata.xib in Resources */,
 				2C42EDCB19C7D10B00BB4692 /* TabBar4Sel.png in Resources */,
 				2C42ED7119C7D10B00BB4692 /* Seq_v04_640x378_69.jpg in Resources */,
 				2C42EDA619C7D10B00BB4692 /* lockiocn.png in Resources */,
@@ -1836,6 +1909,7 @@
 				2C42EDD319C7D10B00BB4692 /* up_sidebth.png in Resources */,
 				2C42EDBB19C7D10B00BB4692 /* searchinput_bg.png in Resources */,
 				2C42ED5119C7D10B00BB4692 /* Seq_v04_640x378_4.jpg in Resources */,
+				2CF6C1BF19C840F200A18793 /* city.plist in Resources */,
 				2C42EDC519C7D10B00BB4692 /* TabBar1Sel.png in Resources */,
 				2C42ED5019C7D10B00BB4692 /* Seq_v04_640x378_39.jpg in Resources */,
 				2C42ED3519C7D10B00BB4692 /* Seq_v04_640x378_14.jpg in Resources */,
@@ -1859,6 +1933,7 @@
 				2C42ED3119C7D10B00BB4692 /* Seq_v04_640x378_10.jpg in Resources */,
 				2C42EDCA19C7D10B00BB4692 /* TabBar4.png in Resources */,
 				2C42ED3419C7D10B00BB4692 /* Seq_v04_640x378_13.jpg in Resources */,
+				2CF6C1AC19C821FA00A18793 /* membercenter.xib in Resources */,
 				2C42ED4919C7D10B00BB4692 /* Seq_v04_640x378_32.jpg in Resources */,
 				2C42EE1619C7DCD100BB4692 /* NakedDiamondsrCell.xib in Resources */,
 				2C42ED7019C7D10B00BB4692 /* Seq_v04_640x378_68.jpg in Resources */,
@@ -1876,6 +1951,7 @@
 				2C42ED4A19C7D10B00BB4692 /* Seq_v04_640x378_33.jpg in Resources */,
 				2C42ED9819C7D10B00BB4692 /* diamond09.png in Resources */,
 				2C42ED4519C7D10B00BB4692 /* Seq_v04_640x378_29.jpg in Resources */,
+				2CF6C1B819C8298E00A18793 /* checkorder.xib in Resources */,
 				2C42EB1D19C7D06300BB4692 /* Images.xcassets in Resources */,
 				2C42EB0F19C7D06300BB4692 /* InfoPlist.strings in Resources */,
 				2C42EDBC19C7D10B00BB4692 /* selectdbg.png in Resources */,
@@ -1938,6 +2014,7 @@
 				2C42ED7B19C7D10B00BB4692 /* XNTabBar.m in Sources */,
 				2C42ECF419C7D10B00BB4692 /* FileHelpers.m in Sources */,
 				2C42EDE619C7D10B00BB4692 /* NakedDiamondselecttype.m in Sources */,
+				2CF6C1AB19C821FA00A18793 /* membercenter.m in Sources */,
 				2C42ECFF19C7D10B00BB4692 /* UIScrollView+MJRefresh.m in Sources */,
 				2C42ED1619C7D10B00BB4692 /* PSTGridLayoutItem.m in Sources */,
 				2C42ED0A19C7D10B00BB4692 /* MBProgressHUD.m in Sources */,
@@ -1960,6 +2037,7 @@
 				2C42ED1419C7D10B00BB4692 /* PSTCollectionViewUpdateItem.m in Sources */,
 				2C42EDDD19C7D10B00BB4692 /* LoginEntity.m in Sources */,
 				2C42EDEE19C7D10B00BB4692 /* getNowTime.m in Sources */,
+				2CF6C1B719C8298E00A18793 /* checkorder.m in Sources */,
 				2C42ED0C19C7D10B00BB4692 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				2C42ECF219C7D10B00BB4692 /* Tool.m in Sources */,
 				2C42EDE119C7D10B00BB4692 /* productphotos.m in Sources */,
@@ -1973,6 +2051,7 @@
 				2C42EE1519C7DCD100BB4692 /* NakedDiamondsrCell.m in Sources */,
 				2C42ED8119C7D10B00BB4692 /* zip.c in Sources */,
 				2C42ED1319C7D10B00BB4692 /* PSTCollectionViewLayout.m in Sources */,
+				2CF6C1B119C8288A00A18793 /* updatememberdata.m in Sources */,
 				2C42ED1719C7D10B00BB4692 /* PSTGridLayoutRow.m in Sources */,
 				2C42ECE519C7D10B00BB4692 /* productCell.m in Sources */,
 				2C42ED7D19C7D10B00BB4692 /* YLProgressBar.m in Sources */,
@@ -1993,6 +2072,7 @@
 				2C42ED1C19C7D10B00BB4692 /* NSData+GIF.m in Sources */,
 				2C42ED1F19C7D10B00BB4692 /* SDWebImageCompat.m in Sources */,
 				2C42ED0819C7D10B00BB4692 /* MWZoomingScrollView.m in Sources */,
+				2CF6C1BD19C82B7D00A18793 /* CustomIOS7AlertView.m in Sources */,
 				2C42EDEC19C7D10B00BB4692 /* AutoGetData.m in Sources */,
 				2C42EB1B19C7D06300BB4692 /* ViewController.m in Sources */,
 				2C42ECEB19C7D10B00BB4692 /* ASIInputStream.m in Sources */,
