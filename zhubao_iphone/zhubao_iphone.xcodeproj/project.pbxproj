@@ -307,6 +307,10 @@
 		2C42EE1619C7DCD100BB4692 /* NakedDiamondsrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */; };
 		2CF6C19719C8098700A18793 /* NakedDiamonddetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6C19519C8098700A18793 /* NakedDiamonddetail.m */; };
 		2CF6C19819C8098700A18793 /* NakedDiamonddetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF6C19619C8098700A18793 /* NakedDiamonddetail.xib */; };
+		2CF6C19E19C81A0D00A18793 /* diplomaselect.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6C19C19C81A0D00A18793 /* diplomaselect.m */; };
+		2CF6C19F19C81A0D00A18793 /* diplomaselect.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF6C19D19C81A0D00A18793 /* diplomaselect.xib */; };
+		2CF6C1A419C81E9D00A18793 /* diplomaWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF6C1A219C81E9D00A18793 /* diplomaWeb.m */; };
+		2CF6C1A519C81E9D00A18793 /* diplomaWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF6C1A319C81E9D00A18793 /* diplomaWeb.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -748,6 +752,12 @@
 		2CF6C19419C8098700A18793 /* NakedDiamonddetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NakedDiamonddetail.h; path = NakedDiamonddetail/NakedDiamonddetail.h; sourceTree = "<group>"; };
 		2CF6C19519C8098700A18793 /* NakedDiamonddetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NakedDiamonddetail.m; path = NakedDiamonddetail/NakedDiamonddetail.m; sourceTree = "<group>"; };
 		2CF6C19619C8098700A18793 /* NakedDiamonddetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NakedDiamonddetail.xib; path = NakedDiamonddetail/NakedDiamonddetail.xib; sourceTree = "<group>"; };
+		2CF6C19B19C81A0D00A18793 /* diplomaselect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = diplomaselect.h; path = diploma/diplomaselect/diplomaselect.h; sourceTree = "<group>"; };
+		2CF6C19C19C81A0D00A18793 /* diplomaselect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = diplomaselect.m; path = diploma/diplomaselect/diplomaselect.m; sourceTree = "<group>"; };
+		2CF6C19D19C81A0D00A18793 /* diplomaselect.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = diplomaselect.xib; path = diploma/diplomaselect/diplomaselect.xib; sourceTree = "<group>"; };
+		2CF6C1A119C81E9D00A18793 /* diplomaWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = diplomaWeb.h; path = diploma/diplomaWeb/diplomaWeb.h; sourceTree = "<group>"; };
+		2CF6C1A219C81E9D00A18793 /* diplomaWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = diplomaWeb.m; path = diploma/diplomaWeb/diplomaWeb.m; sourceTree = "<group>"; };
+		2CF6C1A319C81E9D00A18793 /* diplomaWeb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = diplomaWeb.xib; path = diploma/diplomaWeb/diplomaWeb.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -823,6 +833,7 @@
 		2C42EB0A19C7D06300BB4692 /* zhubao_iphone */ = {
 			isa = PBXGroup;
 			children = (
+				2CF6C19919C819DC00A18793 /* diploma */,
 				2C42EB3A19C7D10B00BB4692 /* Cell */,
 				2C42EB4319C7D10B00BB4692 /* decorateView */,
 				2C42EB4619C7D10B00BB4692 /* extend */,
@@ -1593,6 +1604,35 @@
 			name = NakedDiamonddetail;
 			sourceTree = "<group>";
 		};
+		2CF6C19919C819DC00A18793 /* diploma */ = {
+			isa = PBXGroup;
+			children = (
+				2CF6C1A019C81E7700A18793 /* diplomaWeb */,
+				2CF6C19A19C819EE00A18793 /* diplomaselect */,
+			);
+			name = diploma;
+			sourceTree = "<group>";
+		};
+		2CF6C19A19C819EE00A18793 /* diplomaselect */ = {
+			isa = PBXGroup;
+			children = (
+				2CF6C19B19C81A0D00A18793 /* diplomaselect.h */,
+				2CF6C19C19C81A0D00A18793 /* diplomaselect.m */,
+				2CF6C19D19C81A0D00A18793 /* diplomaselect.xib */,
+			);
+			name = diplomaselect;
+			sourceTree = "<group>";
+		};
+		2CF6C1A019C81E7700A18793 /* diplomaWeb */ = {
+			isa = PBXGroup;
+			children = (
+				2CF6C1A119C81E9D00A18793 /* diplomaWeb.h */,
+				2CF6C1A219C81E9D00A18793 /* diplomaWeb.m */,
+				2CF6C1A319C81E9D00A18793 /* diplomaWeb.xib */,
+			);
+			name = diplomaWeb;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1713,6 +1753,7 @@
 				2C42ED2A19C7D10B00BB4692 /* MWPhotoBrowser.bundle in Resources */,
 				2C42ED4619C7D10B00BB4692 /* Seq_v04_640x378_3.jpg in Resources */,
 				2C42EDDA19C7D10B00BB4692 /* login.xib in Resources */,
+				2CF6C19F19C81A0D00A18793 /* diplomaselect.xib in Resources */,
 				2C42EDC819C7D10B00BB4692 /* TabBar3.png in Resources */,
 				2C42ED3619C7D10B00BB4692 /* Seq_v04_640x378_15.jpg in Resources */,
 				2C42EDD219C7D10B00BB4692 /* up_reversebth.png in Resources */,
@@ -1724,6 +1765,7 @@
 				2C42ED6019C7D10B00BB4692 /* Seq_v04_640x378_53.jpg in Resources */,
 				2C42ED6B19C7D10B00BB4692 /* Seq_v04_640x378_63.jpg in Resources */,
 				2C42EDE719C7D10B00BB4692 /* NakedDiamondselecttype.xib in Resources */,
+				2CF6C1A519C81E9D00A18793 /* diplomaWeb.xib in Resources */,
 				2C42ECE419C7D10B00BB4692 /* NakedDiamondlistCell.xib in Resources */,
 				2C42ED4C19C7D10B00BB4692 /* Seq_v04_640x378_35.jpg in Resources */,
 				2C42ED4419C7D10B00BB4692 /* Seq_v04_640x378_28.jpg in Resources */,
@@ -1882,6 +1924,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CF6C19E19C81A0D00A18793 /* diplomaselect.m in Sources */,
 				2C42EE0F19C7DBAE00BB4692 /* NakedDiamondlist.m in Sources */,
 				2C42ED2D19C7D10B00BB4692 /* FVImageSequenceDemoViewController.m in Sources */,
 				2C42ECFC19C7D10B00BB4692 /* MJRefreshFooterView.m in Sources */,
@@ -1922,6 +1965,7 @@
 				2C42EDE119C7D10B00BB4692 /* productphotos.m in Sources */,
 				2C42ED1819C7D10B00BB4692 /* PSTGridLayoutSection.m in Sources */,
 				2C42ED1519C7D10B00BB4692 /* PSTGridLayoutInfo.m in Sources */,
+				2CF6C1A419C81E9D00A18793 /* diplomaWeb.m in Sources */,
 				2C42ED8019C7D10B00BB4692 /* unzip.c in Sources */,
 				2C42ED2819C7D10B00BB4692 /* UIImage+WebP.m in Sources */,
 				2C42EDE419C7D10B00BB4692 /* NakedDiamondindex.m in Sources */,
