@@ -14,6 +14,9 @@
 
 @implementation checkorder
 
+@synthesize url;
+@synthesize orderview;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,6 +30,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [orderview loadRequest:request];
+
+}
+
+-(IBAction)goback:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)didReceiveMemoryWarning

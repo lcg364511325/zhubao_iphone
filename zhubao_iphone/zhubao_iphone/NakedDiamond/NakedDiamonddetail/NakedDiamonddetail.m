@@ -72,7 +72,7 @@
     
     NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
     NSMutableDictionary * dict = [DataService GetDataService:URL];
-    NSArray *nakeddiamond=[[dict objectForKey:@"result"] objectAtIndex:0];
+    nakeddiamond=[[dict objectForKey:@"result"] objectAtIndex:0];
     
     NSString *xingzhuang=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:9]];
     NakedDiamondlist *_NakedDiamondlist=[[NakedDiamondlist alloc]init];
@@ -92,6 +92,35 @@
     fluLabel.text=[NSString stringWithFormat:@"荧光：%@",[nakeddiamond objectAtIndex:13]];
     dipLabel.text=[NSString stringWithFormat:@"证书：%@",[nakeddiamond objectAtIndex:1]];
     priceLabel.text=[NSString stringWithFormat:@"零售价：%@",[nakeddiamond objectAtIndex:14]];
+}
+
+//加入购物车
+-(IBAction)addshopcart:(id)sender{
+    sqlService * sql=[[sqlService alloc]init];
+    buyproduct * entity=[[buyproduct alloc]init];
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    entity.producttype=@"3";
+    entity.productid=nid;
+    entity.pcount=@"1";
+    entity.pcolor=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:5]];
+    entity.pvvs=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:4]];
+    entity.psize=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:12]];
+    entity.pweight=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:3]];
+    entity.customerid=myDelegate.entityl.uId;
+    entity.pprice=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:14]];
+    entity.pname=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:2]];
+    sql=[[sqlService alloc]init];
+    buyproduct *successadd=[sql addToBuyproduct:entity];
+    if (successadd) {
+        
+        NSString *rowString =@"成功加入购物车！";
+        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alter show];
+    } else{
+        NSString *rowString =@"加入购物车失败！";
+        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alter show];
+    }
 }
 
 -(IBAction)goback:(id)sender

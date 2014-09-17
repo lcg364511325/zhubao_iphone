@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface NakedDiamonddetail : UIViewController
+{
+    NSArray *nakeddiamond;
+}
 
 @property (retain,nonatomic)NSString *nid;
 

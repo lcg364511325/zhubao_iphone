@@ -21,7 +21,11 @@
                     <color key="tintColor" red="0.74898357780000002" green="0.58348394319999997" blue="0.29437198199999998" alpha="1" colorSpace="calibratedRGB"/>
                     <items>
                         <navigationItem title="证书查询" id="sWf-6p-dYM">
-                            <barButtonItem key="leftBarButtonItem" image="return_icon.png" id="cRr-Un-Qbe"/>
+                            <barButtonItem key="leftBarButtonItem" image="return_icon.png" id="cRr-Un-Qbe">
+                                <connections>
+                                    <action selector="goback:" destination="-1" id="Urc-rs-3Fi"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>

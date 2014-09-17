@@ -59,6 +59,44 @@
     
 }
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    frame = textField.frame;
+    if (oldframe.origin.y!=frame.origin.y) {
+        int offset = frame.origin.y + 32 - (self.view.frame.size.height - 216.0);//键盘高度216
+        
+        NSTimeInterval animationDuration = 0.30f;
+        [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+        [UIView setAnimationDuration:animationDuration];
+        
+        //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
+        if(offset > 0)
+            self.view.frame = CGRectMake(0.0f, -offset, self.view.frame.size.width, self.view.frame.size.height);
+        
+        [UIView commitAnimations];
+        oldframe=frame;
+    }
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [noText resignFirstResponder];
+    [minheight resignFirstResponder];
+    [maxheight resignFirstResponder];
+    [minprice resignFirstResponder];
+    [maxprice resignFirstResponder];
+    oldframe=self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (oldframe.origin.y!=frame.origin.y) {
+        self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }
+}
+
+
+//接受回调参数
 -(void)passValue:(NSString *)value key:(NSString *)key tag:(NSString *)tag
 {
     NSInteger tagint=[tag integerValue];

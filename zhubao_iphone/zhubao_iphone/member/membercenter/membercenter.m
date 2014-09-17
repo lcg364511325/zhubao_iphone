@@ -9,6 +9,8 @@
 #import "membercenter.h"
 #import "checkorder.h"
 #import "AppDelegate.h"
+#import "updatememberdata.h"
+#import "updatepassword.h"
 
 @interface membercenter ()
 
@@ -101,6 +103,20 @@
     [demoView addSubview:password];
     [demoView addSubview:title];
     return demoView;
+}
+
+//修改会员资料
+-(IBAction)updatememberdata:(id)sender
+{
+    updatememberdata *_updatememberdata=[[updatememberdata alloc]init];
+    [self.navigationController pushViewController:_updatememberdata animated:NO];
+}
+
+//修改密码
+-(IBAction)updatepassword:(id)sender
+{
+    updatepassword *_updatepassword=[[updatepassword alloc]init];
+    [self.navigationController pushViewController:_updatepassword animated:NO];
 }
 
 

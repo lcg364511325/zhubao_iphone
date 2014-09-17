@@ -13,6 +13,8 @@
 #import "NakedDiamondindex.h"
 #import "diplomaselect.h"
 #import "membercenter.h"
+#import "customtailor.h"
+#import "shopcart.h"
 
 @interface decorateView ()
 
@@ -62,10 +64,11 @@
     frontindex *_frontindex=[[frontindex alloc]init];
     productindex *_productindex=[[productindex alloc]init];
     NakedDiamondindex *_NakedDiamondindex=[[NakedDiamondindex alloc]init];
+    customtailor *_customtailor=[[customtailor alloc]init];
     diplomaselect *_diplomaselect=[[diplomaselect alloc]init];
     membercenter *_membercenter=[[membercenter alloc]init];
     
-    self.viewControllers=[NSArray arrayWithObjects:_frontindex,_productindex,_NakedDiamondindex,_diplomaselect,_diplomaselect,_membercenter, nil];
+    self.viewControllers=[NSArray arrayWithObjects:_frontindex,_productindex,_NakedDiamondindex,_customtailor,_diplomaselect,_membercenter, nil];
 }
 
 
@@ -85,7 +88,7 @@
     //购物车按钮
     UIButton *buycartbtn=[[UIButton alloc]initWithFrame:CGRectMake(195, 5, 40, 30)];
     [buycartbtn setImage:[UIImage imageNamed:@"shopping"] forState:UIControlStateNormal];
-    [buycartbtn addTarget:self action:@selector(sss) forControlEvents:UIControlEventTouchDown];
+    [buycartbtn addTarget:self action:@selector(shopcartshow) forControlEvents:UIControlEventTouchDown];
     [topview addSubview:buycartbtn];
     
     //购物车数量显示
@@ -101,6 +104,25 @@
     [settingbtn setImage:[UIImage imageNamed:@"set"] forState:UIControlStateNormal];
     [topview addSubview:settingbtn];
     
+    //设置按钮菜单
+    UIImageView *settingimg=[[UIImageView alloc]initWithFrame:CGRectMake(210, 40, 100, 60)];
+    [settingimg setImage:[UIImage imageNamed:@"settingbg"]];
+    //settingimg.hidden=YES;
+    
+    UIButton *versonupdatebtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 80, 30)];
+    [versonupdatebtn setTitle:@"版本更新" forState:UIControlStateNormal];
+    [versonupdatebtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    versonupdatebtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
+    [settingimg addSubview:versonupdatebtn];
+    
+    UIButton *logoutbtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 30, 80, 30)];
+    [logoutbtn setTitle:@"退出登录" forState:UIControlStateNormal];
+    [logoutbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    logoutbtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
+    [settingimg addSubview:logoutbtn];
+    
+    
+    [self.view addSubview:settingimg];
     [self.view addSubview:topimg];
     [self.view addSubview:topview];
 }
@@ -141,10 +163,10 @@
     self.selectedIndex = to;
 }
 
--(void)sss
+-(void)shopcartshow
 {
-    frontindex *_frontindex=[[frontindex alloc]init];
-    [self.navigationController pushViewController:_frontindex animated:NO];
+    shopcart *_shopcart=[[shopcart alloc]init];
+    [self.navigationController pushViewController:_shopcart animated:NO];
 }
 
 - (void)didReceiveMemoryWarning

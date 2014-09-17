@@ -6,6 +6,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="updatememberdata">
             <connections>
+                <outlet property="addr" destination="gRn-8H-Mz4" id="ozy-ko-VlR"/>
+                <outlet property="caddr" destination="pdP-a7-vKS" id="5D7-Dq-brZ"/>
+                <outlet property="companyname" destination="EaU-xK-nXx" id="Qez-XZ-zvE"/>
+                <outlet property="division" destination="m6X-XB-hD1" id="cre-oi-vKL"/>
+                <outlet property="paddr" destination="yjb-Ii-Rsu" id="0kh-yA-6bL"/>
+                <outlet property="tview" destination="jic-Ie-AXM" id="Irn-vJ-f2h"/>
+                <outlet property="username" destination="OrA-XO-cJp" id="mSV-pq-Bcy"/>
+                <outlet property="userphone" destination="H9f-ET-1S9" id="OPf-cB-QoM"/>
+                <outlet property="usertel" destination="jeK-ON-v9w" id="wCv-mP-ZcI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,7 +33,11 @@
                     <color key="tintColor" red="0.74898357780000002" green="0.58348394319999997" blue="0.29437198199999998" alpha="1" colorSpace="calibratedRGB"/>
                     <items>
                         <navigationItem title="会员资料修改" id="yeV-of-a5H">
-                            <barButtonItem key="leftBarButtonItem" image="return_icon.png" id="DMJ-lP-pkk"/>
+                            <barButtonItem key="leftBarButtonItem" image="return_icon.png" id="DMJ-lP-pkk">
+                                <connections>
+                                    <action selector="goback:" destination="-1" id="kbh-Yf-05r"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -111,7 +124,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="spinnerbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-a7-vKS">
+                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="spinnerbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-a7-vKS">
                     <rect key="frame" x="92.5" y="265" width="207" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -123,7 +136,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="spinnerbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="m6X-XB-hD1">
+                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="spinnerbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="m6X-XB-hD1">
                     <rect key="frame" x="92.5" y="345" width="207" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -135,7 +148,49 @@
                     <state key="normal" image="determinebth.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="updatemember:" destination="-1" eventType="touchDown" id="fdE-R7-Lth"/>
+                    </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xwd-C1-hfq">
+                    <rect key="frame" x="92" y="225" width="208" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selecttableview:" destination="-1" eventType="touchDown" id="qKM-YE-vnR"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfb-5O-chW">
+                    <rect key="frame" x="92" y="265" width="208" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selecttableview:" destination="-1" eventType="touchDown" id="Ban-jO-4XZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7g-Oh-8FT">
+                    <rect key="frame" x="92" y="345" width="208" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selecttableview:" destination="-1" eventType="touchDown" id="MeN-Iq-74h"/>
+                    </connections>
+                </button>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jic-Ie-AXM">
+                    <rect key="frame" x="92" y="255" width="208" height="284"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="hU1-e8-kmh"/>
+                        <outlet property="delegate" destination="-1" id="LeF-DN-Uud"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

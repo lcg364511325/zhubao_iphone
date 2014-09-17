@@ -84,6 +84,9 @@
         dipTView.hidden=YES;
     }
     
+    [heightLabel resignFirstResponder];
+    [noText resignFirstResponder];
+    
 }
 
 //证书下拉选择

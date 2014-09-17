@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIViewPassValueDelegate.h"
 
-@interface NakedDiamondindex : UIViewController<UIViewPassValueDelegate>
+@interface NakedDiamondindex : UIViewController<UIViewPassValueDelegate,UITextFieldDelegate>
 {
     NSString *modelvalue;
     NSString *colorvalue;
@@ -19,6 +19,8 @@
     NSString *symmetryvalue;
     NSString *fluorescencevalue;
     NSString *diplomavalue;
+    CGRect oldframe;
+    CGRect frame;
 }
 
 @property (retain, nonatomic) NSString *pkey;

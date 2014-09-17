@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C19C60B19C9359700D9CF1E /* updatepassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C19C60919C9359700D9CF1E /* updatepassword.m */; };
+		2C19C60C19C9359700D9CF1E /* updatepassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C19C60A19C9359700D9CF1E /* updatepassword.xib */; };
+		2C19C61119C9396200D9CF1E /* customtailor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C19C60F19C9396200D9CF1E /* customtailor.m */; };
+		2C19C61219C9396200D9CF1E /* customtailor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C19C61019C9396200D9CF1E /* customtailor.xib */; };
+		2C19C61719C971BA00D9CF1E /* shopcart.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C19C61519C971BA00D9CF1E /* shopcart.m */; };
+		2C19C61819C971BA00D9CF1E /* shopcart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C19C61619C971BA00D9CF1E /* shopcart.xib */; };
+		2C19C61D19C9739900D9CF1E /* shopcartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C19C61B19C9739900D9CF1E /* shopcartCell.m */; };
+		2C19C61E19C9739900D9CF1E /* shopcartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C19C61C19C9739900D9CF1E /* shopcartCell.xib */; };
 		2C42EB0519C7D06300BB4692 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB0419C7D06300BB4692 /* Foundation.framework */; };
 		2C42EB0719C7D06300BB4692 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB0619C7D06300BB4692 /* CoreGraphics.framework */; };
 		2C42EB0919C7D06300BB4692 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB0819C7D06300BB4692 /* UIKit.framework */; };
@@ -339,6 +347,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C19C60819C9359700D9CF1E /* updatepassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = updatepassword.h; path = member/updatepassword/updatepassword.h; sourceTree = "<group>"; };
+		2C19C60919C9359700D9CF1E /* updatepassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = updatepassword.m; path = member/updatepassword/updatepassword.m; sourceTree = "<group>"; };
+		2C19C60A19C9359700D9CF1E /* updatepassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = updatepassword.xib; path = member/updatepassword/updatepassword.xib; sourceTree = "<group>"; };
+		2C19C60E19C9396200D9CF1E /* customtailor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = customtailor.h; path = customtailor/customtailor.h; sourceTree = "<group>"; };
+		2C19C60F19C9396200D9CF1E /* customtailor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = customtailor.m; path = customtailor/customtailor.m; sourceTree = "<group>"; };
+		2C19C61019C9396200D9CF1E /* customtailor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = customtailor.xib; path = customtailor/customtailor.xib; sourceTree = "<group>"; };
+		2C19C61419C971BA00D9CF1E /* shopcart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shopcart.h; path = shopcart/shopcart.h; sourceTree = "<group>"; };
+		2C19C61519C971BA00D9CF1E /* shopcart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = shopcart.m; path = shopcart/shopcart.m; sourceTree = "<group>"; };
+		2C19C61619C971BA00D9CF1E /* shopcart.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = shopcart.xib; path = shopcart/shopcart.xib; sourceTree = "<group>"; };
+		2C19C61A19C9739900D9CF1E /* shopcartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shopcartCell.h; path = shopcartCell/shopcartCell.h; sourceTree = "<group>"; };
+		2C19C61B19C9739900D9CF1E /* shopcartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = shopcartCell.m; path = shopcartCell/shopcartCell.m; sourceTree = "<group>"; };
+		2C19C61C19C9739900D9CF1E /* shopcartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = shopcartCell.xib; path = shopcartCell/shopcartCell.xib; sourceTree = "<group>"; };
 		2C42EB0119C7D06300BB4692 /* zhubao_iphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zhubao_iphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C42EB0419C7D06300BB4692 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C42EB0619C7D06300BB4692 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -812,6 +832,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C19C60619C9348C00D9CF1E /* updatepassword */ = {
+			isa = PBXGroup;
+			children = (
+				2C19C60819C9359700D9CF1E /* updatepassword.h */,
+				2C19C60919C9359700D9CF1E /* updatepassword.m */,
+				2C19C60A19C9359700D9CF1E /* updatepassword.xib */,
+			);
+			name = updatepassword;
+			sourceTree = "<group>";
+		};
+		2C19C60D19C9394600D9CF1E /* customtailor */ = {
+			isa = PBXGroup;
+			children = (
+				2C19C60E19C9396200D9CF1E /* customtailor.h */,
+				2C19C60F19C9396200D9CF1E /* customtailor.m */,
+				2C19C61019C9396200D9CF1E /* customtailor.xib */,
+			);
+			name = customtailor;
+			sourceTree = "<group>";
+		};
+		2C19C61319C9715E00D9CF1E /* shopcart */ = {
+			isa = PBXGroup;
+			children = (
+				2C19C61419C971BA00D9CF1E /* shopcart.h */,
+				2C19C61519C971BA00D9CF1E /* shopcart.m */,
+				2C19C61619C971BA00D9CF1E /* shopcart.xib */,
+			);
+			name = shopcart;
+			sourceTree = "<group>";
+		};
+		2C19C61919C9736300D9CF1E /* shopcartCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C19C61A19C9739900D9CF1E /* shopcartCell.h */,
+				2C19C61B19C9739900D9CF1E /* shopcartCell.m */,
+				2C19C61C19C9739900D9CF1E /* shopcartCell.xib */,
+			);
+			name = shopcartCell;
+			sourceTree = "<group>";
+		};
 		2C42EAF819C7D06300BB4692 = {
 			isa = PBXGroup;
 			children = (
@@ -853,6 +913,8 @@
 		2C42EB0A19C7D06300BB4692 /* zhubao_iphone */ = {
 			isa = PBXGroup;
 			children = (
+				2C19C61319C9715E00D9CF1E /* shopcart */,
+				2C19C60D19C9394600D9CF1E /* customtailor */,
 				2CF6C1A619C821CD00A18793 /* member */,
 				2CF6C19919C819DC00A18793 /* diploma */,
 				2C42EB3A19C7D10B00BB4692 /* Cell */,
@@ -909,6 +971,7 @@
 		2C42EB3A19C7D10B00BB4692 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				2C19C61919C9736300D9CF1E /* shopcartCell */,
 				2C42EE1119C7DCB200BB4692 /* NakedDiamondsrCell */,
 				2C42EB3B19C7D10B00BB4692 /* NakedDiamondlistCell */,
 				2C42EB3F19C7D10B00BB4692 /* productCell */,
@@ -1659,6 +1722,7 @@
 		2CF6C1A619C821CD00A18793 /* member */ = {
 			isa = PBXGroup;
 			children = (
+				2C19C60619C9348C00D9CF1E /* updatepassword */,
 				2CF6C1B319C8290200A18793 /* checkorder */,
 				2CF6C1AD19C8285800A18793 /* updatememberdata */,
 				2CF6C1A719C821DE00A18793 /* membercenter */,
@@ -1801,6 +1865,7 @@
 				2C42EDA419C7D10B00BB4692 /* importbg_spinner.png in Resources */,
 				2C42ED5F19C7D10B00BB4692 /* Seq_v04_640x378_52.jpg in Resources */,
 				2C42ED8819C7D10B00BB4692 /* button_user_help.png in Resources */,
+				2C19C61219C9396200D9CF1E /* customtailor.xib in Resources */,
 				2C42ED4119C7D10B00BB4692 /* Seq_v04_640x378_25.jpg in Resources */,
 				2C42ED6119C7D10B00BB4692 /* Seq_v04_640x378_54.jpg in Resources */,
 				2C42EDD019C7D10B00BB4692 /* titlebg.png in Resources */,
@@ -1841,6 +1906,7 @@
 				2C42ECE419C7D10B00BB4692 /* NakedDiamondlistCell.xib in Resources */,
 				2C42ED4C19C7D10B00BB4692 /* Seq_v04_640x378_35.jpg in Resources */,
 				2C42ED4419C7D10B00BB4692 /* Seq_v04_640x378_28.jpg in Resources */,
+				2C19C61819C971BA00D9CF1E /* shopcart.xib in Resources */,
 				2C42EDA219C7D10B00BB4692 /* imagez.png in Resources */,
 				2C42EE1019C7DBAE00BB4692 /* NakedDiamondlist.xib in Resources */,
 				2C42EDCC19C7D10B00BB4692 /* TabBar5.png in Resources */,
@@ -1920,6 +1986,7 @@
 				2C42ECF819C7D10B00BB4692 /* README.md in Resources */,
 				2C42EDA919C7D10B00BB4692 /* logoshengyu.png in Resources */,
 				2C42ED7219C7D10B00BB4692 /* Seq_v04_640x378_7.jpg in Resources */,
+				2C19C61E19C9739900D9CF1E /* shopcartCell.xib in Resources */,
 				2C42ED9319C7D10B00BB4692 /* diamond04.png in Resources */,
 				2C42ED9B19C7D10B00BB4692 /* footer_selectdbg.png in Resources */,
 				2C42ED7319C7D10B00BB4692 /* Seq_v04_640x378_70.jpg in Resources */,
@@ -1976,6 +2043,7 @@
 				2C42EDE919C7D10B00BB4692 /* productdetail.xib in Resources */,
 				2C42EDB819C7D10B00BB4692 /* round.png in Resources */,
 				2C42EDD419C7D10B00BB4692 /* upload.png in Resources */,
+				2C19C60C19C9359700D9CF1E /* updatepassword.xib in Resources */,
 				2C42ED1A19C7D10B00BB4692 /* README.md in Resources */,
 				2C42ED6E19C7D10B00BB4692 /* Seq_v04_640x378_66.jpg in Resources */,
 				2C42EDB319C7D10B00BB4692 /* querybth.png in Resources */,
@@ -2019,6 +2087,7 @@
 				2C42ED1619C7D10B00BB4692 /* PSTGridLayoutItem.m in Sources */,
 				2C42ED0A19C7D10B00BB4692 /* MBProgressHUD.m in Sources */,
 				2C42ECE719C7D10B00BB4692 /* decorateView.m in Sources */,
+				2C19C61119C9396200D9CF1E /* customtailor.m in Sources */,
 				2C42ED1019C7D10B00BB4692 /* PSTCollectionViewData.m in Sources */,
 				2C42ECFD19C7D10B00BB4692 /* MJRefreshHeaderView.m in Sources */,
 				2C42ECF719C7D10B00BB4692 /* JSONKit.m in Sources */,
@@ -2065,6 +2134,7 @@
 				2C42EDE219C7D10B00BB4692 /* updatetime.m in Sources */,
 				2C42EDEA19C7D10B00BB4692 /* productindex.m in Sources */,
 				2C42ED0419C7D10B00BB4692 /* MWPhoto.m in Sources */,
+				2C19C60B19C9359700D9CF1E /* updatepassword.m in Sources */,
 				2C42EDD919C7D10B00BB4692 /* login.m in Sources */,
 				2C42ED8319C7D10B00BB4692 /* frontindex.m in Sources */,
 				2C42ED2C19C7D10B00BB4692 /* FVImageSequence.m in Sources */,
@@ -2097,8 +2167,10 @@
 				2C42ECEF19C7D10B00BB4692 /* Reachability.m in Sources */,
 				2C42ECE819C7D10B00BB4692 /* ASIAuthenticationDialog.m in Sources */,
 				2C42ED2119C7D10B00BB4692 /* SDWebImageDownloader.m in Sources */,
+				2C19C61719C971BA00D9CF1E /* shopcart.m in Sources */,
 				2C42ED0719C7D10B00BB4692 /* MWTapDetectingView.m in Sources */,
 				2C42ED2619C7D10B00BB4692 /* UIImage+GIF.m in Sources */,
+				2C19C61D19C9739900D9CF1E /* shopcartCell.m in Sources */,
 				2C42ED0D19C7D10B00BB4692 /* PSTCollectionView.m in Sources */,
 				2C42EB1119C7D06300BB4692 /* main.m in Sources */,
 				2C42ECEE19C7D10B00BB4692 /* NSHTTPCookieAdditions.m in Sources */,
