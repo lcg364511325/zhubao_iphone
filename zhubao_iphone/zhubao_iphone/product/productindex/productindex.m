@@ -100,7 +100,7 @@
     AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
     
     NSString * uId=myDelegate.entityl.uId;
-    NSString * Upt=@"";//获取上一次的更新时间
+    NSString * Upt=@"0";//获取上一次的更新时间
     if (myDelegate.entityl.puptime) {
         Upt=myDelegate.entityl.puptime;
     }    

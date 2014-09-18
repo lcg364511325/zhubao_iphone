@@ -7,14 +7,73 @@
 //
 
 #import "productdetail.h"
+#import "AppDelegate.h"
+#import "productApi.h"
 
 @interface productdetail ()
+
+@end
+
+//解决scrollview无法响应view的touch事件
+@implementation UIScrollView (UITouchEvent)
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [[self nextResponder] touchesBegan:touches withEvent:event];
+    [super touchesBegan:touches withEvent:event];
+}
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    [[self nextResponder] touchesMoved:touches withEvent:event];
+    [super touchesMoved:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [[self nextResponder] touchesEnded:touches withEvent:event];
+    [super touchesEnded:touches withEvent:event];
+}
 
 @end
 
 @implementation productdetail
 
 @synthesize pdSView;
+@synthesize pid;
+@synthesize pdetailView;
+@synthesize bgimg1;
+@synthesize bgimg2;
+@synthesize logoimg;
+@synthesize nameLabel;
+@synthesize priceLabel;
+@synthesize noLabel;
+@synthesize womanweightLabel;
+@synthesize TView;
+
+//女戒
+@synthesize wmaincountLabel;
+@synthesize wfitcountLabel;
+@synthesize wfitweightLabel;
+@synthesize wmianinlayText;
+@synthesize wnetText;
+@synthesize wcolorText;
+@synthesize wtexttureText;
+@synthesize wsizeText;
+@synthesize wfontLabel;
+@synthesize countLabel;
+
+//男戒
+@synthesize manweightLabel;
+@synthesize mmaincountLabel;
+@synthesize mfitcountLabel;
+@synthesize mfitweightLabel;
+@synthesize mmianinlayText;
+@synthesize mnetText;
+@synthesize mcolorText;
+@synthesize mtexttureText;
+@synthesize msizeText;
+@synthesize mfontLabel;
+@synthesize btn1;
+@synthesize btn2;
+@synthesize btn3;
+@synthesize btn4;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,16 +88,405 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    //设置scrollview属性
     pdSView.backgroundColor=[UIColor  colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]];
+    [pdSView addSubview:pdetailView];
+    pdSView.contentSize=CGSizeMake(320, pdetailView.frame.size.height);
+    pdSView.showsHorizontalScrollIndicator=NO;//不显示水平滑动线
+    pdSView.showsVerticalScrollIndicator=YES;//不显示垂直滑动线
+    pdSView.scrollEnabled=YES;
     
+    //设置背景图片圆角和边框
+    bgimg1.layer.cornerRadius=4;
+    bgimg1.layer.masksToBounds=YES;
+    CALayer *layer = [bgimg1 layer];
+    layer.borderColor=[UIColor colorWithRed:133.0/255.0 green:130.0/255.0 blue:154.0/255.0 alpha:0.5].CGColor;
+    layer.borderWidth=0.7f;
+    bgimg2.layer.cornerRadius=4;
+    bgimg2.layer.masksToBounds=YES;
+    CALayer *layer1 = [bgimg2 layer];
+    layer1.borderColor=[UIColor colorWithRed:133.0/255.0 green:130.0/255.0 blue:154.0/255.0 alpha:0.5].CGColor;
+    layer1.borderWidth=0.7f;
     
+    //初始化数组
+    netlist=[[NSArray alloc]initWithObjects:@"SI",@"VVS",@"VS",@"P", nil];
+    colorlist=[[NSArray alloc]initWithObjects:@"I-J",@"F-G",@"H",@"K-L",@"M-N", nil];
+    textturelist=[[NSArray alloc] initWithObjects:@"18k黄",@"18K白",@"18K双色",@"18K玫瑰金",@"PT900",@"PT950",@"PD950", nil];
+    
+    //限制数字键盘
+    msizeText.keyboardType=UIKeyboardTypeNumberPad;
+    wsizeText.keyboardType=UIKeyboardTypeNumberPad;
+    countLabel.keyboardType=UIKeyboardTypeNumberPad;
     
     [self loaddata];
 }
 
 -(void)loaddata
 {
-    UIImageView *pdimg=[[UIImageView alloc]initWithFrame:CGRectMake(160, 5, 50, 100)];
+    getNowTime * time=[[getNowTime alloc] init];
+    NSString * nowt=[time nowTime];
+    
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSString * uId=myDelegate.entityl.uId;
+    NSString * Upt=@"0";//获取上一次的更新时间
+    if (myDelegate.entityl.puptime) {
+        Upt=myDelegate.entityl.puptime;
+    }
+    //Kstr=md5(uId|type|Upt|Key|Nowt|cid)
+    NSString * Kstr=[Commons md5:[NSString stringWithFormat:@"%@|%@|%@|%@|%@",uId,@"1001",Upt,apikey,nowt]];
+    
+    NSString * surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&cid=%@",uId,Upt,nowt,Kstr,pid];
+    NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
+    NSMutableDictionary * dict = [DataService GetDataService:URL];
+    productlist=[[dict objectForKey:@"result"] objectAtIndex:0];
+    proclass=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:5]];
+    protypeWenProId=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:9]];
+    
+    //logo图片
+    NSString *url=[NSString stringWithFormat:@"http://seyuu.com%@",[productlist objectAtIndex:7]];
+    NSURL *imgUrl=[NSURL URLWithString:url];
+    if (hasCachedImage(imgUrl)) {
+        [logoimg setImage:[UIImage imageWithContentsOfFile:pathForURL(imgUrl)]];
+    }else{
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:imgUrl,@"url",logoimg,@"imageView",nil];
+        [NSThread detachNewThreadSelector:@selector(cacheImage:) toTarget:[ImageCacher defaultCacher] withObject:dic];
+    }
+    
+    //名称
+    nameLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:3]];
+    
+    //型号
+    noLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:1]];
+    
+    if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
+        
+        //女戒
+        
+        //约重
+        womanweightLabel.text=[NSString stringWithFormat:@"女戒：%@g",[productlist objectAtIndex:34]];
+        
+        //主石数量
+        wmaincountLabel.text=[NSString stringWithFormat:@"女戒：%@颗",[productlist objectAtIndex:31]];
+        
+        //副石数量
+        wfitcountLabel.text=[NSString stringWithFormat:@"女戒：%@颗",[productlist objectAtIndex:41]];
+        
+        //副石重量
+        wfitweightLabel.text=[NSString stringWithFormat:@"女戒：%@ct",[productlist objectAtIndex:44]];
+        
+        //主石
+        winlaylist=[self checkinlay:pid];
+        wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
+        
+        //净度
+        wnetText.text=@"SI";
+        //颜色
+        wcolorText.text=@"I-J";
+        //材质
+        wtexttureText.text=@"18K黄";
+        
+        //男戒
+        [self sethiddenforno];
+        surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&twid=%@",uId,Upt,nowt,Kstr,pid];
+        URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
+        NSMutableDictionary * dict = [DataService GetDataService:URL];
+        manpdetail=[[dict objectForKey:@"result"] objectAtIndex:0];
+        
+        //约重
+        manweightLabel.text=[NSString stringWithFormat:@"男戒：%@g",[manpdetail objectAtIndex:34]];
+        
+        //主石数量
+        mmaincountLabel.text=[NSString stringWithFormat:@"男戒：%@颗",[manpdetail objectAtIndex:31]];
+        
+        //副石数量
+        mfitcountLabel.text=[NSString stringWithFormat:@"男戒：%@颗",[manpdetail objectAtIndex:41]];
+        
+        //副石重量
+        mfitweightLabel.text=[NSString stringWithFormat:@"男戒：%@ct",[manpdetail objectAtIndex:44]];
+        
+        //主石
+        minlaylist=[self checkinlay:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
+        mmianinlayText.text=[NSString stringWithFormat:@"%@",[minlaylist objectAtIndex:0]];
+        
+        //净度
+        mnetText.text=@"SI";
+        //颜色
+        mcolorText.text=@"I-J";
+        //材质
+        mtexttureText.text=@"18K黄";
+        
+        
+        
+    }else{
+        //约重
+        womanweightLabel.text=[NSString stringWithFormat:@"%@g",[productlist objectAtIndex:34]];
+        
+        //主石数量
+        wmaincountLabel.text=[NSString stringWithFormat:@"%@颗",[productlist objectAtIndex:31]];
+        
+        //副石数量
+        wfitcountLabel.text=[NSString stringWithFormat:@"%@颗",[productlist objectAtIndex:41]];
+        
+        //副石重量
+        wfitweightLabel.text=[NSString stringWithFormat:@"%@ct",[productlist objectAtIndex:44]];
+        
+        //主石
+        winlaylist=[self checkinlay:pid];
+        wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
+        
+        //净度
+        wnetText.text=@"SI";
+        //颜色
+        wcolorText.text=@"I-J";
+        //材质
+        wtexttureText.text=@"18K黄";
+    }
+    [self getPrice];
+    
+}
+
+-(void)getPrice
+{
+    @try {
+        //可以在此加代码提示用户说正在加载数据中
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // 耗时的操作（异步操作）
+            
+            NSString *proprice=nil;
+            productApi *priceApi=[[productApi alloc]init];
+            womanprice=[priceApi getPrice:proclass goldType:wtexttureText.text goldWeight:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:34]] mDiaWeight:wmianinlayText.text mDiaColor:wcolorText.text mVVS:wnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:41]] proid:pid];
+            if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
+                priceApi=[[productApi alloc]init];
+                manprice=[priceApi getPrice:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:5]] goldType:mtexttureText.text goldWeight:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:34]] mDiaWeight:mmianinlayText.text mDiaColor:mcolorText.text mVVS:mnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:41]] proid:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
+                proprice=[NSString stringWithFormat:@"%f",womanprice.floatValue+manprice.floatValue];
+            }else{
+                proprice=womanprice;
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if (proprice) {
+                    //pricelable.text=[@"¥" stringByAppendingString:proprice];
+                    NSArray *price=[[NSString stringWithFormat:@"%@",proprice] componentsSeparatedByString:@"."];
+                    priceLabel.text=[NSString stringWithFormat:@"¥ %@",[price objectAtIndex:0]];
+                }else{
+                    priceLabel.text=@"暂无价格信息";
+                }
+                
+            });
+        });
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
+}
+
+//显示tableview
+-(IBAction)showtableview:(id)sender
+{
+    UIButton *btn=(UIButton *)sender;
+    btntag=btn.tag;
+    if (btntag==0) {
+        TView.frame=CGRectMake(53, 447, 122, 180);
+        list=winlaylist;
+    }else if (btntag==1)
+    {
+        TView.frame=CGRectMake(53, 487, 122, 180);
+        list=netlist;
+    }else if (btntag==2)
+    {
+        TView.frame=CGRectMake(53, 527, 122, 180);
+        list=colorlist;
+    }
+    else if (btntag==3)
+    {
+        TView.frame=CGRectMake(53, 567, 122, 180);
+        list=textturelist;
+    }else if (btntag==4)
+    {
+        TView.frame=CGRectMake(183, 447, 122, 180);
+        list=minlaylist;
+    }else if (btntag==5)
+    {
+        TView.frame=CGRectMake(183, 487, 122, 180);
+        list=netlist;
+    }else if (btntag==6)
+    {
+        TView.frame=CGRectMake(183, 527, 122, 180);
+        list=colorlist;
+    }else if (btntag==7)
+    {
+        TView.frame=CGRectMake(183, 567, 122, 180);
+        list=textturelist;
+    }
+    TView.hidden=NO;
+    [TView reloadData];
+}
+
+
+//显示男戒
+-(void)sethiddenforno
+{
+    manweightLabel.hidden=NO;
+    mmaincountLabel.hidden=NO;
+    mfitcountLabel.hidden=NO;
+    mfitweightLabel.hidden=NO;
+    mmianinlayText.hidden=NO;
+    mnetText.hidden=NO;
+    mcolorText.hidden=NO;
+    mtexttureText.hidden=NO;
+    msizeText.hidden=NO;
+    mfontLabel.hidden=NO;
+    btn1.hidden=NO;
+    btn2.hidden=NO;
+    btn3.hidden=NO;
+    btn4.hidden=NO;
+}
+
+
+//镶口查询
+-(NSArray *)checkinlay:(NSString *)cid
+{
+    getNowTime * time=[[getNowTime alloc] init];
+    NSString * nowt=[time nowTime];
+    
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSString * uId=myDelegate.entityl.uId;
+    NSString * Upt=@"0";//获取上一次的更新时间
+    if (myDelegate.entityl.puptime) {
+        Upt=myDelegate.entityl.puptime;
+    }
+    //Kstr=md5(uId|type|Upt|Key|Nowt|cid)
+    NSString * Kstr=[Commons md5:[NSString stringWithFormat:@"%@|%@|%@|%@|%@",uId,@"1021",Upt,apikey,nowt]];
+    
+    NSString * surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1021&Upt=%@&Nowt=%@&Kstr=%@&cid=%@",uId,Upt,nowt,Kstr,cid];
+    NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
+    NSMutableDictionary * dict = [DataService GetDataService:URL];
+    NSArray *parray=[dict objectForKey:@"result"];
+    NSMutableArray *array=[[NSMutableArray alloc]initWithCapacity:1];
+    for (NSArray *a1 in parray) {
+        NSString *a1string=[NSString stringWithFormat:@"%@",[a1 objectAtIndex:2]];
+        [array addObject:a1string];
+    }
+    
+    return array;
+}
+
+//初始化tableview数据
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [list count];
+    //只有一组，数组数即为行数。
+}
+
+// tableview数据显示
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *TableSampleIdentifier = @"TableSampleIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                             TableSampleIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:TableSampleIdentifier];
+    }
+    
+    NSUInteger row = [indexPath row];
+    cell.textLabel.text = [list objectAtIndex:row];
+    cell.textLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+    return cell;
+}
+
+//tableview点击操作
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSUInteger row = [indexPath row];
+    NSString *rowstring = [NSString stringWithFormat:@"%@",[list objectAtIndex:row]];
+    
+    if (btntag==0) {
+        wmianinlayText.text=rowstring;
+    }else if (btntag==1)
+    {
+        wnetText.text=rowstring;
+    }else if (btntag==2)
+    {
+        wcolorText.text=rowstring;
+    }
+    else if (btntag==3)
+    {
+        wtexttureText.text=rowstring;
+    }else if (btntag==4)
+    {
+        mmianinlayText.text=rowstring;
+    }else if (btntag==5)
+    {
+        mnetText.text=rowstring;
+    }else if (btntag==6)
+    {
+        mcolorText.text=rowstring;
+    }else if (btntag==7)
+    {
+        mtexttureText.text=rowstring;
+    }
+    TView.hidden=YES;
+    
+    [self getPrice];
+}
+
+//点击tableview以外的地方触发事件
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint pt = [touch locationInView:self.view];
+    if (!CGRectContainsPoint([TView frame], pt)) {
+        //to-do
+        TView.hidden=YES;
+    }
+    
+    [wsizeText resignFirstResponder];
+    [msizeText resignFirstResponder];
+    [wfontLabel resignFirstResponder];
+    [mfontLabel resignFirstResponder];
+    [countLabel resignFirstResponder];
+    oldframe=self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    frame = textField.frame;
+    if (oldframe.origin.y!=frame.origin.y) {
+        int offset = frame.origin.y + 32 - (self.view.frame.size.height - 216.0);//键盘高度216
+        
+        NSTimeInterval animationDuration = 0.30f;
+        [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+        [UIView setAnimationDuration:animationDuration];
+        
+        //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
+        if(offset > 0)
+            self.view.frame = CGRectMake(0.0f, -offset, self.view.frame.size.width, self.view.frame.size.height);
+        
+        [UIView commitAnimations];
+        oldframe=frame;
+    }
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (oldframe.origin.y!=frame.origin.y) {
+        self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }
+}
+
+-(IBAction)goback:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)didReceiveMemoryWarning
