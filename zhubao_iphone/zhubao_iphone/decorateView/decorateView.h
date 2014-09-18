@@ -10,5 +10,9 @@
 #import "XNTabBar.h"
 
 @interface decorateView : UITabBarController<XNTabBarDelegate,UITabBarControllerDelegate>
+{
+    UIView *settingview;
+    NSInteger isverson;
+}
 
 @end

@@ -14,18 +14,16 @@
     NSMutableArray *list;
     NSInteger pagesize;
     NSInteger page;
-    NSMutableArray *btnarray1;
-    NSMutableArray *btnarray2;
-    NSMutableArray *btnarray3;
-    NSMutableArray *btnarray4;
-    NSMutableArray *stylearray;
-    NSMutableArray *texturearray;
-    NSMutableArray *inlayarray;
-    NSMutableArray *seriearray;
-    NSMutableString *styleindex;
-    NSMutableString *textrueindex;
-    NSMutableString *inlayindex;
-    NSMutableString *serieindex;
+    NSArray *stylearray;
+    NSArray *texturearray;
+    NSArray *inlayarray;
+    NSArray *seriearray;
+    NSArray *conditionlist;
+    NSString *styleindex;
+    NSString *textrueindex;
+    NSString *inlayindex;
+    NSString *serieindex;
+    NSInteger btntag;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *searchview;
@@ -33,8 +31,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *countimg;
 @property (weak, nonatomic) IBOutlet UILabel *countlabel;
 @property (weak, nonatomic) IBOutlet UIButton *hiddenbtn;
-@property (weak, nonatomic) IBOutlet UIButton *btnstyle;
-@property (weak, nonatomic) IBOutlet UIButton *btntexture;
-@property (weak, nonatomic) IBOutlet UIButton *btninlay;
-@property (weak, nonatomic) IBOutlet UIButton *btnseric;
+@property (weak, nonatomic) IBOutlet UITableView *conditionTView;
+@property (weak, nonatomic) IBOutlet UITextField *styleText;
+@property (weak, nonatomic) IBOutlet UITextField *serieaText;
+@property (weak, nonatomic) IBOutlet UITextField *textrueText;
+@property (weak, nonatomic) IBOutlet UITextField *inlayText;
 @end

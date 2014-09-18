@@ -15,6 +15,7 @@
 #import "membercenter.h"
 #import "customtailor.h"
 #import "shopcart.h"
+#import "login.h"
 
 @interface decorateView ()
 
@@ -45,6 +46,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    isverson=0;
     
     //添加controller
     [self addcontroller];
@@ -102,29 +104,34 @@
     //设置按钮
     UIButton *settingbtn=[[UIButton alloc]initWithFrame:CGRectMake(buycartbtn.frame.origin.x+50, 5, 30, 30)];
     [settingbtn setImage:[UIImage imageNamed:@"set"] forState:UIControlStateNormal];
+    [settingbtn addTarget:self action:@selector(settingviewshow) forControlEvents:UIControlEventTouchDown];
     [topview addSubview:settingbtn];
     
     //设置按钮菜单
-    UIImageView *settingimg=[[UIImageView alloc]initWithFrame:CGRectMake(210, 40, 100, 60)];
+    settingview=[[UIView alloc]initWithFrame:CGRectMake(210, 40, 100, 60)];
+    UIImageView *settingimg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
     [settingimg setImage:[UIImage imageNamed:@"settingbg"]];
     //settingimg.hidden=YES;
+    [settingview addSubview:settingimg];
     
     UIButton *versonupdatebtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 80, 30)];
     [versonupdatebtn setTitle:@"版本更新" forState:UIControlStateNormal];
     [versonupdatebtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     versonupdatebtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
-    [settingimg addSubview:versonupdatebtn];
+    [versonupdatebtn addTarget:self action:@selector(updateVerson) forControlEvents:UIControlEventTouchDown];
+    [settingview addSubview:versonupdatebtn];
     
     UIButton *logoutbtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 30, 80, 30)];
     [logoutbtn setTitle:@"退出登录" forState:UIControlStateNormal];
     [logoutbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     logoutbtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
-    [settingimg addSubview:logoutbtn];
-    
-    
-    [self.view addSubview:settingimg];
+    [logoutbtn addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchDown];
+    [settingview addSubview:logoutbtn];
+    [settingview setHidden:YES];
+
     [self.view addSubview:topimg];
     [self.view addSubview:topview];
+    [self.view addSubview:settingview];
 }
 
 
@@ -163,11 +170,91 @@
     self.selectedIndex = to;
 }
 
+
+//购物车页面跳转
 -(void)shopcartshow
 {
     shopcart *_shopcart=[[shopcart alloc]init];
     [self.navigationController pushViewController:_shopcart animated:NO];
 }
+
+//设置页面跳转
+-(void)settingviewshow
+{
+    settingview.hidden=NO;
+}
+
+//点击settingview以外的地方触发事件
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint pt = [touch locationInView:self.view];
+    if (!CGRectContainsPoint([settingview frame], pt)) {
+        //to-do
+        settingview.hidden=YES;
+    }
+}
+
+//退出登录
+-(void)logout
+{
+    isverson=0;
+    NSString *rowString =@"是否退出登录？";
+    UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alter show];
+}
+
+//alertview响应事件
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (isverson==0) {
+        if (buttonIndex==1) {
+            AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+            myDelegate.entityl=[[LoginEntity alloc]init];
+            
+            login * _login=[[login alloc] init];
+            [self.navigationController pushViewController:_login animated:NO];
+        }
+    }else if (isverson==1)
+    {
+        settingview.hidden=YES;
+    }
+}
+
+
+//版本更新
+-(void)updateVerson
+{
+    isverson=1;
+    getNowTime * time=[[getNowTime alloc] init];
+    NSString * nowt=[time nowTime];
+    
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSString * uId=myDelegate.entityl.uId;
+    NSString * Upt=@"0";//获取上一次的更新时间
+    if (myDelegate.entityl.puptime) {
+        Upt=myDelegate.entityl.puptime;
+    }
+    //Kstr=md5(uId|type|Upt|Key|Nowt|cid)
+    NSString * Kstr=[Commons md5:[NSString stringWithFormat:@"%@|%@|%@|%@|%@",uId,@"9999",Upt,apikey,nowt]];
+    
+    NSString * surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=9999&Upt=%@&Nowt=%@&Kstr=%@",uId,Upt,nowt,Kstr];
+    
+    
+    NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
+    NSMutableDictionary * dict = [DataService GetDataService:URL];
+    NSArray *versoninfo=[[dict objectForKey:@"result"] objectAtIndex:0];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *oldappVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSString *newappVersion=[NSString stringWithFormat:@"%@",[versoninfo objectAtIndex:2]];
+    if (![oldappVersion isEqualToString:newappVersion]) {
+        NSString *rowString =[NSString stringWithFormat:@"更新内容：%@",[versoninfo objectAtIndex:1]];
+        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"发现新版本%@,是否升级？",newappVersion] message:rowString delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alter show];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
