@@ -23,6 +23,8 @@
     CGRect frame;
 }
 
+@property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象
+
 @property (weak, nonatomic) IBOutlet UIImageView *fpicimg;
 @property (weak, nonatomic) IBOutlet UIImageView *spicimg;
 @property (weak, nonatomic) IBOutlet UIImageView *tpicimg;

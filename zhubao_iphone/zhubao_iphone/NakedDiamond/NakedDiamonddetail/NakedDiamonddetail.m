@@ -9,6 +9,7 @@
 #import "NakedDiamonddetail.h"
 #import "AppDelegate.h"
 #import "NakedDiamondlist.h"
+#import "decorateView.h"
 
 @interface NakedDiamonddetail ()
 
@@ -109,10 +110,15 @@
     entity.customerid=myDelegate.entityl.uId;
     entity.pprice=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:14]];
     entity.pname=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:2]];
+    entity.Dia_Z_weight=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:9]];
+    entity.photos=[NSString stringWithFormat:@"证书：%@  编号：%@",[nakeddiamond objectAtIndex:1],[nakeddiamond objectAtIndex:2]];
+    entity.photom=[NSString stringWithFormat:@"钻重：%@  颜色：%@  净度：%@",[nakeddiamond objectAtIndex:3],[nakeddiamond objectAtIndex:5],[nakeddiamond objectAtIndex:4]];
+    entity.photob=[NSString stringWithFormat:@"切工：%@  抛光：%@  对称：%@",[nakeddiamond objectAtIndex:6],[nakeddiamond objectAtIndex:7],[nakeddiamond objectAtIndex:8]];
+    
     sql=[[sqlService alloc]init];
     buyproduct *successadd=[sql addToBuyproduct:entity];
     if (successadd) {
-        
+        [_mydelegate performSelector:@selector(refleshBuycutData)];
         NSString *rowString =@"成功加入购物车！";
         UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alter show];

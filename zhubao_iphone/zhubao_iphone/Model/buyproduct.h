@@ -36,8 +36,6 @@
 @property (nonatomic, retain) NSString * Dia_F_count;//副石数量(高级定制)
 
 
-@property (nonatomic, retain) productEntity * proentiy;//商品的对象数据（在购物车列表显示的时候才用到）
-@property (nonatomic, retain) productdia * diaentiy;//钻的对象数据（在购物车列表显示的时候才用到）
 
 
 

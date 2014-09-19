@@ -23,6 +23,8 @@
     CGRect frame;
 }
 
+@property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象
+
 @property (retain, nonatomic) NSString *pkey;
 @property (retain, nonatomic) NSString *pvalue;
 @property (retain, nonatomic) NSString *selecttag;

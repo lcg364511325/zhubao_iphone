@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "shopcart.h"
 
 @implementation AppDelegate
 @synthesize window = _window;
@@ -407,7 +408,7 @@ UILabel *titlelabel;
                         sqlService *sqlser=[[sqlService alloc]init];
                         [sqlser ClearTableDatas:[NSString stringWithFormat:@"buyproduct where customerid=%@",entityl.uId]];
                         //回调方法更新
-                         [_mydelegate performSelector:@selector(refleshBuycutData)];
+                         [_mydelegate performSelector:@selector(refleshdata)];
 
                         [[[UIAlertView alloc] initWithTitle:@"信息提示" message:@"生成订单成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] show];
                         

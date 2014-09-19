@@ -9,6 +9,7 @@
 #import "productdetail.h"
 #import "AppDelegate.h"
 #import "productApi.h"
+#import "decorateView.h"
 
 @interface productdetail ()
 
@@ -140,110 +141,115 @@
     NSString * surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&cid=%@",uId,Upt,nowt,Kstr,pid];
     NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
     NSMutableDictionary * dict = [DataService GetDataService:URL];
-    productlist=[[dict objectForKey:@"result"] objectAtIndex:0];
-    proclass=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:5]];
-    protypeWenProId=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:9]];
-    
-    //logo图片
-    NSString *url=[NSString stringWithFormat:@"http://seyuu.com%@",[productlist objectAtIndex:7]];
-    NSURL *imgUrl=[NSURL URLWithString:url];
-    if (hasCachedImage(imgUrl)) {
-        [logoimg setImage:[UIImage imageWithContentsOfFile:pathForURL(imgUrl)]];
-    }else{
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:imgUrl,@"url",logoimg,@"imageView",nil];
-        [NSThread detachNewThreadSelector:@selector(cacheImage:) toTarget:[ImageCacher defaultCacher] withObject:dic];
+    NSString *status=[NSString stringWithFormat:@"%@",[dict objectForKey:@"status"]];
+    if ([status isEqualToString:@"true"])
+    {
+        productlist=[[dict objectForKey:@"result"] objectAtIndex:0];
+        proclass=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:5]];
+        protypeWenProId=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:9]];
+        
+        //logo图片
+        NSString *url=[NSString stringWithFormat:@"http://seyuu.com%@",[productlist objectAtIndex:7]];
+        NSURL *imgUrl=[NSURL URLWithString:url];
+        if (hasCachedImage(imgUrl)) {
+            [logoimg setImage:[UIImage imageWithContentsOfFile:pathForURL(imgUrl)]];
+        }else{
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:imgUrl,@"url",logoimg,@"imageView",nil];
+            [NSThread detachNewThreadSelector:@selector(cacheImage:) toTarget:[ImageCacher defaultCacher] withObject:dic];
+        }
+        
+        //名称
+        nameLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:3]];
+        
+        //型号
+        noLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:1]];
+        
+        if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
+            
+            //女戒
+            
+            //约重
+            womanweightLabel.text=[NSString stringWithFormat:@"女戒：%@g",[productlist objectAtIndex:34]];
+            
+            //主石数量
+            wmaincountLabel.text=[NSString stringWithFormat:@"女戒：%@颗",[productlist objectAtIndex:31]];
+            
+            //副石数量
+            wfitcountLabel.text=[NSString stringWithFormat:@"女戒：%@颗",[productlist objectAtIndex:41]];
+            
+            //副石重量
+            wfitweightLabel.text=[NSString stringWithFormat:@"女戒：%@ct",[productlist objectAtIndex:44]];
+            
+            //主石
+            winlaylist=[self checkinlay:pid];
+            wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
+            
+            //净度
+            wnetText.text=@"SI";
+            //颜色
+            wcolorText.text=@"I-J";
+            //材质
+            wtexttureText.text=@"18K黄";
+            
+            //男戒
+            [self sethiddenforno];
+            surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&twid=%@",uId,Upt,nowt,Kstr,pid];
+            URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
+            NSMutableDictionary * dict = [DataService GetDataService:URL];
+            NSString *status=[NSString stringWithFormat:@"%@",[dict objectForKey:@"status"]];
+            if ([status isEqualToString:@"true"])
+            {
+                manpdetail=[[dict objectForKey:@"result"] objectAtIndex:0];
+                
+                //约重
+                manweightLabel.text=[NSString stringWithFormat:@"男戒：%@g",[manpdetail objectAtIndex:34]];
+                
+                //主石数量
+                mmaincountLabel.text=[NSString stringWithFormat:@"男戒：%@颗",[manpdetail objectAtIndex:31]];
+                
+                //副石数量
+                mfitcountLabel.text=[NSString stringWithFormat:@"男戒：%@颗",[manpdetail objectAtIndex:41]];
+                
+                //副石重量
+                mfitweightLabel.text=[NSString stringWithFormat:@"男戒：%@ct",[manpdetail objectAtIndex:44]];
+                
+                //主石
+                minlaylist=[self checkinlay:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
+                mmianinlayText.text=[NSString stringWithFormat:@"%@",[minlaylist objectAtIndex:0]];
+                
+                //净度
+                mnetText.text=@"SI";
+                //颜色
+                mcolorText.text=@"I-J";
+                //材质
+                mtexttureText.text=@"18K黄";
+            }
+        }else{
+            //约重
+            womanweightLabel.text=[NSString stringWithFormat:@"%@g",[productlist objectAtIndex:34]];
+            
+            //主石数量
+            wmaincountLabel.text=[NSString stringWithFormat:@"%@颗",[productlist objectAtIndex:31]];
+            
+            //副石数量
+            wfitcountLabel.text=[NSString stringWithFormat:@"%@颗",[productlist objectAtIndex:41]];
+            
+            //副石重量
+            wfitweightLabel.text=[NSString stringWithFormat:@"%@ct",[productlist objectAtIndex:44]];
+            
+            //主石
+            winlaylist=[self checkinlay:pid];
+            wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
+            
+            //净度
+            wnetText.text=@"SI";
+            //颜色
+            wcolorText.text=@"I-J";
+            //材质
+            wtexttureText.text=@"18K黄";
+        }
+        [self getPrice];
     }
-    
-    //名称
-    nameLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:3]];
-    
-    //型号
-    noLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:1]];
-    
-    if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
-        
-        //女戒
-        
-        //约重
-        womanweightLabel.text=[NSString stringWithFormat:@"女戒：%@g",[productlist objectAtIndex:34]];
-        
-        //主石数量
-        wmaincountLabel.text=[NSString stringWithFormat:@"女戒：%@颗",[productlist objectAtIndex:31]];
-        
-        //副石数量
-        wfitcountLabel.text=[NSString stringWithFormat:@"女戒：%@颗",[productlist objectAtIndex:41]];
-        
-        //副石重量
-        wfitweightLabel.text=[NSString stringWithFormat:@"女戒：%@ct",[productlist objectAtIndex:44]];
-        
-        //主石
-        winlaylist=[self checkinlay:pid];
-        wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
-        
-        //净度
-        wnetText.text=@"SI";
-        //颜色
-        wcolorText.text=@"I-J";
-        //材质
-        wtexttureText.text=@"18K黄";
-        
-        //男戒
-        [self sethiddenforno];
-        surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&twid=%@",uId,Upt,nowt,Kstr,pid];
-        URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
-        NSMutableDictionary * dict = [DataService GetDataService:URL];
-        manpdetail=[[dict objectForKey:@"result"] objectAtIndex:0];
-        
-        //约重
-        manweightLabel.text=[NSString stringWithFormat:@"男戒：%@g",[manpdetail objectAtIndex:34]];
-        
-        //主石数量
-        mmaincountLabel.text=[NSString stringWithFormat:@"男戒：%@颗",[manpdetail objectAtIndex:31]];
-        
-        //副石数量
-        mfitcountLabel.text=[NSString stringWithFormat:@"男戒：%@颗",[manpdetail objectAtIndex:41]];
-        
-        //副石重量
-        mfitweightLabel.text=[NSString stringWithFormat:@"男戒：%@ct",[manpdetail objectAtIndex:44]];
-        
-        //主石
-        minlaylist=[self checkinlay:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
-        mmianinlayText.text=[NSString stringWithFormat:@"%@",[minlaylist objectAtIndex:0]];
-        
-        //净度
-        mnetText.text=@"SI";
-        //颜色
-        mcolorText.text=@"I-J";
-        //材质
-        mtexttureText.text=@"18K黄";
-        
-        
-        
-    }else{
-        //约重
-        womanweightLabel.text=[NSString stringWithFormat:@"%@g",[productlist objectAtIndex:34]];
-        
-        //主石数量
-        wmaincountLabel.text=[NSString stringWithFormat:@"%@颗",[productlist objectAtIndex:31]];
-        
-        //副石数量
-        wfitcountLabel.text=[NSString stringWithFormat:@"%@颗",[productlist objectAtIndex:41]];
-        
-        //副石重量
-        wfitweightLabel.text=[NSString stringWithFormat:@"%@ct",[productlist objectAtIndex:44]];
-        
-        //主石
-        winlaylist=[self checkinlay:pid];
-        wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
-        
-        //净度
-        wnetText.text=@"SI";
-        //颜色
-        wcolorText.text=@"I-J";
-        //材质
-        wtexttureText.text=@"18K黄";
-    }
-    [self getPrice];
     
 }
 
@@ -256,10 +262,10 @@
             
             NSString *proprice=nil;
             productApi *priceApi=[[productApi alloc]init];
-            womanprice=[priceApi getPrice:proclass goldType:wtexttureText.text goldWeight:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:34]] mDiaWeight:wmianinlayText.text mDiaColor:wcolorText.text mVVS:wnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:41]] proid:pid];
+            womanprice=[priceApi getPrice:proclass goldType:wtexttureText.text goldWeight:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:17]] mDiaWeight:wmianinlayText.text mDiaColor:wcolorText.text mVVS:wnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:41]] proid:pid];
             if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
                 priceApi=[[productApi alloc]init];
-                manprice=[priceApi getPrice:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:5]] goldType:mtexttureText.text goldWeight:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:34]] mDiaWeight:mmianinlayText.text mDiaColor:mcolorText.text mVVS:mnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:41]] proid:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
+                manprice=[priceApi getPrice:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:5]] goldType:mtexttureText.text goldWeight:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:17]] mDiaWeight:mmianinlayText.text mDiaColor:mcolorText.text mVVS:mnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:41]] proid:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
                 proprice=[NSString stringWithFormat:@"%f",womanprice.floatValue+manprice.floatValue];
             }else{
                 proprice=womanprice;
@@ -458,11 +464,162 @@
     oldframe=self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 }
 
+//商品添加到购物车
+-(IBAction)addshopcart:(id)sender{
+    sqlService * sql=[[sqlService alloc] init];
+    //productEntity *goods=[sql GetProductDetail:productnumber];
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    buyproduct * entity=[[buyproduct alloc]init];
+    entity.producttype=@"1";
+    entity.productid=pid;
+    entity.pcount=countLabel.text;
+    entity.pcolor=wcolorText.text;
+    entity.pdetail=wfontLabel.text;
+    entity.pvvs=wnetText.text;
+    entity.psize=wsizeText.text;
+    entity.pgoldtype=wtexttureText.text;
+    entity.pweight=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:34]];
+    entity.customerid=myDelegate.entityl.uId;
+    entity.pprice=womanprice;
+    entity.pname=noLabel.text;
+    entity.Dia_Z_weight=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:7]];
+    entity.photos=[NSString stringWithFormat:@"%@(%@)",[productlist objectAtIndex:1],[productlist objectAtIndex:2]];
+    entity.photom=[NSString stringWithFormat:@"金重：%@  材质：%@  钻重：%@",[productlist objectAtIndex:17],wtexttureText.text,[productlist objectAtIndex:34]];
+    entity.photob=[NSString stringWithFormat:@"净度：%@  颜色：%@  手寸：%@",wnetText.text,wcolorText.text,wsizeText.text];
+    buyproduct *successadd=[sql addToBuyproduct:entity];
+    buyproduct *successaddman=[[buyproduct alloc]init];
+    if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
+        buyproduct * manentity=[[buyproduct alloc]init];
+        manentity.producttype=@"1";
+        manentity.productid=[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]];
+        manentity.pcount=countLabel.text;
+        manentity.pcolor=mcolorText.text;
+        manentity.pdetail=mfontLabel.text;
+        manentity.pvvs=mnetText.text;
+        manentity.psize=msizeText.text;
+        manentity.pgoldtype=mtexttureText.text;
+        manentity.pweight=[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:34]];
+        manentity.customerid=myDelegate.entityl.uId;
+        manentity.pprice=manprice;
+        manentity.pname=[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:1]];
+        manentity.Dia_Z_weight=[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:7]];
+        manentity.photos=[NSString stringWithFormat:@"%@(%@)",[manpdetail objectAtIndex:1],[manpdetail objectAtIndex:2]];
+        manentity.photom=[NSString stringWithFormat:@"金重：%@  材质：%@  钻重：%@",[manpdetail objectAtIndex:17],mtexttureText.text,[manpdetail objectAtIndex:34]];
+        manentity.photob=[NSString stringWithFormat:@"净度：%@  颜色：%@  手寸：%@",mnetText.text,mcolorText.text,msizeText.text];
+        sql=[[sqlService alloc]init];
+        successaddman=[sql addToBuyproduct:manentity];
+    }
+    
+    if (successadd && successaddman) {
+        [_mydelegate performSelector:@selector(refleshBuycutData)];
+        NSString *rowString =@"成功加入购物车！";
+        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alter show];
+    } else{
+        NSString *rowString =@"加入购物车失败！";
+        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alter show];
+    }
+}
+
+//展示图片集
+-(IBAction)showPhotoBrowser:(id)sender
+{
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
+    //NSMutableArray *thumbs = [[NSMutableArray alloc] init];
+    //MWPhoto *photot;
+    
+//    NSArray  * array= imglist;
+//    int count = [array count];
+//    //遍历这个数组
+//    for (int i = 0; i < count; i++) {
+//        //NSLog(@"普通的遍历：i = %d 时的数组对象为: %@",i,[array objectAtIndex: i]);
+//        NSString * patht=[NSString stringWithFormat:@"%@",[[array objectAtIndex:i] objectForKey:@"goodsImg"]];
+//        NSURL *imgUrl=[NSURL URLWithString:patht];
+//        if (hasCachedImage(imgUrl)) {
+//            [photos addObject:[MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:pathForURL(imgUrl)]]];
+//        }else
+//        {
+//            [photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:patht]]];
+//        }
+//        
+//        //[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:patht]]];
+//    }
+    NSString *patht=[NSString stringWithFormat:@"http://seyuu.com%@",[productlist objectAtIndex:8]];
+    NSURL *imgUrl=[NSURL URLWithString:patht];
+    if (hasCachedImage(imgUrl)) {
+        [photos addObject:[MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:pathForURL(imgUrl)]]];
+    }else
+    {
+        [photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:patht]]];
+    }
+    self.photos = photos;
+    //self.thumbs = thumbs;
+    
+    //    _selections = [NSMutableArray new];
+    //    for (int i = 0; i < photos.count; i++) {
+    //        [_selections addObject:[NSNumber numberWithBool:NO]];
+    //    }
+    
+    // Create browser
+	MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = NO;
+    browser.displayNavArrows = YES;
+    browser.displaySelectionButtons = NO;
+    browser.alwaysShowControls = NO;
+    browser.zoomPhotosToFill = YES;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    browser.wantsFullScreenLayout = YES;
+#endif
+    browser.enableGrid = NO;
+    browser.startOnGrid = NO;
+    browser.enableSwipeToDismiss = YES;
+    [browser setCurrentPhotoIndex:0];
+    [browser setWantsFullScreenLayout:NO];
+    
+    // Push
+    //[self presentViewController:browser animated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController pushViewController:browser animated:NO];
+    //[self presentPopupViewController:browser animated:YES completion:^(void) {
+    //    NSLog(@"popup view presented");
+    //}];
+    
+}
+
+#pragma mark - MWPhotoBrowserDelegate
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return _photos.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < _photos.count)
+        return [_photos objectAtIndex:index];
+    return nil;
+}
+
+//- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index {
+//    if (index < _thumbs.count)
+//        return [_thumbs objectAtIndex:index];
+//    return nil;
+//}
+
+- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index {
+    //NSLog(@"Did start viewing photo at index %lu", (unsigned long)index);
+}
+
+- (void)photoBrowserDidFinishModalPresentation:(MWPhotoBrowser *)photoBrowser {
+    // If we subscribe to this method we must dismiss the view controller ourselves
+    //NSLog(@"Did finish modal presentation");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     frame = textField.frame;
     if (oldframe.origin.y!=frame.origin.y) {
-        int offset = frame.origin.y + 32 - (self.view.frame.size.height - 216.0);//键盘高度216
+        int offset = frame.origin.y + 32 - (pdetailView.frame.size.height - 216.0);//键盘高度216
         
         NSTimeInterval animationDuration = 0.30f;
         [UIView beginAnimations:@"ResizeForKeyboard" context:nil];

@@ -8,6 +8,7 @@
 
 #import "customtailor.h"
 #import "AppDelegate.h"
+#import "decorateView.h"
 
 @interface customtailor ()
 
@@ -37,6 +38,11 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self resetdata:nil];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,7 +51,7 @@
     texttureText.userInteractionEnabled=YES;
     textturelist=[[NSArray alloc] initWithObjects:@"18K黄", @"18K白",
                   @"18K双色", @"18K玫瑰金", @"PT900", @"Pt950", @"PD950",nil];
-    texttureText.text=@"18K白";
+    texttureText.text=@"18K黄";
     
     weightText.keyboardType=UIKeyboardTypeNumberPad;
     mainweiText.keyboardType=UIKeyboardTypeNumberPad;
@@ -118,7 +124,7 @@
 //重置数据
 -(IBAction)resetdata:(id)sender
 {
-    texttureText.text=nil;
+    texttureText.text=@"18K黄";
     weightText.text=nil;
     mainweiText.text=nil;
     maincountText.text=nil;
@@ -174,7 +180,7 @@
     entity.pdetail=fontText.text;
     buyproduct *successadd=[sql addToBuyproduct:entity];
     if (successadd) {
-        
+        [_mydelegate performSelector:@selector(refleshBuycutData)];
         NSString *rowString =@"成功加入购物车！";
         UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alter show];

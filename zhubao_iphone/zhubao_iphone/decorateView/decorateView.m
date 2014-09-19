@@ -57,6 +57,9 @@
     //自定义tabbar
     [self identitytabbar];
     
+    //刷新购物车显示数量
+    [self refleshBuycutData];
+    
     
 }
 
@@ -68,9 +71,10 @@
     NakedDiamondindex *_NakedDiamondindex=[[NakedDiamondindex alloc]init];
     customtailor *_customtailor=[[customtailor alloc]init];
     diplomaselect *_diplomaselect=[[diplomaselect alloc]init];
-    membercenter *_membercenter=[[membercenter alloc]init];
-    
-    self.viewControllers=[NSArray arrayWithObjects:_frontindex,_productindex,_NakedDiamondindex,_customtailor,_diplomaselect,_membercenter, nil];
+    _NakedDiamondindex.mydelegate=self;
+    _productindex.mydelegate=self;
+    _customtailor.mydelegate=self;
+    self.viewControllers=[NSArray arrayWithObjects:_frontindex,_productindex,_NakedDiamondindex,_customtailor,_diplomaselect, nil];
 }
 
 
@@ -94,10 +98,10 @@
     [topview addSubview:buycartbtn];
     
     //购物车数量显示
-    UIButton *buycountbtn=[[UIButton alloc]initWithFrame:CGRectMake(buycartbtn.frame.origin.x+30, 3, 15, 15)];
+    buycountbtn=[[UIButton alloc]initWithFrame:CGRectMake(buycartbtn.frame.origin.x+30, 3, 15, 15)];
     [buycountbtn setBackgroundImage:[UIImage imageNamed:@"round"] forState:UIControlStateNormal];
-    [buycountbtn setTitle:@"0" forState:UIControlStateNormal];
-    [buycountbtn.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
+    [buycountbtn setHidden:YES];
+    [buycountbtn.titleLabel setFont:[UIFont systemFontOfSize:10.0f]];
     buycountbtn.tintColor=[UIColor whiteColor];
     [topview addSubview:buycountbtn];
     
@@ -108,20 +112,27 @@
     [topview addSubview:settingbtn];
     
     //设置按钮菜单
-    settingview=[[UIView alloc]initWithFrame:CGRectMake(210, 40, 100, 60)];
-    UIImageView *settingimg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
+    settingview=[[UIView alloc]initWithFrame:CGRectMake(210, 40, 100, 90)];
+    UIImageView *settingimg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 90)];
     [settingimg setImage:[UIImage imageNamed:@"settingbg"]];
     //settingimg.hidden=YES;
     [settingview addSubview:settingimg];
     
-    UIButton *versonupdatebtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 80, 30)];
+    UIButton *membercenterbtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 7, 80, 30)];
+    [membercenterbtn setTitle:@"会员中心" forState:UIControlStateNormal];
+    [membercenterbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    membercenterbtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
+    [membercenterbtn addTarget:self action:@selector(setmembercenter) forControlEvents:UIControlEventTouchDown];
+    [settingview addSubview:membercenterbtn];
+    
+    UIButton *versonupdatebtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 35, 80, 30)];
     [versonupdatebtn setTitle:@"版本更新" forState:UIControlStateNormal];
     [versonupdatebtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     versonupdatebtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
     [versonupdatebtn addTarget:self action:@selector(updateVerson) forControlEvents:UIControlEventTouchDown];
     [settingview addSubview:versonupdatebtn];
     
-    UIButton *logoutbtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 30, 80, 30)];
+    UIButton *logoutbtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 63, 80, 30)];
     [logoutbtn setTitle:@"退出登录" forState:UIControlStateNormal];
     [logoutbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     logoutbtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
@@ -153,7 +164,7 @@
     [self.tabBar addSubview:myView]; //添加到系统自带的tabBar上, 这样可以用的的事件方法. 而不必自己去写
     
     //为控制器添加按钮
-    for (int i=0; i<6; i++) { //根据有多少个子视图控制器来进行添加按钮
+    for (int i=0; i<self.viewControllers.count; i++) { //根据有多少个子视图控制器来进行添加按钮
         
         NSString *imageName = [NSString stringWithFormat:@"TabBar%d", i + 1];
         NSString *imageNameSel = [NSString stringWithFormat:@"TabBar%dSel", i + 1];
@@ -170,11 +181,11 @@
     self.selectedIndex = to;
 }
 
-
 //购物车页面跳转
 -(void)shopcartshow
 {
     shopcart *_shopcart=[[shopcart alloc]init];
+    _shopcart.mydelegate=self;
     [self.navigationController pushViewController:_shopcart animated:NO];
 }
 
@@ -195,6 +206,21 @@
     }
 }
 
+//刷新购物车数量显示
+-(void)refleshBuycutData
+{
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    sqlService *shopcar=[[sqlService alloc] init];
+    NSArray *shoppingcartlist=[shopcar GetBuyproductList:myDelegate.entityl.uId];
+    if ([shoppingcartlist count]!=0) {
+        [buycountbtn setTitle:[NSString stringWithFormat:@"%d",[shoppingcartlist count]] forState:UIControlStateNormal];
+        [buycountbtn setHidden:NO];
+    }else{
+        buycountbtn.hidden=YES;
+    }
+    
+}
+
 //退出登录
 -(void)logout
 {
@@ -202,6 +228,48 @@
     NSString *rowString =@"是否退出登录？";
     UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alter show];
+}
+
+-(void)setmembercenter
+{
+    membercenter *_membercenter=[[membercenter alloc]init];
+    self.viewControllers=[NSArray arrayWithObjects:_membercenter,nil];
+    settingview.hidden=YES;
+    
+    //测试添加自己的视图
+    CGRect rect = self.tabBar.frame;
+    
+    //底层视图
+    bgview=[[UIView alloc]initWithFrame:rect];
+    //背景
+    bgfimg=[[UIImageView alloc]initWithFrame:rect];
+    [bgfimg setImage:[UIImage imageNamed:@"footer_bg1"]];
+    
+    //返回按钮
+    UIButton *backbutton=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 40, 40)];
+    [backbutton setImage:[UIImage imageNamed:@"return_icon"] forState:UIControlStateNormal];
+    [backbutton addTarget:self action:@selector(closemembercenter) forControlEvents:UIControlEventTouchDown];
+    
+    //标题
+    UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(45, 5, 100, 40)];
+    titleLabel.text=@"返回首页";
+    titleLabel.font=[UIFont boldSystemFontOfSize:17.0f];
+    titleLabel.textColor=[UIColor blackColor];
+    [bgview addSubview:titleLabel];
+    
+    [bgview addSubview:backbutton];
+    
+    [self.view addSubview:bgfimg];
+    [self.view addSubview:bgview];
+    
+}
+
+-(void)closemembercenter
+{
+    [self addcontroller];
+    [self identitytabbar];
+    [bgfimg removeFromSuperview];
+    [bgview removeFromSuperview];
 }
 
 //alertview响应事件

@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "XNTabBar.h"
 
-@interface decorateView : UITabBarController<XNTabBarDelegate,UITabBarControllerDelegate>
+@interface decorateView : UITabBarController<XNTabBarDelegate,UITabBarControllerDelegate,UIApplicationDelegate>
 {
     UIView *settingview;
     NSInteger isverson;
+    UIButton *buycountbtn;
+    UIView *bgview;
+    UIImageView *bgfimg;
 }
 
+-(void)refleshBuycutData;
 @end

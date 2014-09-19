@@ -110,8 +110,12 @@
     
     NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
     NSMutableDictionary * dict = [DataService GetDataService:URL];
-    NSArray *productlist=[dict objectForKey:@"result"];
-    [list addObjectsFromArray:productlist];
+    NSString *status=[NSString stringWithFormat:@"%@",[dict objectForKey:@"status"]];
+    if ([status isEqualToString:@"true"])
+    {
+        NSArray *productlist=[dict objectForKey:@"result"];
+        [list addObjectsFromArray:productlist];
+    }
 }
 
 //初始化tableview数据
@@ -153,6 +157,7 @@
     NSArray *result=[list objectAtIndex:[indexPath row]];
     NakedDiamonddetail *_NakedDiamonddetail=[[NakedDiamonddetail alloc]init];
     _NakedDiamonddetail.nid=[result objectAtIndex:0];
+    _NakedDiamonddetail.mydelegate=_mydelegate;
     [self.navigationController pushViewController:_NakedDiamonddetail animated:NO];
 }
 

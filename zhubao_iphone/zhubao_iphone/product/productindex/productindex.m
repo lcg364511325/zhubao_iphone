@@ -112,8 +112,11 @@
     
     NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
     NSMutableDictionary * dict = [DataService GetDataService:URL];
-    NSArray *productlist=[dict objectForKey:@"result"];
-    [list addObjectsFromArray:productlist];
+    NSString *status=[NSString stringWithFormat:@"%@",[dict objectForKey:@"status"]];
+    if ([status isEqualToString:@"true"]) {
+        NSArray *productlist=[dict objectForKey:@"result"];
+        [list addObjectsFromArray:productlist];
+    }
     
 }
 
@@ -325,6 +328,7 @@
     productdetail *_productdetail=[[productdetail alloc]init];
     NSArray *productdetail = [list objectAtIndex:[indexPath row]];
     _productdetail.pid=[NSString stringWithFormat:@"%@",[productdetail objectAtIndex:0]];
+    _productdetail.mydelegate=_mydelegate;
     [self.navigationController pushViewController:_productdetail animated:NO];
 }
 

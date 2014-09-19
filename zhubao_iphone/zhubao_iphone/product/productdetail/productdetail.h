@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MWPhotoBrowser.h"
 
-@interface productdetail : UIViewController<UITextFieldDelegate>
+@interface productdetail : UIViewController<UITextFieldDelegate,MWPhotoBrowserDelegate>
 {
     NSArray *list;
     NSArray *winlaylist;
@@ -26,6 +27,9 @@
     CGRect oldframe;
     CGRect frame;
 }
+
+@property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象
+@property (nonatomic, strong) NSMutableArray *photos;
 
 @property(retain , nonatomic) NSString * pid;//商品id
 @property (weak, nonatomic) IBOutlet UIScrollView *pdSView;

@@ -179,6 +179,7 @@
     [condition setValue:maxprice.text forKey:@"maxprice"];
     NakedDiamondlist *_NakedDiamondlist=[[NakedDiamondlist alloc]init];
     _NakedDiamondlist.condition=condition;
+    _NakedDiamondlist.mydelegate=_mydelegate;
     [self.navigationController pushViewController:_NakedDiamondlist animated:NO];
 }
 
