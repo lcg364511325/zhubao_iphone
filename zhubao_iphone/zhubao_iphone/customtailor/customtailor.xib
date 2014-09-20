@@ -95,67 +95,67 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="材质：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cd8-5U-anu">
                     <rect key="frame" x="17" y="209.5" width="36" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" red="0.99358258929999999" green="0.77460852059999996" blue="0.17057967639999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="金重：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOl-rE-vss">
                     <rect key="frame" x="17" y="250" width="36" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" red="0.99358258929999999" green="0.77460852059999996" blue="0.17057967639999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="主石：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5N-rB-8tA">
                     <rect key="frame" x="17" y="289.5" width="36" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" red="0.99358258929999999" green="0.77460852059999996" blue="0.17057967639999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="副石：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nve-Vr-jWW">
                     <rect key="frame" x="17" y="329.5" width="36" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" red="0.99358258929999999" green="0.77460852059999996" blue="0.17057967639999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="指圈大小：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esi-J2-Lbn">
                     <rect key="frame" x="17" y="369.5" width="60" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" red="0.99358258929999999" green="0.77460852059999996" blue="0.17057967639999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="刻字：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJY-FZ-9q7">
                     <rect key="frame" x="17" y="409.5" width="36" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" red="0.99358258929999999" green="0.77460852059999996" blue="0.17057967639999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="spinnerbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="mOj-G1-nJt">
                     <rect key="frame" x="53" y="207" width="97" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="writetextbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="QBi-gX-c4E">
                     <rect key="frame" x="53" y="246" width="97" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="writetextbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="Thf-q9-aZ8">
                     <rect key="frame" x="53" y="285" width="97" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="writetextbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="Akq-Ww-fAw">
                     <rect key="frame" x="53" y="325" width="97" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="JtL-1v-z5f"/>
@@ -164,7 +164,7 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="writetextbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="FA5-am-AQK">
                     <rect key="frame" x="77" y="365" width="97" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="v0Z-ff-e07"/>
@@ -173,7 +173,7 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="           8至12个字符" minimumFontSize="17" background="writetextbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="m1K-8t-5bS">
                     <rect key="frame" x="53" y="405" width="179" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="5Ld-rm-jUp"/>
@@ -182,48 +182,48 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="克" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eol-wn-xmg">
                     <rect key="frame" x="158" y="249" width="16" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" red="0.99358258929999999" green="0.77460852059999996" blue="0.17057967639999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="克拉" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdb-pl-kJw">
                     <rect key="frame" x="158" y="289" width="24" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" red="0.99358258929999999" green="0.77460852059999996" blue="0.17057967639999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="克拉" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-Dq-KRB">
                     <rect key="frame" x="158" y="329" width="24" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" red="0.99358258929999999" green="0.77460852059999996" blue="0.17057967639999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="粒" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I79-UY-0LF">
                     <rect key="frame" x="288" y="329" width="12" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" red="0.99358258929999999" green="0.77460852059999996" blue="0.17057967639999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="粒" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ph-Zt-WgF">
                     <rect key="frame" x="288" y="289" width="14" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" red="0.99358258929999999" green="0.77460852059999996" blue="0.17057967639999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="writetextbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="BAv-Pe-zjO">
                     <rect key="frame" x="190" y="285" width="97" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="writetextbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="tsg-4h-moZ">
                     <rect key="frame" x="190" y="325" width="97" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="ouU-4M-0yN"/>

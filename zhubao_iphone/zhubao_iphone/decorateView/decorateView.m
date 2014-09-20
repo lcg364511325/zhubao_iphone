@@ -87,18 +87,18 @@
     [topimg setImage:[UIImage imageNamed:@"menu_bg"]];
     
     //logo图片
-    UIImageView *logoimg=[[UIImageView alloc]initWithFrame:CGRectMake(36, 0, 40, 40)];
+    UIImageView *logoimg=[[UIImageView alloc]initWithFrame:CGRectMake(36, 5, 30, 30)];
     [logoimg setImage:[UIImage imageNamed:@"logo"]];
     [topview addSubview:logoimg];
     
     //购物车按钮
-    UIButton *buycartbtn=[[UIButton alloc]initWithFrame:CGRectMake(195, 5, 40, 30)];
+    UIButton *buycartbtn=[[UIButton alloc]initWithFrame:CGRectMake(195, 7, 30, 25)];
     [buycartbtn setImage:[UIImage imageNamed:@"shopping"] forState:UIControlStateNormal];
     [buycartbtn addTarget:self action:@selector(shopcartshow) forControlEvents:UIControlEventTouchDown];
     [topview addSubview:buycartbtn];
     
     //购物车数量显示
-    buycountbtn=[[UIButton alloc]initWithFrame:CGRectMake(buycartbtn.frame.origin.x+30, 3, 15, 15)];
+    buycountbtn=[[UIButton alloc]initWithFrame:CGRectMake(buycartbtn.frame.origin.x+23, 5, 15, 15)];
     [buycountbtn setBackgroundImage:[UIImage imageNamed:@"round"] forState:UIControlStateNormal];
     [buycountbtn setHidden:YES];
     [buycountbtn.titleLabel setFont:[UIFont systemFontOfSize:10.0f]];
@@ -106,7 +106,7 @@
     [topview addSubview:buycountbtn];
     
     //设置按钮
-    UIButton *settingbtn=[[UIButton alloc]initWithFrame:CGRectMake(buycartbtn.frame.origin.x+50, 5, 30, 30)];
+    UIButton *settingbtn=[[UIButton alloc]initWithFrame:CGRectMake(buycartbtn.frame.origin.x+50, 7, 25, 25)];
     [settingbtn setImage:[UIImage imageNamed:@"set"] forState:UIControlStateNormal];
     [settingbtn addTarget:self action:@selector(settingviewshow) forControlEvents:UIControlEventTouchDown];
     [topview addSubview:settingbtn];
@@ -155,8 +155,16 @@
     //LogFrame(self.tabBar);
     
     //测试添加自己的视图
+    NSUInteger count=self.viewControllers.count;
     UIImageView *bgimg=[[UIImageView alloc]initWithFrame:rect];
-    [bgimg setImage:[UIImage imageNamed:@"footer_bg"]];
+    [bgimg setImage:[UIImage imageNamed:@"footer_bg1"]];
+    for (int i=0; i<count-1; i++) {
+        UIImageView *lineimg=[[UIImageView alloc]init];
+        [lineimg setImage:[UIImage imageNamed:@"footer_line"]];
+        NSInteger width=self.view.frame.size.width/count;
+        lineimg.frame=CGRectMake(width*(i+1), 0, 2, 50);
+        [bgimg addSubview:lineimg];
+    }
     [self.tabBar addSubview:bgimg];
     XNTabBar *myView = [[XNTabBar alloc] init]; //设置代理必须改掉前面的类型,不能用UIView
     myView.delegate = self; //设置代理
@@ -164,7 +172,7 @@
     [self.tabBar addSubview:myView]; //添加到系统自带的tabBar上, 这样可以用的的事件方法. 而不必自己去写
     
     //为控制器添加按钮
-    for (int i=0; i<self.viewControllers.count; i++) { //根据有多少个子视图控制器来进行添加按钮
+    for (int i=0; i<count; i++) { //根据有多少个子视图控制器来进行添加按钮
         
         NSString *imageName = [NSString stringWithFormat:@"TabBar%d", i + 1];
         NSString *imageNameSel = [NSString stringWithFormat:@"TabBar%dSel", i + 1];
@@ -251,11 +259,12 @@
     [backbutton addTarget:self action:@selector(closemembercenter) forControlEvents:UIControlEventTouchDown];
     
     //标题
-    UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(45, 5, 100, 40)];
-    titleLabel.text=@"返回首页";
-    titleLabel.font=[UIFont boldSystemFontOfSize:17.0f];
-    titleLabel.textColor=[UIColor blackColor];
-    [bgview addSubview:titleLabel];
+    UIButton *titlebtn=[[UIButton alloc] initWithFrame:CGRectMake(45, 5, 100, 40)];
+    [titlebtn setTitle:@"返回首页" forState:UIControlStateNormal];
+    titlebtn.titleLabel.font=[UIFont boldSystemFontOfSize:17.0f];
+    [titlebtn setTitleColor:[UIColor colorWithRed:190/255.0 green:148/255.0 blue:80/255.0 alpha:1.0f]forState:UIControlStateNormal];
+    [titlebtn addTarget:self action:@selector(closemembercenter) forControlEvents:UIControlEventTouchDown];
+    [bgview addSubview:titlebtn];
     
     [bgview addSubview:backbutton];
     
@@ -285,6 +294,9 @@
         }
     }else if (isverson==1)
     {
+        
+        isverson=0;
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
         settingview.hidden=YES;
     }
 }
@@ -305,14 +317,15 @@
         Upt=myDelegate.entityl.puptime;
     }
     //Kstr=md5(uId|type|Upt|Key|Nowt|cid)
-    NSString * Kstr=[Commons md5:[NSString stringWithFormat:@"%@|%@|%@|%@|%@",uId,@"9999",Upt,apikey,nowt]];
+    NSString * Kstr=[Commons md5:[NSString stringWithFormat:@"%@|%@|%@|%@|%@",uId,@"9998",Upt,apikey,nowt]];
     
-    NSString * surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=9999&Upt=%@&Nowt=%@&Kstr=%@",uId,Upt,nowt,Kstr];
+    NSString * surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=9998&Upt=%@&Nowt=%@&Kstr=%@",uId,Upt,nowt,Kstr];
     
     
     NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
     NSMutableDictionary * dict = [DataService GetDataService:URL];
     NSArray *versoninfo=[[dict objectForKey:@"result"] objectAtIndex:0];
+    url=[NSString stringWithFormat:@"%@",[versoninfo objectAtIndex:0]];
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *oldappVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     NSString *newappVersion=[NSString stringWithFormat:@"%@",[versoninfo objectAtIndex:2]];

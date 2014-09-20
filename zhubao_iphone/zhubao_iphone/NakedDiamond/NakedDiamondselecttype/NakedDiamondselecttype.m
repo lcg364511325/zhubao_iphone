@@ -84,7 +84,7 @@
         self.UINavigationItem.title=@"荧光";
         
         key=[[NSArray alloc] initWithObjects:@"N",@"F",@"M",@"S",@"VS", nil];
-        value=[[NSArray alloc] initWithObjects:@"Non/None",@"Fnt",@"Med",@"Stg/Sl",@"Vsl/Vst", nil];
+        value=[[NSArray alloc] initWithObjects:@"Non,None",@"Fnt",@"Med",@"Stg,Sl",@"Vsl,Vst", nil];
     }else if(btnvalue==7)
     {
         self.UINavigationItem.title=@"证书";

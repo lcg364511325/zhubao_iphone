@@ -149,6 +149,8 @@
     }
     
     NSUInteger row = [indexPath row];
+    
+    cell.textLabel.font=[UIFont boldSystemFontOfSize:12.0f];
     if (selecttable==0) {
         NSDictionary *rowString = [provincelist objectAtIndex:[indexPath row]];
         cell.textLabel.text = [rowString objectForKey:@"state"];

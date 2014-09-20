@@ -24,6 +24,7 @@
     NSString *inlayindex;
     NSString *serieindex;
     NSInteger btntag;
+    NSInteger isfirst;
 }
 
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象

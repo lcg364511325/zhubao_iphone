@@ -16,6 +16,7 @@
     UIButton *buycountbtn;
     UIView *bgview;
     UIImageView *bgfimg;
+    NSString *url;
 }
 
 -(void)refleshBuycutData;

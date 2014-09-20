@@ -21,6 +21,8 @@
     NSString *diplomavalue;
     CGRect oldframe;
     CGRect frame;
+    NSArray *btnarray;
+    NSInteger isfirst;
 }
 
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象

@@ -96,9 +96,10 @@
     
     password=[[UITextField alloc]initWithFrame:CGRectMake(13, 35, 200, 30)];
     [password setBorderStyle:UITextBorderStyleBezel];
-    password.placeholder=@"请输出密码";
+    password.placeholder=@"请输入密码";
     [password setBackground:[UIImage imageNamed:@"writetextbox"]];
     password.secureTextEntry=YES;
+    password.font=[UIFont boldSystemFontOfSize:12.0f];
     
     [demoView addSubview:password];
     [demoView addSubview:title];

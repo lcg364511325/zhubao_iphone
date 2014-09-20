@@ -60,6 +60,7 @@
     
     NSUInteger row = [indexPath row];
     cell.textLabel.text = [list objectAtIndex:row];
+    cell.textLabel.font=[UIFont boldSystemFontOfSize:12.0f];
     return cell;
 }
 

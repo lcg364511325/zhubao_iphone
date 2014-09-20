@@ -43,6 +43,16 @@
     return self;
 }
 
+
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    if (isfirst==0) {
+//        isfirst=1;
+//    }else{
+//        [self resetdata:nil];
+//    }
+//}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -56,6 +66,14 @@
     symmetryvalue=@"";
     fluorescencevalue=@"";
     diplomavalue=@"";
+    
+    noText.keyboardType=UIKeyboardTypeNumberPad;
+    minheight.keyboardType=UIKeyboardTypeNumberPad;
+    maxheight.keyboardType=UIKeyboardTypeNumberPad;
+    minprice.keyboardType=UIKeyboardTypeNumberPad;
+    maxprice.keyboardType=UIKeyboardTypeNumberPad;
+    
+    isfirst=0;
     
 }
 
@@ -139,12 +157,64 @@
         diplomavalue=value;
     }
     
-    NSArray *btnarray=[[NSArray alloc]initWithObjects:modelButton,colorButton,netButton,cutButton,chasingButton,symmetryButton,fluorescenceButton,diplomaButton, nil];
+    btnarray=[[NSArray alloc]initWithObjects:modelButton,colorButton,netButton,cutButton,chasingButton,symmetryButton,fluorescenceButton,diplomaButton, nil];
     for (UIButton *btn in btnarray) {
         if (btn.tag==tagint) {
             [btn setTitle:[NSString stringWithFormat:@"%@：%@",name,key] forState:UIControlStateNormal];
         }
     }
+}
+
+-(IBAction)resetdata:(id)sender
+{
+    modelvalue=@"";
+    colorvalue=@"";
+    netvalue=@"";
+    cutvalue=@"";
+    chasingvalue=@"";
+    symmetryvalue=@"";
+    fluorescencevalue=@"";
+    diplomavalue=@"";
+    int i;
+    int count=[btnarray count];
+    NSString *name;
+    for (i=0 ; i<count; i++) {
+        if (i==0) {
+            name=@"形状";
+        }
+        else if(i==1)
+        {
+            name=@"颜色";
+        }else if(i==2)
+        {
+            name=@"净度";
+        }else if(i==3)
+        {
+            name=@"切工";
+        }else if(i==4)
+        {
+            name=@"抛光";
+        }else if(i==5)
+        {
+            name=@"对称";
+        }else if(i==6)
+        {
+            name=@"荧光";
+        }else if(i==7)
+        {
+            name=@"证书";
+        }
+        
+        UIButton *btn=[btnarray objectAtIndex:i];
+        [btn setTitle:[NSString stringWithFormat:@"%@：全部",name] forState:UIControlStateNormal];
+        noText.text=@"";
+        minheight.text=@"";
+        maxheight.text=@"";
+        minprice.text=@"";
+        maxprice.text=@"";
+        
+    }
+    
 }
 
 

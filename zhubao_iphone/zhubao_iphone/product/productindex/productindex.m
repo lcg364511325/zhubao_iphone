@@ -29,7 +29,6 @@
 @synthesize textrueText;
 @synthesize inlayText;
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,6 +36,36 @@
         // Custom initialization
     }
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (isfirst==0) {
+        isfirst=1;
+    }else{
+        pagesize=10;
+        page=1;
+        styleindex=@"";
+        textrueindex=@"";
+        inlayindex=@"";
+        serieindex=@"";
+        [list removeAllObjects];
+        [self loaddata:styleindex Pmetrial:textrueindex Pxk:inlayindex Pxilie:serieindex twid:@"" MaxPerPage:pagesize];
+        [productCView reloadData];
+        styleText.text=@"全部";
+        serieaText.text=@"全部";
+        textrueText.text=@"全部";
+        inlayText.text=@"全部";
+        
+        NSInteger count=[list count];
+        if(count==0)
+        {
+            countlabel.text=@"共有首饰0件";
+        }else
+        {
+            countlabel.text=[NSString stringWithFormat:@"共有首饰%@件",[[list objectAtIndex:0] objectAtIndex:8]];
+        }
+    }
 }
 
 - (void)viewDidLoad
@@ -59,6 +88,8 @@
     textrueindex=@"";
     inlayindex=@"";
     serieindex=@"";
+    
+    isfirst=0;
     
     //初始化数据
     [self loaddata:@"" Pmetrial:@"" Pxk:@"" Pxilie:@"" twid:@"" MaxPerPage:10
@@ -190,7 +221,7 @@
     
     NSUInteger row = [indexPath row];
     cell.textLabel.text = [conditionlist objectAtIndex:row];
-    cell.textLabel.font=[UIFont systemFontOfSize:12.0f];
+    cell.textLabel.font=[UIFont boldSystemFontOfSize:12.0f];
     return cell;
 }
 

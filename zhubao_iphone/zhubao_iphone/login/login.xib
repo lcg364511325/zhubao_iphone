@@ -28,7 +28,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logoshengyu.png" translatesAutoresizingMaskIntoConstraints="NO" id="GFm-dN-LRw">
-                            <rect key="frame" x="16" y="35" width="288" height="68"/>
+                            <rect key="frame" x="23" y="35" width="274" height="68"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" background="categorybg.png" translatesAutoresizingMaskIntoConstraints="NO" id="w8W-HP-5fB">
