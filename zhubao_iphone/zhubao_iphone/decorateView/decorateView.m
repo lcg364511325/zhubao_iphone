@@ -240,37 +240,38 @@
 
 -(void)setmembercenter
 {
-    membercenter *_membercenter=[[membercenter alloc]init];
-    self.viewControllers=[NSArray arrayWithObjects:_membercenter,nil];
-    settingview.hidden=YES;
-    
-    //测试添加自己的视图
-    CGRect rect = self.tabBar.frame;
-    
-    //底层视图
-    bgview=[[UIView alloc]initWithFrame:rect];
-    //背景
-    bgfimg=[[UIImageView alloc]initWithFrame:rect];
-    [bgfimg setImage:[UIImage imageNamed:@"footer_bg1"]];
-    
-    //返回按钮
-    UIButton *backbutton=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 40, 40)];
-    [backbutton setImage:[UIImage imageNamed:@"return_icon"] forState:UIControlStateNormal];
-    [backbutton addTarget:self action:@selector(closemembercenter) forControlEvents:UIControlEventTouchDown];
-    
-    //标题
-    UIButton *titlebtn=[[UIButton alloc] initWithFrame:CGRectMake(45, 5, 100, 40)];
-    [titlebtn setTitle:@"返回首页" forState:UIControlStateNormal];
-    titlebtn.titleLabel.font=[UIFont boldSystemFontOfSize:17.0f];
-    [titlebtn setTitleColor:[UIColor colorWithRed:190/255.0 green:148/255.0 blue:80/255.0 alpha:1.0f]forState:UIControlStateNormal];
-    [titlebtn addTarget:self action:@selector(closemembercenter) forControlEvents:UIControlEventTouchDown];
-    [bgview addSubview:titlebtn];
-    
-    [bgview addSubview:backbutton];
-    
-    [self.view addSubview:bgfimg];
-    [self.view addSubview:bgview];
-    
+    if (self.viewControllers.count!=1) {
+        membercenter *_membercenter=[[membercenter alloc]init];
+        self.viewControllers=[NSArray arrayWithObjects:_membercenter,nil];
+        settingview.hidden=YES;
+        
+        //测试添加自己的视图
+        CGRect rect = self.tabBar.frame;
+        
+        //底层视图
+        bgview=[[UIView alloc]initWithFrame:rect];
+        //背景
+        bgfimg=[[UIImageView alloc]initWithFrame:rect];
+        [bgfimg setImage:[UIImage imageNamed:@"footer_bg1"]];
+        
+        //返回按钮
+        UIButton *backbutton=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 40, 40)];
+        [backbutton setImage:[UIImage imageNamed:@"return_icon"] forState:UIControlStateNormal];
+        [backbutton addTarget:self action:@selector(closemembercenter) forControlEvents:UIControlEventTouchDown];
+        
+        //标题
+        UIButton *titlebtn=[[UIButton alloc] initWithFrame:CGRectMake(45, 5, 100, 40)];
+        [titlebtn setTitle:@"返回首页" forState:UIControlStateNormal];
+        titlebtn.titleLabel.font=[UIFont boldSystemFontOfSize:17.0f];
+        [titlebtn setTitleColor:[UIColor colorWithRed:190/255.0 green:148/255.0 blue:80/255.0 alpha:1.0f]forState:UIControlStateNormal];
+        [titlebtn addTarget:self action:@selector(closemembercenter) forControlEvents:UIControlEventTouchDown];
+        [bgview addSubview:titlebtn];
+        
+        [bgview addSubview:backbutton];
+        
+        [self.view addSubview:bgfimg];
+        [self.view addSubview:bgview];
+    }
 }
 
 -(void)closemembercenter
