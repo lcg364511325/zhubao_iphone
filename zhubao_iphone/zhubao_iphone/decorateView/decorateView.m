@@ -325,14 +325,27 @@
     
     NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
     NSMutableDictionary * dict = [DataService GetDataService:URL];
-    NSArray *versoninfo=[[dict objectForKey:@"result"] objectAtIndex:0];
-    url=[NSString stringWithFormat:@"%@",[versoninfo objectAtIndex:0]];
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *oldappVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    NSString *newappVersion=[NSString stringWithFormat:@"%@",[versoninfo objectAtIndex:2]];
-    if (![oldappVersion isEqualToString:newappVersion]) {
-        NSString *rowString =[NSString stringWithFormat:@"更新内容：%@",[versoninfo objectAtIndex:1]];
-        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"发现新版本%@,是否升级？",newappVersion] message:rowString delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    NSString *status=[NSString stringWithFormat:@"%@",[dict objectForKey:@"status"]];
+    if ([status isEqualToString:@"true"]) {
+        NSArray *versoninfo=[[dict objectForKey:@"result"] objectAtIndex:0];
+        url=[NSString stringWithFormat:@"%@",[versoninfo objectAtIndex:0]];
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *oldappVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+        NSString *newappVersion=[NSString stringWithFormat:@"%@",[versoninfo objectAtIndex:2]];
+        if (![oldappVersion isEqualToString:newappVersion]) {
+            NSString *rowString =[NSString stringWithFormat:@"更新内容：%@",[versoninfo objectAtIndex:1]];
+            UIAlertView * alter = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"发现新版本%@,是否升级？",newappVersion] message:rowString delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [alter show];
+        }else
+        {
+            NSString *rowString =@"当前版本已是最新版本";
+            UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alter show];
+        }
+    }else
+    {
+        NSString *rowString =@"未知错误";
+        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alter show];
     }
 }

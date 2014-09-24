@@ -142,6 +142,9 @@ NSInteger i=0;
 -(IBAction)loginAction:(id)sender
 {
     @try {
+        NSString *rowString =@"正在登录。。。";
+        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+        [alter show];
         
         UIButton *resultButton = (UIButton *)sender;
         
@@ -161,6 +164,7 @@ NSInteger i=0;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 // 更新界面（处理结果）
+                [alter dismissWithClickedButtonIndex:0 animated:NO];
                 if(result){
                     
                     //判断是否要保存密码
@@ -196,6 +200,7 @@ NSInteger i=0;
 
                     //登录成功，进入系统首页
                     NSLog(@"登录成功，进入系统首页");
+                    [[[UIAlertView alloc] initWithTitle:@"提示" message:@"登录成功" delegate:self cancelButtonTitle:@"确定K" otherButtonTitles:nil, nil] show];
                     decorateView *_decorateView=[[decorateView alloc]init];
                     [self.navigationController pushViewController:_decorateView animated:NO];
                     
