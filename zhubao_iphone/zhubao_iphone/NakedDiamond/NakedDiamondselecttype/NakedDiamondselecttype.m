@@ -17,7 +17,6 @@
 @implementation NakedDiamondselecttype
 
 @synthesize btntag;
-@synthesize ndTView;
 @synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,9 +34,9 @@
     // Do any additional setup after loading the view from its nib.
     namelist=[[NSMutableArray alloc]initWithCapacity:5];
     
-    [ndTView setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"backgroundcolor"]]];
-    
     [self setbartitle];
+    
+    [self loaddata];
 }
 
 
@@ -100,33 +99,41 @@
     }
 }
 
-//初始化tableview数据
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(void)loaddata
 {
-    return [namelist count];
-    //只有一组，数组数即为行数。
-}
-
-// tableview数据显示
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *TableSampleIdentifier = @"NakedDiamondlistCell";
-    
-    NakedDiamondlistCell *cell = [tableView dequeueReusableCellWithIdentifier:TableSampleIdentifier];
-    if (cell == nil) {
-        NSArray * nib=[[NSBundle mainBundle]loadNibNamed:@"NakedDiamondlistCell" owner:self options:nil];
-        cell=[nib objectAtIndex:0];
+    NSInteger count=[namelist count];
+    NSInteger line=0;
+    NSInteger row=1;
+    for (int i=0; i<count; i++) {
+        NSDictionary *dict=[namelist objectAtIndex:i];
+        UIButton *btn;
+        if ((row=i%3)==0) {
+            line=i/3;
+        }
+        if (row==0) {
+            btn=[[UIButton alloc]initWithFrame:CGRectMake(7, 61+50*line, 100, 30)];
+        }else if (row==1){
+            btn=[[UIButton alloc]initWithFrame:CGRectMake(110, 61+50*line, 100, 30)];
+        }else if (row==2)
+        {
+            btn=[[UIButton alloc]initWithFrame:CGRectMake(213, 61+50*line, 100, 30)];
+        }
+        [btn setTitle:[dict objectForKey:@"key"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(changgestate:) forControlEvents:UIControlEventTouchDown];
+        btn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+        btn.tag=i;
+        [self.view addSubview:btn];
+        
     }
-    NSDictionary *selectdata=[namelist objectAtIndex:[indexPath row]];
-    cell.nameLabel.text = [NSString stringWithFormat:@"%@",[selectdata objectForKey:@"key"]];
-    return cell;
 }
 
-//tableview点击操作
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+//按钮点击事件
+-(void)changgestate:(UIButton *)btn
 {
-    NakedDiamondlistCell *cell = (NakedDiamondlistCell *)[tableView cellForRowAtIndexPath:indexPath];
-    NSDictionary *selectdata=[namelist objectAtIndex:[indexPath row]];
+    NSDictionary *selectdata=[namelist objectAtIndex:btn.tag];
     NSMutableArray *keyMutableArray = [[NSMutableArray alloc]initWithCapacity:5];
     NSMutableArray *valueMutableArray = [[NSMutableArray alloc]initWithCapacity:5];
     if (skey.length!=0) {
@@ -149,10 +156,10 @@
     if (!isequal) {
         [keyMutableArray addObject:[selectdata objectForKey:@"key"]];
         [valueMutableArray addObject:[selectdata objectForKey:@"value"]];
-        cell.choosestateimg.hidden=NO;
+        [btn setBackgroundImage:[UIImage imageNamed:@"cateselected"] forState:UIControlStateNormal];
     }else
     {
-        cell.choosestateimg.hidden=YES;
+        [btn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
     }
     skey=[[NSMutableString alloc] init];
     svalue=[[NSMutableString alloc] init];
@@ -172,7 +179,6 @@
             [svalue appendString:index];
         }
     }
-    
 }
 
 -(IBAction)returnvalue:(id)sender

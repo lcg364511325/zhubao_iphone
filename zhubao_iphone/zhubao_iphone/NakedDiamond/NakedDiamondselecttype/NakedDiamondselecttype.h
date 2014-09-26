@@ -21,5 +21,4 @@
 
 @property (retain, nonatomic) NSString *btntag;
 @property (weak, nonatomic) IBOutlet UINavigationItem *UINavigationItem;
-@property (weak, nonatomic) IBOutlet UITableView *ndTView;
 @end

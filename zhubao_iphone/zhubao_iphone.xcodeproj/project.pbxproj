@@ -313,6 +313,7 @@
 		2C42EE1019C7DBAE00BB4692 /* NakedDiamondlist.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EE0E19C7DBAE00BB4692 /* NakedDiamondlist.xib */; };
 		2C42EE1519C7DCD100BB4692 /* NakedDiamondsrCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C42EE1319C7DCD100BB4692 /* NakedDiamondsrCell.m */; };
 		2C42EE1619C7DCD100BB4692 /* NakedDiamondsrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */; };
+		2C44651819D561C10089AC50 /* cateselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C44651719D561C10089AC50 /* cateselected.png */; };
 		2C589FB119CC15D90062FC93 /* footer_bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C589FB019CC15D90062FC93 /* footer_bg1.png */; };
 		2C5B4A5819CAE43B000F269D /* zhubao.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2C5B4A5719CAE43B000F269D /* zhubao.sqlite */; };
 		2C5D1DE119CD1151005C1084 /* footer_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5D1DE019CD1151005C1084 /* footer_line.png */; };
@@ -780,6 +781,7 @@
 		2C42EE1219C7DCD100BB4692 /* NakedDiamondsrCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NakedDiamondsrCell.h; path = NakedDiamondsrCell/NakedDiamondsrCell.h; sourceTree = "<group>"; };
 		2C42EE1319C7DCD100BB4692 /* NakedDiamondsrCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NakedDiamondsrCell.m; path = NakedDiamondsrCell/NakedDiamondsrCell.m; sourceTree = "<group>"; };
 		2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NakedDiamondsrCell.xib; path = NakedDiamondsrCell/NakedDiamondsrCell.xib; sourceTree = "<group>"; };
+		2C44651719D561C10089AC50 /* cateselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cateselected.png; sourceTree = "<group>"; };
 		2C589FB019CC15D90062FC93 /* footer_bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = footer_bg1.png; sourceTree = "<group>"; };
 		2C5B4A5719CAE43B000F269D /* zhubao.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = zhubao.sqlite; sourceTree = SOURCE_ROOT; };
 		2C5D1DE019CD1151005C1084 /* footer_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = footer_line.png; sourceTree = "<group>"; };
@@ -1463,6 +1465,7 @@
 		2C42EC5619C7D10B00BB4692 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				2C44651719D561C10089AC50 /* cateselected.png */,
 				2C5D1DE019CD1151005C1084 /* footer_line.png */,
 				2C589FB019CC15D90062FC93 /* footer_bg1.png */,
 				2C42EC5719C7D10B00BB4692 /* add_to_cartbtn.png */,
@@ -1894,6 +1897,7 @@
 				2C42EDAE19C7D10B00BB4692 /* options_leftbg.png in Resources */,
 				2C42ED9719C7D10B00BB4692 /* diamond08.png in Resources */,
 				2C42EDA319C7D10B00BB4692 /* importbg.png in Resources */,
+				2C44651819D561C10089AC50 /* cateselected.png in Resources */,
 				2C42ED9919C7D10B00BB4692 /* diamond10.png in Resources */,
 				2C42ECF619C7D10B00BB4692 /* CHANGELOG.md in Resources */,
 				2C42ED2A19C7D10B00BB4692 /* MWPhotoBrowser.bundle in Resources */,

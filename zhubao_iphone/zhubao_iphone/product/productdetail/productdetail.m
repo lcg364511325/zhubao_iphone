@@ -149,7 +149,7 @@
         protypeWenProId=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:9]];
         
         //logo图片
-        NSString *url=[NSString stringWithFormat:@"http://seyuu.com%@",[productlist objectAtIndex:7]];
+        NSString *url=[NSString stringWithFormat:@"http://seyuu.com%@",[productlist objectAtIndex:8]];
         NSURL *imgUrl=[NSURL URLWithString:url];
         if (hasCachedImage(imgUrl)) {
             [logoimg setImage:[UIImage imageWithContentsOfFile:pathForURL(imgUrl)]];
@@ -545,13 +545,17 @@
 //        
 //        //[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:patht]]];
 //    }
-    NSString *patht=[NSString stringWithFormat:@"http://seyuu.com%@",[productlist objectAtIndex:8]];
-    NSURL *imgUrl=[NSURL URLWithString:patht];
-    if (hasCachedImage(imgUrl)) {
-        [photos addObject:[MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:pathForURL(imgUrl)]]];
-    }else
-    {
-        [photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:patht]]];
+    NSString *patht=[NSString stringWithFormat:@"http://seyuu.com%@",[productlist objectAtIndex:7]];
+    NSArray *patharray=[patht componentsSeparatedByString:@"_"];
+    for (int i=0; i<6; i++) {
+        NSString *pathway=[NSString stringWithFormat:@"%@_0%d6.jpg",[patharray objectAtIndex:0],i];
+        NSURL *imgUrl=[NSURL URLWithString:pathway];
+        if (hasCachedImage(imgUrl)) {
+            [photos addObject:[MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:pathForURL(imgUrl)]]];
+        }else
+        {
+            [photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:pathway]]];
+        }
     }
     self.photos = photos;
     //self.thumbs = thumbs;
