@@ -112,6 +112,7 @@
     [topview addSubview:settingbtn];
     
     //设置按钮菜单
+    hiddenview=[[UIView alloc]initWithFrame:self.view.frame];
     settingview=[[UIView alloc]initWithFrame:CGRectMake(210, 40, 100, 90)];
     UIImageView *settingimg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 90)];
     [settingimg setImage:[UIImage imageNamed:@"settingbg"]];
@@ -138,11 +139,9 @@
     logoutbtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
     [logoutbtn addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchDown];
     [settingview addSubview:logoutbtn];
-    [settingview setHidden:YES];
 
     [self.view addSubview:topimg];
     [self.view addSubview:topview];
-    [self.view addSubview:settingview];
 }
 
 
@@ -200,7 +199,8 @@
 //设置页面跳转
 -(void)settingviewshow
 {
-    settingview.hidden=NO;
+    [self.view addSubview:hiddenview];
+    [self.view addSubview:settingview];
 }
 
 //点击settingview以外的地方触发事件
@@ -210,7 +210,8 @@
     CGPoint pt = [touch locationInView:self.view];
     if (!CGRectContainsPoint([settingview frame], pt)) {
         //to-do
-        settingview.hidden=YES;
+        [settingview removeFromSuperview];
+        [hiddenview removeFromSuperview];
     }
 }
 
@@ -238,12 +239,14 @@
     [alter show];
 }
 
+//会员中心
 -(void)setmembercenter
 {
     if (self.viewControllers.count!=1) {
         membercenter *_membercenter=[[membercenter alloc]init];
         self.viewControllers=[NSArray arrayWithObjects:_membercenter,nil];
-        settingview.hidden=YES;
+        [settingview removeFromSuperview];
+        [hiddenview removeFromSuperview];
         
         //测试添加自己的视图
         CGRect rect = self.tabBar.frame;
@@ -298,7 +301,8 @@
         
         isverson=0;
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-        settingview.hidden=YES;
+        [settingview removeFromSuperview];
+        [hiddenview removeFromSuperview];
     }
 }
 

@@ -17,6 +17,7 @@
     UIView *bgview;
     UIImageView *bgfimg;
     NSString *url;
+    UIView *hiddenview;
 }
 
 -(void)refleshBuycutData;

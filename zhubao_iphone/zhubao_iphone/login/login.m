@@ -200,7 +200,7 @@ NSInteger i=0;
 
                     //登录成功，进入系统首页
                     NSLog(@"登录成功，进入系统首页");
-                    [[[UIAlertView alloc] initWithTitle:@"提示" message:@"登录成功" delegate:self cancelButtonTitle:@"确定K" otherButtonTitles:nil, nil] show];
+                    [[[UIAlertView alloc] initWithTitle:@"提示" message:@"登录成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] show];
                     decorateView *_decorateView=[[decorateView alloc]init];
                     [self.navigationController pushViewController:_decorateView animated:NO];
                     

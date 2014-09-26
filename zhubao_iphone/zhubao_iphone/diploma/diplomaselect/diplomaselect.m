@@ -36,6 +36,7 @@
     list=[[NSArray alloc] initWithObjects:@"GIA(美国宝石学院)", @"NGTC(国家珠宝玉石质量监督中心)",
           @"IGI(世界宝石学院)", @"HRD(比利时钻石高阶层会议)", @"AGS(美国宝石学学会)", @"EGL(欧洲宝石学院)", nil];
     typeText.userInteractionEnabled=NO;
+    typeText.text=[list objectAtIndex:0];
 }
 
 //初始化tableview数据

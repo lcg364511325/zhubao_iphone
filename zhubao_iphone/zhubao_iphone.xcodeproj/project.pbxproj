@@ -362,7 +362,7 @@
 		2C19C61A19C9739900D9CF1E /* shopcartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shopcartCell.h; path = shopcartCell/shopcartCell.h; sourceTree = "<group>"; };
 		2C19C61B19C9739900D9CF1E /* shopcartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = shopcartCell.m; path = shopcartCell/shopcartCell.m; sourceTree = "<group>"; };
 		2C19C61C19C9739900D9CF1E /* shopcartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = shopcartCell.xib; path = shopcartCell/shopcartCell.xib; sourceTree = "<group>"; };
-		2C42EB0119C7D06300BB4692 /* zhubao_iphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zhubao_iphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C42EB0119C7D06300BB4692 /* 定制神器.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "定制神器.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C42EB0419C7D06300BB4692 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C42EB0619C7D06300BB4692 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2C42EB0819C7D06300BB4692 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -891,7 +891,7 @@
 		2C42EB0219C7D06300BB4692 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C42EB0119C7D06300BB4692 /* zhubao_iphone.app */,
+				2C42EB0119C7D06300BB4692 /* 定制神器.app */,
 				2C42EB2219C7D06300BB4692 /* zhubao_iphoneTests.xctest */,
 			);
 			name = Products;
@@ -1795,7 +1795,7 @@
 			);
 			name = zhubao_iphone;
 			productName = zhubao_iphone;
-			productReference = 2C42EB0119C7D06300BB4692 /* zhubao_iphone.app */;
+			productReference = 2C42EB0119C7D06300BB4692 /* 定制神器.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2C42EB2119C7D06300BB4692 /* zhubao_iphoneTests */ = {
@@ -2326,7 +2326,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "zhubao_iphone/zhubao_iphone-Prefix.pch";
 				INFOPLIST_FILE = "zhubao_iphone/zhubao_iphone-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "定制神器";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2343,7 +2343,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "zhubao_iphone/zhubao_iphone-Prefix.pch";
 				INFOPLIST_FILE = "zhubao_iphone/zhubao_iphone-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "定制神器";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
