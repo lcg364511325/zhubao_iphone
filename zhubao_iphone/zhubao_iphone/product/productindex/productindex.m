@@ -241,7 +241,12 @@
     }else if (btntag==1)
     {
         serieaText.text=rowstring;
-        serieindex=[NSString stringWithFormat:@"%d",row+1];
+        if (row==0) {
+            serieindex=@"";
+        }else
+        {
+           serieindex=[NSString stringWithFormat:@"%d",row+1]; 
+        }
     }else if (btntag==2)
     {
         textrueText.text=rowstring;

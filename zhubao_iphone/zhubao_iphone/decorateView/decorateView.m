@@ -88,7 +88,7 @@
     
     //logo图片
     UIImageView *logoimg=[[UIImageView alloc]initWithFrame:CGRectMake(36, 5, 30, 30)];
-    [logoimg setImage:[UIImage imageNamed:@"logo"]];
+    [logoimg setImage:[UIImage imageNamed:@"plogo"]];
     [topview addSubview:logoimg];
     
     //购物车按钮

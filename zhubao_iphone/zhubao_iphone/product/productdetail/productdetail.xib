@@ -62,7 +62,7 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="CU4-lg-2yO">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="CU4-lg-2yO">
                     <rect key="frame" x="274" y="2" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
@@ -467,7 +467,7 @@
     <resources>
         <image name="add_to_cartbtn.png" width="668" height="66"/>
         <image name="backgroundcolor.png" width="88" height="88"/>
-        <image name="logo.png" width="69" height="70"/>
+        <image name="plogo.png" width="69" height="70"/>
         <image name="return_icon.png" width="45" height="45"/>
         <image name="spinnerbg.png" width="230" height="38"/>
         <image name="writetextbox.png" width="232" height="62"/>

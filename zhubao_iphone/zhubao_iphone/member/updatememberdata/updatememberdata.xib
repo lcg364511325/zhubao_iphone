@@ -41,7 +41,7 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="TCh-os-RgW">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="TCh-os-RgW">
                     <rect key="frame" x="271" y="2" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
@@ -200,7 +200,7 @@
     <resources>
         <image name="backgroundcolor.png" width="88" height="88"/>
         <image name="determinebth.png" width="162" height="62"/>
-        <image name="logo.png" width="69" height="70"/>
+        <image name="plogo.png" width="69" height="70"/>
         <image name="return_icon.png" width="45" height="45"/>
         <image name="spinnerbg.png" width="230" height="38"/>
         <image name="writetextbox.png" width="232" height="62"/>

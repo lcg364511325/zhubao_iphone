@@ -29,7 +29,7 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Da-qN-3gr">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Da-qN-3gr">
                     <rect key="frame" x="272" y="2" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
@@ -45,7 +45,7 @@
         </view>
     </objects>
     <resources>
-        <image name="logo.png" width="69" height="70"/>
+        <image name="plogo.png" width="69" height="70"/>
         <image name="return_icon.png" width="45" height="45"/>
     </resources>
 </document>
