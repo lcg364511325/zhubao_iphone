@@ -69,6 +69,9 @@
 //新加到购物车信息
 -(buyproduct*)addToBuyproduct:(buyproduct *)entity;
 
+//修改购物车
+-(NSString *)updateBuyproduct:(buyproduct *)entity;
+
 //删除购物车信息
 -(NSString*)deleteBuyproduct:(NSString *)pid;
 

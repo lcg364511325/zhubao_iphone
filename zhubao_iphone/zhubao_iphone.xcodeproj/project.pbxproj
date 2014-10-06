@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C14A4DF19E228B5003D12D1 /* drop-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C14A4DE19E228B5003D12D1 /* drop-down.png */; };
 		2C19C60B19C9359700D9CF1E /* updatepassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C19C60919C9359700D9CF1E /* updatepassword.m */; };
 		2C19C60C19C9359700D9CF1E /* updatepassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C19C60A19C9359700D9CF1E /* updatepassword.xib */; };
 		2C19C61119C9396200D9CF1E /* customtailor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C19C60F19C9396200D9CF1E /* customtailor.m */; };
@@ -351,6 +352,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C14A4DE19E228B5003D12D1 /* drop-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drop-down.png"; sourceTree = "<group>"; };
 		2C19C60819C9359700D9CF1E /* updatepassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = updatepassword.h; path = member/updatepassword/updatepassword.h; sourceTree = "<group>"; };
 		2C19C60919C9359700D9CF1E /* updatepassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = updatepassword.m; path = member/updatepassword/updatepassword.m; sourceTree = "<group>"; };
 		2C19C60A19C9359700D9CF1E /* updatepassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = updatepassword.xib; path = member/updatepassword/updatepassword.xib; sourceTree = "<group>"; };
@@ -1465,6 +1467,7 @@
 		2C42EC5619C7D10B00BB4692 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				2C14A4DE19E228B5003D12D1 /* drop-down.png */,
 				2C44651719D561C10089AC50 /* cateselected.png */,
 				2C5D1DE019CD1151005C1084 /* footer_line.png */,
 				2C589FB019CC15D90062FC93 /* footer_bg1.png */,
@@ -1921,6 +1924,7 @@
 				2C42ED4C19C7D10B00BB4692 /* Seq_v04_640x378_35.jpg in Resources */,
 				2C42ED4419C7D10B00BB4692 /* Seq_v04_640x378_28.jpg in Resources */,
 				2C19C61819C971BA00D9CF1E /* shopcart.xib in Resources */,
+				2C14A4DF19E228B5003D12D1 /* drop-down.png in Resources */,
 				2C42EDA219C7D10B00BB4692 /* imagez.png in Resources */,
 				2C42EE1019C7DBAE00BB4692 /* NakedDiamondlist.xib in Resources */,
 				2C42EDCC19C7D10B00BB4692 /* TabBar5.png in Resources */,

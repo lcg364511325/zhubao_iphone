@@ -38,10 +38,10 @@
     return self;
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [self resetdata:nil];
-}
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [self resetdata:nil];
+//}
 
 - (void)viewDidLoad
 {

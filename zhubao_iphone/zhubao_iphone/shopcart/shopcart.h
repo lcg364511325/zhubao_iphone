@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "buyproduct.h"
 
 @interface shopcart : UIViewController<UIApplicationDelegate>
 {
     NSMutableArray *shoppingcartlist;
+    UIView *demoView;
+    UIView *hiview;
+    UITextField *goodsno;
+    NSString *goodnumber;
+    buyproduct *goodselect;
 }
 
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象

@@ -1475,6 +1475,31 @@
     return entity;
 }
 
+//修改购物车
+-(NSString *)updateBuyproduct:(buyproduct *)entity{
+    
+    @try {
+        
+        NSString * sql=[NSString stringWithFormat:@" update buyproduct set pcount='%@'  where Id=%@",entity.pcount,entity.Id];
+        
+        NSLog(@"--------------:%@",sql);
+        
+        if (![self execSqlandClose:sql]) {
+            return nil;
+        }
+        
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+    @finally {
+        [self closeDB];
+    }
+    
+    return @"1";
+    
+}
+
 - (NSString *)getTimeNowOT
 {
     NSDate *datenow = [NSDate date];//现在时间,你可以输出来看下是什么格式

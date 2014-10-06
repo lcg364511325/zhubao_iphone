@@ -174,8 +174,100 @@
 //tableview点击操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSString *rowString = [self.list objectAtIndex:[indexPath row]];
-    //Nakeddisplay.hidden=YES;
+    goodselect =[shoppingcartlist objectAtIndex:[indexPath row]];
+    goodnumber=goodselect.pcount;
+    
+    hiview=[[UIView alloc]initWithFrame:self.view.frame];
+    hiview.backgroundColor=[UIColor blackColor];
+    hiview.alpha=0.5;
+    demoView = [[UIView alloc] initWithFrame:CGRectMake(50, 230, 220, 100)];
+    [demoView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]]];
+    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(75, 5, 70, 30)];
+    title.text=@"商品数量";
+    title.font=[UIFont systemFontOfSize:17.0f];
+    [title setTextColor:[UIColor colorWithRed:185/255.0f green:12/255.0f blue:20/255.0f alpha:1.0f]];
+    [title setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]]];
+    
+    UIButton *reducebtn=[[UIButton alloc]initWithFrame:CGRectMake(11, 35, 30, 30)];
+    [reducebtn setTitle:@"-" forState:UIControlStateNormal];
+    [reducebtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    reducebtn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+    reducebtn.tag=0;
+    [reducebtn addTarget:self action:@selector(changecount:) forControlEvents:UIControlEventTouchDown];
+    
+    goodsno=[[UITextField alloc]initWithFrame:CGRectMake(35, 35, 150, 30)];
+    [goodsno setBorderStyle:UITextBorderStyleBezel];
+    [goodsno setBackground:[UIImage imageNamed:@"writetextbox"]];
+    goodsno.font=[UIFont boldSystemFontOfSize:12.0f];
+    goodsno.text=goodnumber;
+    goodsno.keyboardType=UIKeyboardTypeNumberPad;
+    
+    UIButton *addbtn=[[UIButton alloc]initWithFrame:CGRectMake(181, 35, 30, 30)];
+    [addbtn setTitle:@"+" forState:UIControlStateNormal];
+    [addbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    addbtn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+    addbtn.tag=1;
+    [addbtn addTarget:self action:@selector(changecount:) forControlEvents:UIControlEventTouchDown];
+    
+    UIButton *okbtn=[[UIButton alloc]initWithFrame:CGRectMake(41, 67, 30, 30)];
+    [okbtn setTitle:@"确定" forState:UIControlStateNormal];
+    [okbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    okbtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
+    okbtn.tag=1;
+    [okbtn addTarget:self action:@selector(demoviewtarget:) forControlEvents:UIControlEventTouchDown];
+    
+    UIButton *canclebtn=[[UIButton alloc]initWithFrame:CGRectMake(141, 67, 30, 30)];
+    [canclebtn setTitle:@"取消" forState:UIControlStateNormal];
+    [canclebtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    canclebtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
+    canclebtn.tag=0;
+    [canclebtn addTarget:self action:@selector(demoviewtarget:) forControlEvents:UIControlEventTouchDown];
+    
+    [demoView addSubview:okbtn];
+    [demoView addSubview:canclebtn];
+    [demoView addSubview:addbtn];
+    [demoView addSubview:reducebtn];
+    [demoView addSubview:goodsno];
+    [demoView addSubview:title];
+    [self.view addSubview:hiview];
+    [self.view addSubview:demoView];
+}
+
+//更改数量
+-(void)changecount:(UIButton *)btn
+{
+    NSInteger btntag=btn.tag;
+    NSInteger count=[goodsno.text integerValue];
+    if (btntag==0) {
+        if (count>0) {
+            goodsno.text=[NSString stringWithFormat:@"%d",count-1];
+        }
+    }else{
+        goodsno.text=[NSString stringWithFormat:@"%d",count+1];
+    }
+}
+
+//数量弹出框触发事件
+-(void)demoviewtarget:(UIButton *)btn
+{
+    NSInteger btntag=btn.tag;
+    if (btntag==1) {
+        goodselect.pcount=goodsno.text;
+        sqlService *_sqlService=[[sqlService alloc]init];
+        NSString *info=[_sqlService updateBuyproduct:goodselect];
+        if (!info) {
+            NSString *rowString =@"未知错误";
+            UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alter show];
+        }else
+        {
+            [self loaddata];
+            [shopcartTView reloadData];
+        }
+        
+    }
+    [hiview removeFromSuperview];
+    [demoView removeFromSuperview];
 }
 
 //购物车删除
