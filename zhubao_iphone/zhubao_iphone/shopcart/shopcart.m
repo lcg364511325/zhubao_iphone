@@ -163,7 +163,7 @@
         if (goods.pdetail) {
             cell.tLabel.text=[cell.tLabel.text stringByAppendingString:[NSString stringWithFormat:@"  刻字:%@",goods.pdetail]];
         }
-        cell.countLabel.text=@"1";
+        cell.countLabel.text=goods.pcount;
     }
     [cell.deleteButton addTarget:self action:@selector(deleteshoppingcartgoods:) forControlEvents:UIControlEventTouchUpInside];
     

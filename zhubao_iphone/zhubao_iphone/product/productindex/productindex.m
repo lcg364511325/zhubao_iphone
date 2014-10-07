@@ -159,7 +159,7 @@
         searchview.hidden=YES;
         countimg.frame=countlabel.frame=CGRectMake(countimg.frame.origin.x, 40, 320, 25);
         hiddenbtn.frame=CGRectMake(hiddenbtn.frame.origin.x, 41, hiddenbtn.frame.size.width, hiddenbtn.frame.size.height);
-        productCView.frame=CGRectMake(productCView.frame.origin.x, 65, productCView.frame.size.width,self.view.frame.size.height-115);
+        productCView.frame=CGRectMake(productCView.frame.origin.x, 70, productCView.frame.size.width,self.view.frame.size.height-115);
         [hiddenbtn setImage:[UIImage imageNamed:@"checkbox_show"] forState:UIControlStateNormal];
         hidden=1;
     }else
@@ -167,7 +167,7 @@
         searchview.hidden=NO;
         countimg.frame=countlabel.frame=CGRectMake(countimg.frame.origin.x, 129, 320, 25);
         hiddenbtn.frame=CGRectMake(hiddenbtn.frame.origin.x, 132, hiddenbtn.frame.size.width, hiddenbtn.frame.size.height);
-        productCView.frame=CGRectMake(productCView.frame.origin.x, 155, productCView.frame.size.width,361);
+        productCView.frame=CGRectMake(productCView.frame.origin.x, 158, productCView.frame.size.width,361);
         [hiddenbtn setImage:[UIImage imageNamed:@"checkbox_no_show"] forState:UIControlStateNormal];
         hidden=0;
     }

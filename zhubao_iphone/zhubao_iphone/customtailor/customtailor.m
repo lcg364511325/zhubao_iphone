@@ -171,6 +171,7 @@
     entity.photob=pic3;
     entity.pgoldtype=pgoldtypett;
     
+    entity.pcount=@"1";
     entity.pweight=weightText.text;
     entity.Dia_Z_weight=mainweiText.text;
     entity.Dia_Z_count=maincountText.text;
