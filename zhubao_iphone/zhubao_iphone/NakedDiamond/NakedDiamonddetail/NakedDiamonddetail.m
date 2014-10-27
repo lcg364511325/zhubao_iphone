@@ -81,7 +81,13 @@
     logoimg.image=[UIImage imageNamed:[modeltype objectAtIndex:1]];
     modelLabel.text=[NSString stringWithFormat:@"形状：%@",[modeltype objectAtIndex:0]];
     noLabel.text=[NSString stringWithFormat:@"编号：%@",[nakeddiamond objectAtIndex:2]];
-    heightLabel.text=[NSString stringWithFormat:@"钻重：%@",[nakeddiamond objectAtIndex:3]];
+    
+    NSString * oweight=[nakeddiamond objectAtIndex:3];
+    double sds=[oweight doubleValue];
+    if(!sds || sds<1){
+        oweight=[NSString stringWithFormat:@"0%@",oweight];
+    }
+    heightLabel.text=[NSString stringWithFormat:@"钻重：%@",oweight];
     colorLabel.text=[NSString stringWithFormat:@"颜色：%@",[nakeddiamond objectAtIndex:5]];
     netLabel.text=[NSString stringWithFormat:@"净度：%@",[nakeddiamond objectAtIndex:4]];
     cutLabel.text=[NSString stringWithFormat:@"切工：%@",[nakeddiamond objectAtIndex:6]];
@@ -112,7 +118,13 @@
     entity.pname=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:2]];
     entity.Dia_Z_weight=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:9]];
     entity.photos=[NSString stringWithFormat:@"证书：%@  编号：%@",[nakeddiamond objectAtIndex:1],[nakeddiamond objectAtIndex:2]];
-    entity.photom=[NSString stringWithFormat:@"钻重：%@  颜色：%@  净度：%@",[nakeddiamond objectAtIndex:3],[nakeddiamond objectAtIndex:5],[nakeddiamond objectAtIndex:4]];
+    
+    NSString * oweight=[nakeddiamond objectAtIndex:3];
+    double sds=[oweight doubleValue];
+    if(!sds || sds<1){
+        oweight=[NSString stringWithFormat:@"0%@",oweight];
+    }
+    entity.photom=[NSString stringWithFormat:@"钻重：%@  颜色：%@  净度：%@",oweight,[nakeddiamond objectAtIndex:5],[nakeddiamond objectAtIndex:4]];
     entity.photob=[NSString stringWithFormat:@"切工：%@  抛光：%@  对称：%@",[nakeddiamond objectAtIndex:6],[nakeddiamond objectAtIndex:7],[nakeddiamond objectAtIndex:8]];
     
     sql=[[sqlService alloc]init];

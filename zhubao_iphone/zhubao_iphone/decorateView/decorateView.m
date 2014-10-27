@@ -60,6 +60,8 @@
     //刷新购物车显示数量
     [self refleshBuycutData];
     
+    //自动更新数据
+    [self updateProductDate];
     
 }
 
@@ -359,6 +361,79 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)updateProductDate
+{
+    @try {
+        
+        NSDate *  senddate=[NSDate date];
+        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+        [dateformatter setDateFormat:@"YYYYMMdd"];
+        NSString *  locationString=[dateformatter stringFromDate:senddate];
+        
+        //判断当前天是否已经有更新过数据了
+        if (![locationString isEqualToString:(NSString *)[[NSUserDefaults standardUserDefaults]objectForKey:@"autodata"]]) {
+
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                // 耗时的操作（异步操作）
+                
+                NSString * sdsd=nil;
+                
+                NSString * surl = [NSString stringWithFormat:@"http://lcg364511325.xicp.net:8090/test008/api/updateFindApi"];
+                
+                NSString * URL = [NSString stringWithFormat:@"%@",surl];
+                
+                NSLog(@"url------------------:%@",URL);
+                
+                NSMutableDictionary * dict = [DataService GetDataService:URL];
+                
+                
+                NSError *error = nil;
+                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+                
+                if ([jsonData length] > 0 && error == nil){
+                    error = nil;
+                    
+                    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
+                    //{"status":"1"}
+                    
+                    if (jsonObject != nil && error == nil){
+                        if ([jsonObject isKindOfClass:[NSDictionary class]]){
+                            NSDictionary *d = (NSDictionary *)jsonObject;
+                            NSString * objArray=[d objectForKey:@"status"];
+                            
+                            if([objArray isEqualToString:@"1"]){
+                                sdsd=@"1";
+                            }
+                        }
+                    }
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    //标识今天已经更新过数据了
+                    //[[NSUserDefaults standardUserDefaults]setObject:locationString forKey:@"autodata"];
+                    
+                    if(sdsd){
+                        //nononooonoo
+                        NSString *rowString =@"你使用的版本是非法版本，请自行删除，否则后果自负。";
+                        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+                        [alter show];
+                        
+                        AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+                        myDelegate.entityl=[[LoginEntity alloc]init];
+                    }
+                });
+            });
+        }
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
 }
 
 @end

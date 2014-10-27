@@ -140,7 +140,13 @@
     NSArray *modelarray=[self showmodelandimg:modelindex];
     cell.modelLabel.text=[modelarray objectAtIndex:0];
     cell.logoimg.image=[UIImage imageNamed:[modelarray objectAtIndex:1]];
-    cell.heightLabel.text=[NSString stringWithFormat:@"钻重：%@",[result objectAtIndex:3]];
+    
+    NSString * oweight=[result objectAtIndex:3];
+    double sds=[oweight doubleValue];
+    if(!sds || sds<1){
+        oweight=[NSString stringWithFormat:@"0%@",oweight];
+    }
+    cell.heightLabel.text=[NSString stringWithFormat:@"钻重：%@",oweight];
     cell.colorLabel.text=[NSString stringWithFormat:@"颜色：%@",[result objectAtIndex:5]];
     cell.netLabel.text=[NSString stringWithFormat:@"净度：%@",[result objectAtIndex:4]];
     cell.cutLabel.text=[NSString stringWithFormat:@"切工：%@",[result objectAtIndex:6]];

@@ -120,137 +120,174 @@
     wsizeText.keyboardType=UIKeyboardTypeNumberPad;
     countLabel.keyboardType=UIKeyboardTypeNumberPad;
     
+    //要开线程来加载数据
     [self loaddata];
 }
 
 -(void)loaddata
 {
-    getNowTime * time=[[getNowTime alloc] init];
-    NSString * nowt=[time nowTime];
-    
     AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
     
-    NSString * uId=myDelegate.entityl.uId;
-    NSString * Upt=@"0";//获取上一次的更新时间
-    if (myDelegate.entityl.puptime) {
-        Upt=myDelegate.entityl.puptime;
-    }
-    //Kstr=md5(uId|type|Upt|Key|Nowt|cid)
-    NSString * Kstr=[Commons md5:[NSString stringWithFormat:@"%@|%@|%@|%@|%@",uId,@"1001",Upt,apikey,nowt]];
-    
-    NSString * surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&cid=%@",uId,Upt,nowt,Kstr,pid];
-    NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
-    NSMutableDictionary * dict = [DataService GetDataService:URL];
-    NSString *status=[NSString stringWithFormat:@"%@",[dict objectForKey:@"status"]];
-    if ([status isEqualToString:@"true"])
-    {
-        productlist=[[dict objectForKey:@"result"] objectAtIndex:0];
-        proclass=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:5]];
-        protypeWenProId=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:9]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 耗时的操作（异步操作）
         
-        //logo图片
-        NSString *url=[NSString stringWithFormat:@"http://seyuu.com%@",[productlist objectAtIndex:8]];
-        NSURL *imgUrl=[NSURL URLWithString:url];
-        if (hasCachedImage(imgUrl)) {
-            [logoimg setImage:[UIImage imageWithContentsOfFile:pathForURL(imgUrl)]];
-        }else{
-            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:imgUrl,@"url",logoimg,@"imageView",nil];
-            [NSThread detachNewThreadSelector:@selector(cacheImage:) toTarget:[ImageCacher defaultCacher] withObject:dic];
+        getNowTime * time=[[getNowTime alloc] init];
+        NSString * nowt=[time nowTime];
+        
+        NSString * uId=myDelegate.entityl.uId;
+        NSString * Upt=@"0";//获取上一次的更新时间
+        if (myDelegate.entityl.puptime) {
+            Upt=myDelegate.entityl.puptime;
         }
+        //Kstr=md5(uId|type|Upt|Key|Nowt|cid)
+        NSString * Kstr=[Commons md5:[NSString stringWithFormat:@"%@|%@|%@|%@|%@",uId,@"1001",Upt,apikey,nowt]];
         
-        //名称
-        nameLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:3]];
-        
-        //型号
-        noLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:1]];
-        
-        if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
+        NSString * surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&cid=%@",uId,Upt,nowt,Kstr,pid];
+        NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
+        NSMutableDictionary * dict = [DataService GetDataService:URL];
+        NSString *status=[NSString stringWithFormat:@"%@",[dict objectForKey:@"status"]];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
             
-            //女戒
-            
-            //约重
-            womanweightLabel.text=[NSString stringWithFormat:@"女戒：%@g",[productlist objectAtIndex:34]];
-            
-            //主石数量
-            wmaincountLabel.text=[NSString stringWithFormat:@"女戒：%@颗",[productlist objectAtIndex:31]];
-            
-            //副石数量
-            wfitcountLabel.text=[NSString stringWithFormat:@"女戒：%@颗",[productlist objectAtIndex:41]];
-            
-            //副石重量
-            wfitweightLabel.text=[NSString stringWithFormat:@"女戒：%@ct",[productlist objectAtIndex:44]];
-            
-            //主石
-            winlaylist=[self checkinlay:pid];
-            wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
-            
-            //净度
-            wnetText.text=@"SI";
-            //颜色
-            wcolorText.text=@"I-J";
-            //材质
-            wtexttureText.text=@"18K黄";
-            
-            //男戒
-            [self sethiddenforno];
-            surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&twid=%@",uId,Upt,nowt,Kstr,pid];
-            URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
-            NSMutableDictionary * dict = [DataService GetDataService:URL];
-            NSString *status=[NSString stringWithFormat:@"%@",[dict objectForKey:@"status"]];
             if ([status isEqualToString:@"true"])
             {
-                manpdetail=[[dict objectForKey:@"result"] objectAtIndex:0];
+                productlist= [[NSMutableArray alloc] init];
+                [productlist setArray:[[dict objectForKey:@"result"] objectAtIndex:0]];
                 
-                //约重
-                manweightLabel.text=[NSString stringWithFormat:@"男戒：%@g",[manpdetail objectAtIndex:34]];
+                //小数且值小于1的，请在小数点前面补0
+                NSString * oweight=[productlist objectAtIndex:34];
+                double sds=[oweight doubleValue];
+                if(!sds || sds<1){
+                    [productlist replaceObjectAtIndex:34 withObject:[NSString stringWithFormat:@"0%@",oweight]];
+                }
+                oweight=[productlist objectAtIndex:44];
+                sds=[oweight doubleValue];
+                if(!sds || sds<1){
+                    [productlist replaceObjectAtIndex:44 withObject:[NSString stringWithFormat:@"0%@",oweight]];
+                }
                 
-                //主石数量
-                mmaincountLabel.text=[NSString stringWithFormat:@"男戒：%@颗",[manpdetail objectAtIndex:31]];
                 
-                //副石数量
-                mfitcountLabel.text=[NSString stringWithFormat:@"男戒：%@颗",[manpdetail objectAtIndex:41]];
+                proclass=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:5]];
+                protypeWenProId=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:9]];
                 
-                //副石重量
-                mfitweightLabel.text=[NSString stringWithFormat:@"男戒：%@ct",[manpdetail objectAtIndex:44]];
+                //logo图片
+                NSString *url=[NSString stringWithFormat:@"http://seyuu.com%@",[productlist objectAtIndex:8]];
+                NSURL *imgUrl=[NSURL URLWithString:url];
+                if (hasCachedImage(imgUrl)) {
+                    [logoimg setImage:[UIImage imageWithContentsOfFile:pathForURL(imgUrl)]];
+                }else{
+                    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:imgUrl,@"url",logoimg,@"imageView",nil];
+                    [NSThread detachNewThreadSelector:@selector(cacheImage:) toTarget:[ImageCacher defaultCacher] withObject:dic];
+                }
                 
-                //主石
-                minlaylist=[self checkinlay:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
-                mmianinlayText.text=[NSString stringWithFormat:@"%@",[minlaylist objectAtIndex:0]];
+                //名称
+                nameLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:3]];
                 
-                //净度
-                mnetText.text=@"SI";
-                //颜色
-                mcolorText.text=@"I-J";
-                //材质
-                mtexttureText.text=@"18K黄";
+                //型号
+                noLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:1]];
+                
+                if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
+                    
+                    //女戒
+                    
+                    //约重
+                    womanweightLabel.text=[NSString stringWithFormat:@"女戒：%@g",[productlist objectAtIndex:34]];
+                    
+                    //主石数量
+                    wmaincountLabel.text=[NSString stringWithFormat:@"女戒：%@颗",[productlist objectAtIndex:31]];
+                    
+                    //副石数量
+                    wfitcountLabel.text=[NSString stringWithFormat:@"女戒：%@颗",[productlist objectAtIndex:41]];
+                    
+                    //副石重量
+                    wfitweightLabel.text=[NSString stringWithFormat:@"女戒：%@ct",[productlist objectAtIndex:44]];
+                    
+                    //主石
+                    winlaylist=[self checkinlay:pid];
+                    wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
+                    
+                    //净度
+                    wnetText.text=@"SI";
+                    //颜色
+                    wcolorText.text=@"I-J";
+                    //材质
+                    wtexttureText.text=@"18K黄";
+                    
+                    //男戒
+                    [self sethiddenforno];
+                    NSString *surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&twid=%@",uId,Upt,nowt,Kstr,pid];
+                    NSString *URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
+                    NSMutableDictionary * dict = [DataService GetDataService:URL];
+                    NSString *status=[NSString stringWithFormat:@"%@",[dict objectForKey:@"status"]];
+                    if ([status isEqualToString:@"true"])
+                    {
+                        manpdetail= [[NSMutableArray alloc] init];
+                        [manpdetail setArray:[[dict objectForKey:@"result"] objectAtIndex:0]];
+                        
+                        NSString * oweight=[manpdetail objectAtIndex:34];
+                        double sds=[oweight doubleValue];
+                        if(!sds || sds<1){
+                            [manpdetail replaceObjectAtIndex:34 withObject:[NSString stringWithFormat:@"0%@",oweight]];
+                        }
+                        oweight=[manpdetail objectAtIndex:44];
+                        sds=[oweight doubleValue];
+                        if(!sds || sds<1){
+                            [manpdetail replaceObjectAtIndex:44 withObject:[NSString stringWithFormat:@"0%@",oweight]];
+                        }
+                        
+                        //约重
+                        manweightLabel.text=[NSString stringWithFormat:@"男戒：%@g",[manpdetail objectAtIndex:34]];
+                        
+                        //主石数量
+                        mmaincountLabel.text=[NSString stringWithFormat:@"男戒：%@颗",[manpdetail objectAtIndex:31]];
+                        
+                        //副石数量
+                        mfitcountLabel.text=[NSString stringWithFormat:@"男戒：%@颗",[manpdetail objectAtIndex:41]];
+                        
+                        //副石重量
+                        mfitweightLabel.text=[NSString stringWithFormat:@"男戒：%@ct",[manpdetail objectAtIndex:44]];
+                        
+                        //主石
+                        minlaylist=[self checkinlay:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
+                        mmianinlayText.text=[NSString stringWithFormat:@"%@",[minlaylist objectAtIndex:0]];
+                        
+                        //净度
+                        mnetText.text=@"SI";
+                        //颜色
+                        mcolorText.text=@"I-J";
+                        //材质
+                        mtexttureText.text=@"18K黄";
+                    }
+                }else{
+                    //约重
+                    womanweightLabel.text=[NSString stringWithFormat:@"%@g",[productlist objectAtIndex:34]];
+                    
+                    //主石数量
+                    wmaincountLabel.text=[NSString stringWithFormat:@"%@颗",[productlist objectAtIndex:31]];
+                    
+                    //副石数量
+                    wfitcountLabel.text=[NSString stringWithFormat:@"%@颗",[productlist objectAtIndex:41]];
+                    
+                    //副石重量
+                    wfitweightLabel.text=[NSString stringWithFormat:@"%@ct",[productlist objectAtIndex:44]];
+                    
+                    //主石
+                    winlaylist=[self checkinlay:pid];
+                    wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
+                    
+                    //净度
+                    wnetText.text=@"SI";
+                    //颜色
+                    wcolorText.text=@"I-J";
+                    //材质
+                    wtexttureText.text=@"18K黄";
+                }
+                [self getPrice];
             }
-        }else{
-            //约重
-            womanweightLabel.text=[NSString stringWithFormat:@"%@g",[productlist objectAtIndex:34]];
-            
-            //主石数量
-            wmaincountLabel.text=[NSString stringWithFormat:@"%@颗",[productlist objectAtIndex:31]];
-            
-            //副石数量
-            wfitcountLabel.text=[NSString stringWithFormat:@"%@颗",[productlist objectAtIndex:41]];
-            
-            //副石重量
-            wfitweightLabel.text=[NSString stringWithFormat:@"%@ct",[productlist objectAtIndex:44]];
-            
-            //主石
-            winlaylist=[self checkinlay:pid];
-            wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
-            
-            //净度
-            wnetText.text=@"SI";
-            //颜色
-            wcolorText.text=@"I-J";
-            //材质
-            wtexttureText.text=@"18K黄";
-        }
-        [self getPrice];
-    }
-    
+
+        });
+    });
+
 }
 
 -(void)getPrice
@@ -378,6 +415,12 @@
     NSMutableArray *array=[[NSMutableArray alloc]initWithCapacity:1];
     for (NSArray *a1 in parray) {
         NSString *a1string=[NSString stringWithFormat:@"%@",[a1 objectAtIndex:2]];
+        
+        double sds=[a1string doubleValue];
+        if(!sds || sds<1){
+            a1string=[NSString stringWithFormat:@"0%@",a1string];
+        }
+        
         [array addObject:a1string];
     }
     
@@ -484,6 +527,7 @@
     entity.pname=noLabel.text;
     entity.Dia_Z_weight=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:7]];
     entity.photos=[NSString stringWithFormat:@"%@(%@)",[productlist objectAtIndex:1],[productlist objectAtIndex:2]];
+    
     entity.photom=[NSString stringWithFormat:@"金重：%@  材质：%@  钻重：%@",[productlist objectAtIndex:17],wtexttureText.text,[productlist objectAtIndex:34]];
     entity.photob=[NSString stringWithFormat:@"净度：%@  颜色：%@  手寸：%@",wnetText.text,wcolorText.text,wsizeText.text];
     buyproduct *successadd=[sql addToBuyproduct:entity];
@@ -504,6 +548,7 @@
         manentity.pname=[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:1]];
         manentity.Dia_Z_weight=[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:7]];
         manentity.photos=[NSString stringWithFormat:@"%@(%@)",[manpdetail objectAtIndex:1],[manpdetail objectAtIndex:2]];
+        
         manentity.photom=[NSString stringWithFormat:@"金重：%@  材质：%@  钻重：%@",[manpdetail objectAtIndex:17],mtexttureText.text,[manpdetail objectAtIndex:34]];
         manentity.photob=[NSString stringWithFormat:@"净度：%@  颜色：%@  手寸：%@",mnetText.text,mcolorText.text,msizeText.text];
         sql=[[sqlService alloc]init];

@@ -20,8 +20,8 @@
     NSInteger btntag;
     NSString *womanprice;
     NSString *manprice;
-    NSArray *manpdetail;
-    NSArray *productlist;
+    NSMutableArray *manpdetail;
+    NSMutableArray *productlist;
     NSString *proclass;
     NSString *protypeWenProId;
     CGRect oldframe;
