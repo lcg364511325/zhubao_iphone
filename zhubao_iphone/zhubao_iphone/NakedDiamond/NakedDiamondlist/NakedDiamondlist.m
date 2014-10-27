@@ -18,6 +18,8 @@
 
 @implementation NakedDiamondlist
 
+@synthesize clogoimg;
+@synthesize UINavigationBar;
 @synthesize condition;
 @synthesize nksrTView;
 @synthesize countLabel;
@@ -35,6 +37,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    clogoimg.frame=CGRectMake(clogoimg.frame.origin.x, clogoimg.frame.origin.y, 40, 20);
+    self.UINavigationBar.tintColor=[UIColor blackColor];
+#endif
     
     page=1;
     pagesize=10;
@@ -76,18 +83,57 @@
 -(void)getconditionvalue
 {
     modelvalue=[NSString stringWithFormat:@"%@",[condition objectForKey:@"modelvalue"]];
+    if (!modelvalue) {
+        modelvalue=@"";
+    }
     colorvalue=[NSString stringWithFormat:@"%@",[condition objectForKey:@"colorvalue"]];
+    if (!colorvalue) {
+        colorvalue=@"";
+    }
     netvalue=[NSString stringWithFormat:@"%@",[condition objectForKey:@"netvalue"]];
+    if (!netvalue) {
+        netvalue=@"";
+    }
     cutvalue=[NSString stringWithFormat:@"%@",[condition objectForKey:@"cutvalue"]];
+    if (!cutvalue) {
+        cutvalue=@"";
+    }
     chasingvalue=[NSString stringWithFormat:@"%@",[condition objectForKey:@"chasingvalue"]];
+    if (!chasingvalue) {
+        chasingvalue=@"";
+    }
     symmetryvalue=[NSString stringWithFormat:@"%@",[condition objectForKey:@"symmetryvalue"]];
+    if (!symmetryvalue) {
+        symmetryvalue=@"";
+    }
     fluorescencevalue=[NSString stringWithFormat:@"%@",[condition objectForKey:@"fluorescencevalue"]];
+    if (!fluorescencevalue) {
+        fluorescencevalue=@"";
+    }
     diplomavalue=[NSString stringWithFormat:@"%@",[condition objectForKey:@"diplomavalue"]];
+    if (!diplomavalue) {
+        diplomavalue=@"";
+    }
     novalue=[NSString stringWithFormat:@"%@",[condition objectForKey:@"no"]];
+    if ([novalue isEqualToString:@"(null)"]) {
+        novalue=@"";
+    }
     minheight=[NSString stringWithFormat:@"%@",[condition objectForKey:@"minheight"]];
+    if ([minheight isEqualToString:@"(null)"]) {
+        minheight=@"";
+    }
     maxheight=[NSString stringWithFormat:@"%@",[condition objectForKey:@"maxheight"]];
+    if ([maxheight isEqualToString:@"(null)"]) {
+        maxheight=@"";
+    }
     minprice=[NSString stringWithFormat:@"%@",[condition objectForKey:@"minprice"]];
+    if ([minprice isEqualToString:@"(null)"]) {
+        minprice=@"";
+    }
     maxprice=[NSString stringWithFormat:@"%@",[condition objectForKey:@"maxprice"]];
+    if ([maxprice isEqualToString:@"(null)"]) {
+        maxprice=@"";
+    }
 }
 
 -(void)loaddata

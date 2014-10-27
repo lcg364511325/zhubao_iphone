@@ -12,5 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *oldpassword;
 @property (weak, nonatomic) IBOutlet UITextField *newpassword;
 @property (weak, nonatomic) IBOutlet UITextField *checkpassword;
+@property (weak, nonatomic) IBOutlet UIImageView *clogoimg;
+@property (weak, nonatomic) IBOutlet UINavigationBar *UINavigationBar;
 
 @end

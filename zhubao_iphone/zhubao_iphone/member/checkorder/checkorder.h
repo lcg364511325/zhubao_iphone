@@ -12,5 +12,7 @@
 
 @property (retain,nonatomic) NSString *url;
 @property (weak, nonatomic) IBOutlet UIWebView *orderview;
+@property (weak, nonatomic) IBOutlet UIImageView *clogoimg;
+@property (weak, nonatomic) IBOutlet UINavigationBar *UINavigationBar;
 
 @end

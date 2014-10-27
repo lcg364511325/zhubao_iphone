@@ -19,6 +19,8 @@
 @property(nonatomic, retain) NSObject<UIViewPassValueDelegate> * delegate; //当前请求过来的对象
 
 
+@property (weak, nonatomic) IBOutlet UINavigationBar *UINavigationBar;
+@property (weak, nonatomic) IBOutlet UIImageView *clogoimg;
 @property (retain, nonatomic) NSString *btntag;
 @property (weak, nonatomic) IBOutlet UINavigationItem *UINavigationItem;
 @end

@@ -30,6 +30,7 @@
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象
 
 @property (weak, nonatomic) IBOutlet UIView *searchview;
+@property (weak, nonatomic) IBOutlet UIImageView *selectbgimg;
 @property (weak, nonatomic) IBOutlet UICollectionView *productCView;
 @property (weak, nonatomic) IBOutlet UIImageView *countimg;
 @property (weak, nonatomic) IBOutlet UILabel *countlabel;

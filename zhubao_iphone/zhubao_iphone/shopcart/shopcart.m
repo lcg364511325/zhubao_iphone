@@ -17,6 +17,8 @@
 
 @implementation shopcart
 
+@synthesize clogoimg;
+@synthesize UINavigationBar;
 @synthesize shopcartTView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,6 +38,11 @@
     [shopcartTView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]]];
     
     [self loaddata];
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    clogoimg.frame=CGRectMake(clogoimg.frame.origin.x, clogoimg.frame.origin.y, 40, 20);
+    self.UINavigationBar.tintColor=[UIColor blackColor];
+#endif
 }
 
 -(void)loaddata

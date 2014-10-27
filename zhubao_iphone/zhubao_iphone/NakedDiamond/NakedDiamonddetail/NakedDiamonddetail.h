@@ -15,6 +15,8 @@
 
 @property (retain,nonatomic)NSString *nid;
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象
+@property (weak, nonatomic) IBOutlet UIImageView *clogoimg;
+@property (weak, nonatomic) IBOutlet UINavigationBar *UINavigationBar;
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoimg;
 @property (weak, nonatomic) IBOutlet UILabel *modelLabel;

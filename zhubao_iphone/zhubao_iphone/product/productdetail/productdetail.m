@@ -36,12 +36,15 @@
 
 @implementation productdetail
 
+@synthesize UINavigationBar;
+@synthesize UINavigationItem;
 @synthesize pdSView;
 @synthesize pid;
 @synthesize pdetailView;
 @synthesize bgimg1;
 @synthesize bgimg2;
 @synthesize logoimg;
+@synthesize clogoimg;
 @synthesize nameLabel;
 @synthesize priceLabel;
 @synthesize noLabel;
@@ -300,12 +303,22 @@
             NSString *proprice=nil;
             productApi *priceApi=[[productApi alloc]init];
             womanprice=[priceApi getPrice:proclass goldType:wtexttureText.text goldWeight:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:17]] mDiaWeight:wmianinlayText.text mDiaColor:wcolorText.text mVVS:wnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:41]] proid:pid];
-            if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
+            
+            float womp=[womanprice floatValue];
+            if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"] && womp>0) {
                 priceApi=[[productApi alloc]init];
                 manprice=[priceApi getPrice:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:5]] goldType:mtexttureText.text goldWeight:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:17]] mDiaWeight:mmianinlayText.text mDiaColor:mcolorText.text mVVS:mnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:41]] proid:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
-                proprice=[NSString stringWithFormat:@"%f",womanprice.floatValue+manprice.floatValue];
-            }else{
+                
+                　float manp=[manprice floatValue];
+                if (manp>0) {
+                    proprice=[NSString stringWithFormat:@"%f",manp+womp];
+                }else{
+                    proprice=nil;
+                }
+            }else if(womp>0){
                 proprice=womanprice;
+            }else{
+                proprice=nil;
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
