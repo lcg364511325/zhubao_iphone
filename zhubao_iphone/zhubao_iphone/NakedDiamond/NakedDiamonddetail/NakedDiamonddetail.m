@@ -17,6 +17,8 @@
 
 @implementation NakedDiamonddetail
 
+@synthesize clogoimg;
+@synthesize UINavigationBar;
 @synthesize nid;
 @synthesize logoimg;
 @synthesize modelLabel;
@@ -47,6 +49,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    //公司logo适应
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    clogoimg.frame=CGRectMake(clogoimg.frame.origin.x, clogoimg.frame.origin.y, 40, 20);
+    self.UINavigationBar.tintColor=[UIColor blackColor];
+#endif
     
     //加载数据
     [self loaddata];

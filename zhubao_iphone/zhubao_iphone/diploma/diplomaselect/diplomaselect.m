@@ -109,14 +109,10 @@
         return;
     }
     
-    if([[NSString stringWithFormat:@"%@",noText.text] isEqualToString:@""]){
-        NSString *rowString =@"请输入证书编号！";
-        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alter show];
-        return;
-    }
-    if([[NSString stringWithFormat:@"%@",heightLabel.text] isEqualToString:@""]){
-        NSString *rowString =@"请输入钻石重量！";
+    NSString *nostr=[NSString stringWithFormat:@"%@",noText.text];
+    NSString *heightstr=[NSString stringWithFormat:@"%@",heightLabel.text];
+    if([nostr isEqualToString:@""] || [nostr isEqualToString:@"(null)"] || [heightstr isEqualToString:@""] || [heightstr isEqualToString:@"(null)"]){
+        NSString *rowString =@"内容不能为空";
         UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alter show];
         return;

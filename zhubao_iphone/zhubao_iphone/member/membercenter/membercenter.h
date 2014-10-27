@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomIOS7AlertView.h"
 
-@interface membercenter : UIViewController<CustomIOS7AlertViewDelegate>
+@interface membercenter : UIViewController
 {
     UITextField *password;
+    UIView *demoView;
+    UIView *shadow;
 }
 
 @end

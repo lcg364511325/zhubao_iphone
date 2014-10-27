@@ -16,6 +16,25 @@
 
 @end
 
+//解决scrollview无法响应view的touch事件
+@implementation UIScrollView (UITouchEvent)
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [[self nextResponder] touchesBegan:touches withEvent:event];
+    [super touchesBegan:touches withEvent:event];
+}
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    [[self nextResponder] touchesMoved:touches withEvent:event];
+    [super touchesMoved:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [[self nextResponder] touchesEnded:touches withEvent:event];
+    [super touchesEnded:touches withEvent:event];
+}
+
+@end
+
 @implementation productindex
 
 @synthesize searchview;
@@ -28,6 +47,7 @@
 @synthesize serieaText;
 @synthesize textrueText;
 @synthesize inlayText;
+@synthesize selectbgimg;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -119,6 +139,10 @@
         [productCView footerEndRefreshing];
     }];
     
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    searchview.frame=CGRectMake(searchview.frame.origin.x, searchview.frame.origin.y, searchview.frame.size.width, searchview.frame.size.height+35);
+#endif
+    
 }
 
 
@@ -171,6 +195,7 @@
         [hiddenbtn setImage:[UIImage imageNamed:@"checkbox_no_show"] forState:UIControlStateNormal];
         hidden=0;
     }
+    [productCView reloadData];
     
 }
 

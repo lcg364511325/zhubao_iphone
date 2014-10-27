@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UIButton *passwordbtn;
 @property (weak, nonatomic) IBOutlet UIImageView *logoshengyu;
+@property (weak, nonatomic) IBOutlet UIImageView *bgimg;
 
 - (IBAction)loginAction:(id)sender;
 

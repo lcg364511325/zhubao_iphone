@@ -17,6 +17,7 @@
 
 @synthesize passwordbtn;
 @synthesize logoshengyu;
+@synthesize bgimg;
 
 NSInteger i=0;
 
@@ -36,6 +37,10 @@ NSInteger i=0;
     
     //shengyu    222222   13428706220  111111
     [self.navigationController setNavigationBarHidden:YES];
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    bgimg.frame=CGRectMake(bgimg.frame.origin.x, bgimg.frame.origin.y+20, bgimg.frame.size.width, bgimg.frame.size.height);
+#endif
     
     //判断是否自动登录
     AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];

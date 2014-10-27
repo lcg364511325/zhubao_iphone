@@ -28,6 +28,8 @@
     NSString *maxprice;
 }
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象
+@property (weak, nonatomic) IBOutlet UIImageView *clogoimg;
+@property (weak, nonatomic) IBOutlet UINavigationBar *UINavigationBar;
 
 @property (retain,nonatomic) NSDictionary *condition;//裸钻查询参数
 @property (weak, nonatomic) IBOutlet UITableView *nksrTView;

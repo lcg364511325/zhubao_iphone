@@ -17,6 +17,7 @@
     CGRect tableviewframe;
     NSArray *list;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *clogoimg;
 @property (weak, nonatomic) IBOutlet UITextField *companyname;
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *userphone;
@@ -26,5 +27,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *addr;
 @property (weak, nonatomic) IBOutlet UITextField *division;
 @property (weak, nonatomic) IBOutlet UITableView *tview;
+@property (weak, nonatomic) IBOutlet UINavigationBar *UINavigationBar;
 
 @end

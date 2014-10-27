@@ -33,31 +33,54 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-
 //订单查看
-- (IBAction)pickerAction:(id)sender{
-    // Here we need to pass a full frame
-    CustomIOS7AlertView *alertView = [[CustomIOS7AlertView alloc] init];
+- (IBAction)createDemoView:(id)sender
+{
+    shadow=[[UIView alloc]initWithFrame:self.view.frame];
+    shadow.alpha=0.3;
     
-    // Add some custom content to the alert view
-    [alertView setContainerView:[self createDemoView]];
+    demoView = [[UIView alloc] initWithFrame:CGRectMake(50, 224, 220, 105)];
+    [demoView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]]];
+    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(75, 5, 220, 30)];
+    title.text=@"密码验证";
+    title.font=[UIFont systemFontOfSize:17.0f];
+    [title setTextColor:[UIColor colorWithRed:185/255.0f green:12/255.0f blue:20/255.0f alpha:1.0f]];
+    title.backgroundColor=[UIColor clearColor];
     
-    // Modify the parameters
-    [alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"确定", @"取消", nil]];
-    [alertView setDelegate:self];
+    password=[[UITextField alloc]initWithFrame:CGRectMake(13, 35, 200, 30)];
+    [password setBorderStyle:UITextBorderStyleBezel];
+    password.placeholder=@"请输入密码";
+    [password setBackground:[UIImage imageNamed:@"writetextbox"]];
+    password.secureTextEntry=YES;
+    password.font=[UIFont boldSystemFontOfSize:12.0f];
     
-    [alertView setUseMotionEffects:true];
+    UIButton *okbtn=[[UIButton alloc]initWithFrame:CGRectMake(13, 75, 60, 20)];
+    [okbtn setTitle:@"确定" forState:UIControlStateNormal];
+    [okbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    okbtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
+    okbtn.tag=1;
+    [okbtn addTarget:self action:@selector(lookfororder:) forControlEvents:UIControlEventTouchDown];
     
-    // And launch the dialog
-    [alertView show];
+    UIButton *cancelbtn=[[UIButton alloc]initWithFrame:CGRectMake(150, 75, 60, 20)];
+    [cancelbtn setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    cancelbtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
+    cancelbtn.tag=0;
+    [cancelbtn addTarget:self action:@selector(lookfororder:) forControlEvents:UIControlEventTouchDown];
+    
+    [demoView addSubview:password];
+    [demoView addSubview:title];
+    [demoView addSubview:okbtn];
+    [demoView addSubview:cancelbtn];
+    
+    [self.view addSubview:shadow];
+    [self.view addSubview:demoView];
 }
 
-- (void)customIOS7dialogButtonTouchUpInside: (CustomIOS7AlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex
+-(void)lookfororder:(UIButton *)btn
 {
+    NSInteger buttonIndex=btn.tag;
     if (buttonIndex==1) {
-        [alertView close];
-    }else if (buttonIndex==0)
-    {
         AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
         //当前时间
         getNowTime * time=[[getNowTime alloc] init];
@@ -70,10 +93,11 @@
             password.text=@"";
             NSString * Kstr=[Commons md5:[NSString stringWithFormat:@"%@|%@|%@|%@|%@|%@",myDelegate.entityl.uId,@"601",Upt,apikey,Nowt,orderid]];
             NSString * surl = [NSString stringWithFormat:@"%@/app/aiface.php?uId=%@&type=601&Upt=%@&Nowt=%@&Kstr=%@&ordid=%@",domainser,myDelegate.entityl.uId,Upt,Nowt,Kstr,orderid];
-            [alertView close];
             checkorder *_checkorder=[[checkorder alloc]init];
             _checkorder.url=surl;
             [self.navigationController pushViewController:_checkorder animated:NO];
+            [shadow removeFromSuperview];
+            [demoView removeFromSuperview];
             
         }else{
             password.text=nil;
@@ -81,29 +105,10 @@
             UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alter show];
         }
+    }else{
+        [shadow removeFromSuperview];
+        [demoView removeFromSuperview];
     }
-}
-
-//日历选择
-- (UIView *)createDemoView
-{
-    UIView *demoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 220, 70)];
-    [demoView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]]];
-    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(75, 5, 220, 30)];
-    title.text=@"密码验证";
-    title.font=[UIFont systemFontOfSize:17.0f];
-    [title setTextColor:[UIColor colorWithRed:185/255.0f green:12/255.0f blue:20/255.0f alpha:1.0f]];
-    
-    password=[[UITextField alloc]initWithFrame:CGRectMake(13, 35, 200, 30)];
-    [password setBorderStyle:UITextBorderStyleBezel];
-    password.placeholder=@"请输入密码";
-    [password setBackground:[UIImage imageNamed:@"writetextbox"]];
-    password.secureTextEntry=YES;
-    password.font=[UIFont boldSystemFontOfSize:12.0f];
-    
-    [demoView addSubview:password];
-    [demoView addSubview:title];
-    return demoView;
 }
 
 //修改会员资料
