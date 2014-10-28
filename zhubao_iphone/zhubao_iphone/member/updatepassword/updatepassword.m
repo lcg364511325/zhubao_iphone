@@ -18,8 +18,6 @@
 @synthesize oldpassword;
 @synthesize newpassword;
 @synthesize checkpassword;
-@synthesize clogoimg;
-@synthesize UINavigationBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,11 +32,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    clogoimg.frame=CGRectMake(clogoimg.frame.origin.x, clogoimg.frame.origin.y, 40, 20);
-    self.UINavigationBar.tintColor=[UIColor blackColor];
-#endif
 }
 
 //密码修改
@@ -89,6 +82,14 @@
         UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alter show];
     }
+}
+
+//点击tableview以外得地方关闭
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [oldpassword resignFirstResponder];
+    [newpassword resignFirstResponder];
+    [checkpassword resignFirstResponder];
 }
 
 -(IBAction)goback:(id)sender

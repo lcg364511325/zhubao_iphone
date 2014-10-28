@@ -29,8 +29,6 @@
 }
 
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象
-@property (weak, nonatomic) IBOutlet UINavigationBar *UINavigationBar;
-@property (weak, nonatomic) IBOutlet UINavigationItem *UINavigationItem;
 @property (weak, nonatomic) IBOutlet UIImageView *clogoimg;
 @property (nonatomic, strong) NSMutableArray *photos;
 

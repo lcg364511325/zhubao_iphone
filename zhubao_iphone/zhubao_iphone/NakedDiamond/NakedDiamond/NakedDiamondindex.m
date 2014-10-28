@@ -57,7 +57,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    btnarray=[[NSArray alloc]initWithObjects:modelButton,colorButton,netButton,cutButton,chasingButton,symmetryButton,fluorescenceButton,diplomaButton, nil];
+    for (UIButton *btn in btnarray) {
+        btn.titleLabel.numberOfLines=2;
+    }
     modelvalue=@"";
     colorvalue=@"";
     netvalue=@"";
@@ -67,11 +70,7 @@
     fluorescencevalue=@"";
     diplomavalue=@"";
     
-    noText.keyboardType=UIKeyboardTypeNumberPad;
-    minheight.keyboardType=UIKeyboardTypeNumberPad;
-    maxheight.keyboardType=UIKeyboardTypeNumberPad;
-    minprice.keyboardType=UIKeyboardTypeNumberPad;
-    maxprice.keyboardType=UIKeyboardTypeNumberPad;
+    noText.keyboardType=UIKeyboardTypeNumberPad;;
     
     isfirst=0;
     
@@ -156,8 +155,6 @@
         name=@"证书";
         diplomavalue=value;
     }
-    
-    btnarray=[[NSArray alloc]initWithObjects:modelButton,colorButton,netButton,cutButton,chasingButton,symmetryButton,fluorescenceButton,diplomaButton, nil];
     for (UIButton *btn in btnarray) {
         if (btn.tag==tagint) {
             [btn setTitle:[NSString stringWithFormat:@"%@：%@",name,key] forState:UIControlStateNormal];

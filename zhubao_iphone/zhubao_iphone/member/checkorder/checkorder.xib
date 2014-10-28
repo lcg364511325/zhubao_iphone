@@ -7,8 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="checkorder">
             <connections>
-                <outlet property="UINavigationBar" destination="Cly-y0-J6q" id="CYC-Hz-Le2"/>
-                <outlet property="clogoimg" destination="7Da-qN-3gr" id="QYy-Zu-GtE"/>
                 <outlet property="orderview" destination="Uee-C0-nuh" id="xNZ-Pm-Z2R"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -18,24 +16,45 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" id="Cly-y0-J6q">
+                <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8jC-qB-GRm">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <color key="tintColor" red="0.74898357780000002" green="0.58348394319999997" blue="0.29437198199999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <items>
-                        <navigationItem title="订单列表" id="sWf-6p-dYM">
-                            <barButtonItem key="leftBarButtonItem" image="return_icon.png" id="cRr-Un-Qbe">
-                                <connections>
-                                    <action selector="goback:" destination="-1" id="Urc-rs-3Fi"/>
-                                </connections>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plogo.png" id="7Da-qN-3gr">
-                    <rect key="frame" x="272" y="2" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="titlebg.png" id="9ao-qt-F46">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gAH-Gv-3qW">
+                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button" image="return_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="goback:" destination="-1" eventType="touchDown" id="4HY-tg-drZ"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="HWL-z1-zHH">
+                            <rect key="frame" x="43" y="7" width="1" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plogo.png" id="RgU-pg-qvS">
+                            <rect key="frame" x="278" y="7" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看订单" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kwK-fX-H7f">
+                            <rect key="frame" x="52" y="11" width="213" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </view>
                 <webView contentMode="scaleToFill" id="Uee-C0-nuh">
                     <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,5 +69,6 @@
     <resources>
         <image name="plogo.png" width="69" height="70"/>
         <image name="return_icon.png" width="45" height="45"/>
+        <image name="titlebg.png" width="1" height="75"/>
     </resources>
 </document>

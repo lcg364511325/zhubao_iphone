@@ -16,10 +16,11 @@
 
 @implementation NakedDiamondselecttype
 
-@synthesize UINavigationBar;
 @synthesize clogoimg;
 @synthesize btntag;
 @synthesize delegate;
+@synthesize submitButton;
+@synthesize titleLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,11 +41,12 @@
     
     [self loaddata];
     
-    //公司logo适应
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    clogoimg.frame=CGRectMake(clogoimg.frame.origin.x, clogoimg.frame.origin.y, 40, 20);
-    self.UINavigationBar.tintColor=[UIColor blackColor];
-#endif
+//    //公司logo适应
+//    
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
+//    {
+//        clogoimg.frame=CGRectMake(clogoimg.frame.origin.x, clogoimg.frame.origin.y, 40, 20);
+//    }
 }
 
 
@@ -56,45 +58,45 @@
     NSArray *value;
     NSInteger btnvalue=[btntag integerValue];
     if (btnvalue==0) {
-        self.UINavigationItem.title=@"形状";
+        titleLabel.text=@"形状";
         
         key=[[NSArray alloc] initWithObjects:@"圆形",@"公主方",@"祖母绿",@"雷蒂恩",@"椭圆形",@"橄榄形",@"枕形",@"梨形",@"心形",@"辐射形",nil];
         value=[[NSArray alloc] initWithObjects:@"RB",@"PE",@"EM",@"RD",@"OL",@"MQ",@"CU",@"PR",@"HT",@"ASH",nil];
         
     }else if(btnvalue==1)
     {
-        self.UINavigationItem.title=@"颜色";
+        titleLabel.text=@"颜色";
         
         value=key=[[NSArray alloc] initWithObjects:@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M", nil];
     }else if(btnvalue==2)
     {
-        self.UINavigationItem.title=@"净度";
+        titleLabel.text=@"净度";
         
         value=key=[[NSArray alloc] initWithObjects:@"FL",@"IF",@"VVS1",@"VVS2",@"VS1",@"VS2",@"SI1",@"SI2",@"I1",@"I2", nil];
     }else if(btnvalue==3)
     {
-        self.UINavigationItem.title=@"切工";
+        titleLabel.text=@"切工";
         
         value=key=[[NSArray alloc] initWithObjects:@"EX",@"VG",@"GD",@"Fair", nil];
     }else if(btnvalue==4)
     {
-        self.UINavigationItem.title=@"抛光";
+        titleLabel.text=@"抛光";
         
         value=key=[[NSArray alloc] initWithObjects:@"EX",@"VG",@"GD",@"Fair", nil];
     }else if(btnvalue==5)
     {
-        self.UINavigationItem.title=@"对称";
+        titleLabel.text=@"对称";
         
         value=key=[[NSArray alloc] initWithObjects:@"EX",@"VG",@"GD",@"Fair", nil];
     }else if(btnvalue==6)
     {
-        self.UINavigationItem.title=@"荧光";
+        titleLabel.text=@"荧光";
         
         key=[[NSArray alloc] initWithObjects:@"N",@"F",@"M",@"S",@"VS", nil];
         value=[[NSArray alloc] initWithObjects:@"Non,None",@"Fnt",@"Med",@"Stg,Sl",@"Vsl,Vst", nil];
     }else if(btnvalue==7)
     {
-        self.UINavigationItem.title=@"证书";
+        titleLabel.text=@"证书";
         
         key=[[NSArray alloc] initWithObjects:@"GIA",@"IGI",@"NGTC",@"HRD",@"EGL",@"Other", nil];
         value=[[NSArray alloc] initWithObjects:@"GIA",@"IGI",@"NGTC",@"HRD",@"EGL",@"", nil];
@@ -112,28 +114,64 @@
     NSInteger count=[namelist count];
     NSInteger line=0;
     NSInteger row=1;
-    for (int i=0; i<count; i++) {
-        NSDictionary *dict=[namelist objectAtIndex:i];
-        UIButton *btn;
-        if ((row=i%3)==0) {
-            line=i/3;
+    UIButton *btn;
+    UIImage *img;
+    if ([btntag intValue]!=0) {
+        for (int i=0; i<count; i++) {
+            NSDictionary *dict=[namelist objectAtIndex:i];
+            if ((row=i%3)==0) {
+                line=i/3;
+            }
+            if (row==0) {
+                btn=[[UIButton alloc]initWithFrame:CGRectMake(7, 61+50*line, 100, 30)];
+            }else if (row==1){
+                btn=[[UIButton alloc]initWithFrame:CGRectMake(110, 61+50*line, 100, 30)];
+            }else if (row==2)
+            {
+                btn=[[UIButton alloc]initWithFrame:CGRectMake(213, 61+50*line, 100, 30)];
+            }
+            [btn setTitle:[dict objectForKey:@"key"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(changgestate:) forControlEvents:UIControlEventTouchDown];
+            btn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+            btn.tag=i;
+            [self.view addSubview:btn];
+            
         }
-        if (row==0) {
-            btn=[[UIButton alloc]initWithFrame:CGRectMake(7, 61+50*line, 100, 30)];
-        }else if (row==1){
-            btn=[[UIButton alloc]initWithFrame:CGRectMake(110, 61+50*line, 100, 30)];
-        }else if (row==2)
-        {
-            btn=[[UIButton alloc]initWithFrame:CGRectMake(213, 61+50*line, 100, 30)];
-        }
-        [btn setTitle:[dict objectForKey:@"key"] forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(changgestate:) forControlEvents:UIControlEventTouchDown];
-        btn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
-        btn.tag=i;
-        [self.view addSubview:btn];
         
+        submitButton.frame=CGRectMake(submitButton.frame.origin.x, btn.frame.origin.y+40, submitButton.frame.size.width, submitButton.frame.size.height);
+        
+    }else{
+        for (int i=0; i<count; i++) {
+            NSDictionary *dict=[namelist objectAtIndex:i];
+            if ((row=i%2)==0) {
+                line=i/2;
+            }
+            if (row==0) {
+                btn=[[UIButton alloc]initWithFrame:CGRectMake(7, 61+50*line, 150, 50)];
+            }else if (row==1){
+                btn=[[UIButton alloc]initWithFrame:CGRectMake(160, 61+50*line, 150, 50)];
+            }
+            if (i==9) {
+                img=[UIImage imageNamed:@"diamond10"];
+            }else{
+                img=[UIImage imageNamed:[NSString stringWithFormat:@"diamond0%d",i+1]];
+            }
+            [btn setImage:[self scaleToSize:img :CGSizeMake(40, 40)] forState:UIControlStateNormal];
+            [btn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 110)];
+            [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 60)];
+            [btn setTitle:[dict objectForKey:@"key"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(changgestate:) forControlEvents:UIControlEventTouchDown];
+            btn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+            btn.tag=i;
+            [self.view addSubview:btn];
+            
+        }
+        
+        submitButton.frame=CGRectMake(submitButton.frame.origin.x, btn.frame.origin.y+60, submitButton.frame.size.width, submitButton.frame.size.height);
     }
 }
 
@@ -206,6 +244,25 @@
 -(IBAction)goback:(id)sender
 {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+//图片缩放
+- (UIImage *)scaleToSize:(UIImage *)image :(CGSize)newsize {
+    // 创建一个bitmap的context
+    // 并把它设置成为当前正在使用的context
+    UIGraphicsBeginImageContext(newsize);
+    
+    // 绘制改变大小的图片
+    [image drawInRect:CGRectMake(0, 0, newsize.width, newsize.height)];
+    
+    // 从当前context中创建一个改变大小后的图片
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+    
+    // 返回新的改变大小后的图片
+    return scaledImage;
 }
 
 - (void)didReceiveMemoryWarning

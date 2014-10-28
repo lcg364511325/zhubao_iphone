@@ -17,8 +17,6 @@
 
 @implementation shopcart
 
-@synthesize clogoimg;
-@synthesize UINavigationBar;
 @synthesize shopcartTView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,11 +36,6 @@
     [shopcartTView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]]];
     
     [self loaddata];
-    
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    clogoimg.frame=CGRectMake(clogoimg.frame.origin.x, clogoimg.frame.origin.y, 40, 20);
-    self.UINavigationBar.tintColor=[UIColor blackColor];
-#endif
 }
 
 -(void)loaddata
@@ -143,31 +136,40 @@
     }
     else if ([goods.producttype isEqualToString:@"9"])
     {
-        NSString *fullpath =goods.photos;
+        NSString *fullpath;
+        if ([self isnull:goods.photos]) {
+            fullpath =goods.photos;
+        }else if ([self isnull:goods.photob])
+        {
+            fullpath =goods.photob;
+        }else
+        {
+            fullpath =goods.photom;
+        }
         UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullpath];
         [cell.logoimg setImage:savedImage];
-        if (goods.pgoldtype) {
+        if ([self isnull:goods.pgoldtype]) {
             cell.fLabel.text=[@"材质:" stringByAppendingString:goods.pgoldtype];
         }
-        if (goods.pweight) {
+        if ([self isnull:goods.pweight]) {
             cell.fLabel.text=[cell.fLabel.text stringByAppendingString:[NSString stringWithFormat:@"  金重:%@g",goods.pweight]];
         }
-        if (goods.Dia_Z_weight) {
+        if ([self isnull:goods.Dia_Z_weight]) {
             cell.sLabel.text=[NSString stringWithFormat:@"主石重:%@Ct",goods.Dia_Z_weight];
         }
-        if (goods.Dia_Z_count) {
+        if ([self isnull:goods.Dia_Z_count]) {
             cell.sLabel.text=[cell.sLabel.text stringByAppendingString:[NSString stringWithFormat:@"  主石数:%@",goods.Dia_Z_count]];
         }
-        if (goods.Dia_F_weight) {
+        if ([self isnull:goods.Dia_F_weight]) {
             cell.sLabel.text=[cell.sLabel.text stringByAppendingString:[NSString stringWithFormat:@"  副石重:%@Ct",goods.Dia_F_weight]];
         }
-        if (goods.Dia_F_count) {
+        if ([self isnull:goods.Dia_F_count]) {
             cell.tLabel.text=[cell.tLabel.text stringByAppendingString:[NSString stringWithFormat:@"副石数:%@",goods.Dia_F_count]];
         }
-        if (goods.psize) {
+        if ([self isnull:goods.psize]) {
             cell.tLabel.text=[cell.tLabel.text stringByAppendingString:[NSString stringWithFormat:@"  手寸:%@",goods.psize]];
         }
-        if (goods.pdetail) {
+        if ([self isnull:goods.pdetail]) {
             cell.tLabel.text=[cell.tLabel.text stringByAppendingString:[NSString stringWithFormat:@"  刻字:%@",goods.pdetail]];
         }
         cell.countLabel.text=goods.pcount;
@@ -283,24 +285,34 @@
     UIButton* btn = (UIButton*)sender;
     UITableViewCell *cell = (UITableViewCell *)[[[btn superview] superview] superview];
     NSIndexPath *indexPath = [shopcartTView indexPathForCell:cell];
-    buyproduct *entity = [shoppingcartlist objectAtIndex:[indexPath row]];
-    sqlService * sql=[[sqlService alloc]init];
-    NSString *successdelete=[sql deleteBuyproduct:entity.Id];
-    if (successdelete) {
-        
-        [_mydelegate performSelector:@selector(refleshBuycutData)];
-        
-        [self loaddata];
-        [shopcartTView reloadData];
-        
-        NSString *rowString =@"删除成功！";
-        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alter show];
-        
-    }else{
-        NSString *rowString =@"删除失败！";
-        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alter show];
+    entity1 = [shoppingcartlist objectAtIndex:[indexPath row]];
+    NSString *rowString =@"是否删除该商品?";
+    UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alter show];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==1) {
+        sqlService * sql=[[sqlService alloc]init];
+        NSString *successdelete=[sql deleteBuyproduct:entity1.Id];
+        if (successdelete) {
+            
+            [_mydelegate performSelector:@selector(refleshBuycutData)];
+            
+            [self loaddata];
+            [shopcartTView reloadData];
+            
+            NSString *rowString =@"删除成功！";
+            UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alter show];
+            
+        }else{
+            NSString *rowString =@"删除失败！";
+            UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alter show];
+        }
     }
 }
 
@@ -324,6 +336,17 @@
 -(IBAction)goback:(id)sender
 {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+
+//判断是否为空
+-(BOOL)isnull:(NSString *)str
+{
+    if (str && ![str isEqualToString:@""] && ![str isEqualToString:@"(null)"]) {
+        return true;
+    }else{
+        return false;
+    }
 }
 
 

@@ -111,37 +111,37 @@
     
     NSString *nostr=[NSString stringWithFormat:@"%@",noText.text];
     NSString *heightstr=[NSString stringWithFormat:@"%@",heightLabel.text];
-    if([nostr isEqualToString:@""] || [nostr isEqualToString:@"(null)"] || [heightstr isEqualToString:@""] || [heightstr isEqualToString:@"(null)"]){
-        NSString *rowString =@"内容不能为空";
-        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alter show];
-        return;
-    }
+//    if([nostr isEqualToString:@""] || [nostr isEqualToString:@"(null)"] || [heightstr isEqualToString:@""] || [heightstr isEqualToString:@"(null)"]){
+//        NSString *rowString =@"内容不能为空";
+//        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//        [alter show];
+//        return;
+//    }
     
     if (diptype==0) {
-        url=[@"https://myapps.gia.edu/ReportCheckPortal/getReportData.do?&reportno=" stringByAppendingString:noText.text];
+        url=[@"https://myapps.gia.edu/ReportCheckPortal/getReportData.do?&reportno=" stringByAppendingString:nostr];
         url=[url stringByAppendingString:@"&weight="];
-        url=[url stringByAppendingString:heightLabel.text];
+        url=[url stringByAppendingString:heightstr];
     }else if (diptype==1){
-        url=[@"HTTP://seyuu.com/Unrelated/TurnTongtc.asp?reportno=" stringByAppendingString:noText.text];
+        url=[@"HTTP://seyuu.com/Unrelated/TurnTongtc.asp?reportno=" stringByAppendingString:nostr];
         url=[url stringByAppendingString:@"&weight="];
-        url=[url stringByAppendingString:heightLabel.text];
+        url=[url stringByAppendingString:heightstr];
     }else if (diptype==2){
-        url=[@"HTTP://seyuu.com/Unrelated/TurnToIGI.asp?reportno=" stringByAppendingString:noText.text];
+        url=[@"HTTP://seyuu.com/Unrelated/TurnToIGI.asp?reportno=" stringByAppendingString:nostr];
         url=[url stringByAppendingString:@"&weight="];
-        url=[url stringByAppendingString:heightLabel.text];
+        url=[url stringByAppendingString:heightstr];
     }else if (diptype==3){
-        url=[@"http://www.hrdantwerplink.be/?record_number=" stringByAppendingString:noText.text];
+        url=[@"http://www.hrdantwerplink.be/?record_number=" stringByAppendingString:nostr];
         url=[url stringByAppendingString:@"&weight="];
-        url=[url stringByAppendingString:heightLabel.text];
+        url=[url stringByAppendingString:heightstr];
         url=[url stringByAppendingString:@"&L="];
     }else if (diptype==4){
-        url=[@"http://agslab.com/reportTypes/dqr.php?StoneID=" stringByAppendingString:noText.text];
+        url=[@"http://agslab.com/reportTypes/dqr.php?StoneID=" stringByAppendingString:nostr];
         url=[url stringByAppendingString:@"&Weight="];
-        url=[url stringByAppendingString:heightLabel.text];
+        url=[url stringByAppendingString:heightstr];
         url=[url stringByAppendingString:@"&D=1"];
     }else if (diptype==5){
-        url=[@"http://www.eglusa.com/oresults/SearchPage3.php?st_num=" stringByAppendingString:noText.text];
+        url=[@"http://www.eglusa.com/oresults/SearchPage3.php?st_num=" stringByAppendingString:nostr];
     }
     diplomaWeb *_diplomaWeb=[[diplomaWeb alloc]init];
     _diplomaWeb.url=url;

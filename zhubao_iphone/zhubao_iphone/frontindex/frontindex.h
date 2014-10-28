@@ -10,4 +10,5 @@
 
 @interface frontindex : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *logoimg;
 @end

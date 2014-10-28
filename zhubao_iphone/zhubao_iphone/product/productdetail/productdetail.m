@@ -36,8 +36,6 @@
 
 @implementation productdetail
 
-@synthesize UINavigationBar;
-@synthesize UINavigationItem;
 @synthesize pdSView;
 @synthesize pid;
 @synthesize pdetailView;
@@ -187,7 +185,7 @@
                 nameLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:3]];
                 
                 //型号
-                noLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:1]];
+                noLabel.text=[NSString stringWithFormat:@"型号：%@",[productlist objectAtIndex:1]];
                 
                 if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
                     
@@ -290,6 +288,10 @@
 
         });
     });
+    
+    countLabel.text=@"1";
+    wsizeText.text=@"0";
+    msizeText.text=@"0";
 
 }
 
@@ -326,7 +328,7 @@
                 if (proprice) {
                     //pricelable.text=[@"¥" stringByAppendingString:proprice];
                     NSArray *price=[[NSString stringWithFormat:@"%@",proprice] componentsSeparatedByString:@"."];
-                    priceLabel.text=[NSString stringWithFormat:@"¥ %@",[price objectAtIndex:0]];
+                    priceLabel.text=[NSString stringWithFormat:@"售价：%@",[price objectAtIndex:0]];
                 }else{
                     priceLabel.text=@"暂无价格信息";
                 }
@@ -537,7 +539,7 @@
     entity.pweight=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:34]];
     entity.customerid=myDelegate.entityl.uId;
     entity.pprice=womanprice;
-    entity.pname=noLabel.text;
+    entity.pname=[productlist objectAtIndex:1];
     entity.Dia_Z_weight=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:7]];
     entity.photos=[NSString stringWithFormat:@"%@(%@)",[productlist objectAtIndex:1],[productlist objectAtIndex:2]];
     

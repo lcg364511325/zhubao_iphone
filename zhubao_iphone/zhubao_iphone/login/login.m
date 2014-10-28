@@ -38,9 +38,12 @@ NSInteger i=0;
     //shengyu    222222   13428706220  111111
     [self.navigationController setNavigationBarHidden:YES];
     
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    bgimg.frame=CGRectMake(bgimg.frame.origin.x, bgimg.frame.origin.y+20, bgimg.frame.size.width, bgimg.frame.size.height);
-#endif
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
+    {
+        bgimg.frame=CGRectMake(bgimg.frame.origin.x, bgimg.frame.origin.y, bgimg.frame.size.width, bgimg.frame.size.height+20);
+    }
+    
+    
     
     //判断是否自动登录
     AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
@@ -278,7 +281,7 @@ NSInteger i=0;
     float width=self.view.frame.size.width;
     float height=self.view.frame.size.height;
     CGRect rect=CGRectMake(0.0f,0.0f,width,height);//上移80个单位，按实际情况设置
-    if ([[[UIDevice currentDevice]systemVersion]floatValue] >= 7.0)
+    //if ([[[UIDevice currentDevice]systemVersion]floatValue] >= 7.0)
         //rect=CGRectMake(0.0f,60.0f,width,height);//上移80个单位，按实际情况设置
     self.view.frame=rect;
     [UIView commitAnimations];

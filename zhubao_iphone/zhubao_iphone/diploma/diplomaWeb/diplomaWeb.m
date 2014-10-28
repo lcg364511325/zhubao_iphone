@@ -16,8 +16,6 @@
 
 @synthesize dipWebview;
 @synthesize url;
-@synthesize clogoimg;
-@synthesize UINavigationBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,10 +30,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    clogoimg.frame=CGRectMake(clogoimg.frame.origin.x, clogoimg.frame.origin.y, 40, 20);
-    self.UINavigationBar.tintColor=[UIColor blackColor];
-#endif
     
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [dipWebview loadRequest:request];

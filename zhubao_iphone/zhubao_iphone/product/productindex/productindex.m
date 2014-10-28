@@ -99,7 +99,7 @@
     
     stylearray = [[NSArray alloc] initWithObjects:@"全部",@"女戒",@"男戒",@"对戒",@"吊坠",@"项链",@"手链",@"手镯",@"耳环",@"耳钉", nil];
     texturearray = [[NSArray alloc] initWithObjects:@"全部",@"18k黄",@"18K白",@"18K双色",@"18K玫瑰金",@"PT900",@"PT950",@"PD950", nil];
-    inlayarray = [[NSArray alloc] initWithObjects:@"全部",@"0.00-0.02",@"0.03-0.07",@"0.08-0.12",@"0.13-0.17",@"0/18-0.22",@"0.23-0.28",@"0.29-0.39",@"0.40",@"0.50",@"0.60",@"0.70",@"0.80",@"0.90",@"1克拉以上", nil];
+    inlayarray = [[NSArray alloc] initWithObjects:@"全部",@"0.00-0.02",@"0.03-0.07",@"0.08-0.12",@"0.13-0.17",@"0.18-0.22",@"0.23-0.28",@"0.29-0.39",@"0.40",@"0.50",@"0.60",@"0.70",@"0.80",@"0.90",@"1克拉以上", nil];
     seriearray = [[NSArray alloc] initWithObjects:@"全部",@"豪华系列",@"彩钻系列", nil];
     list=[[NSMutableArray alloc]initWithCapacity:1];
     pagesize=10;
@@ -139,9 +139,10 @@
         [productCView footerEndRefreshing];
     }];
     
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    searchview.frame=CGRectMake(searchview.frame.origin.x, searchview.frame.origin.y, searchview.frame.size.width, searchview.frame.size.height+35);
-#endif
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
+    {
+        searchview.frame=CGRectMake(searchview.frame.origin.x, searchview.frame.origin.y, searchview.frame.size.width, searchview.frame.size.height+50);
+    }
     
 }
 

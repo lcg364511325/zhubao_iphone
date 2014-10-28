@@ -11,8 +11,5 @@
 @interface diplomaWeb : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIWebView *dipWebview;
-
-@property (weak, nonatomic) IBOutlet UIImageView *clogoimg;
-@property (weak, nonatomic) IBOutlet UINavigationBar *UINavigationBar;
 @property (retain,nonatomic)NSString *url;
 @end

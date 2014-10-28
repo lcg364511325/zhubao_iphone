@@ -11,11 +11,7 @@
 @interface NakedDiamondsrCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *modelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *heightLabel;
-@property (weak, nonatomic) IBOutlet UILabel *colorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *netLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cutLabel;
-@property (weak, nonatomic) IBOutlet UILabel *chasingLabel;
-@property (weak, nonatomic) IBOutlet UILabel *symmetryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *logoimg;
 

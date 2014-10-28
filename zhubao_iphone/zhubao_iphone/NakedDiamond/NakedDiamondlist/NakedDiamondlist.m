@@ -18,8 +18,6 @@
 
 @implementation NakedDiamondlist
 
-@synthesize clogoimg;
-@synthesize UINavigationBar;
 @synthesize condition;
 @synthesize nksrTView;
 @synthesize countLabel;
@@ -37,11 +35,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    clogoimg.frame=CGRectMake(clogoimg.frame.origin.x, clogoimg.frame.origin.y, 40, 20);
-    self.UINavigationBar.tintColor=[UIColor blackColor];
-#endif
     
     page=1;
     pagesize=10;
@@ -192,12 +185,8 @@
     if(!sds || sds<1){
         oweight=[NSString stringWithFormat:@"0%@",oweight];
     }
-    cell.heightLabel.text=[NSString stringWithFormat:@"钻重：%@",oweight];
-    cell.colorLabel.text=[NSString stringWithFormat:@"颜色：%@",[result objectAtIndex:5]];
-    cell.netLabel.text=[NSString stringWithFormat:@"净度：%@",[result objectAtIndex:4]];
+    cell.heightLabel.text=[NSString stringWithFormat:@"钻重：%@ 颜色：%@ 净度：%@",oweight,[result objectAtIndex:5],[result objectAtIndex:4]];
     cell.cutLabel.text=[NSString stringWithFormat:@"切工：%@",[result objectAtIndex:6]];
-    cell.chasingLabel.text=[NSString stringWithFormat:@"抛光：%@",[result objectAtIndex:7]];
-    cell.symmetryLabel.text=[NSString stringWithFormat:@"对称：%@",[result objectAtIndex:8]];
     cell.priceLabel.text=[NSString stringWithFormat:@"¥%@",[result objectAtIndex:14]];
     
     return cell;
@@ -255,7 +244,7 @@
         imgname=@"diamond09";
     }
     else if ([modeltype isEqualToString:@"ASH"]){
-        name=@"镭射刑";
+        name=@"辐射形";
         imgname=@"diamond10";
     }
     NSArray *valuearray=[[NSArray alloc]initWithObjects:name,imgname, nil];

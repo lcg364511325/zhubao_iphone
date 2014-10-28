@@ -135,6 +135,9 @@
     fpicimg.image=[UIImage imageNamed:@"imagec"];
     spicimg.image=[UIImage imageNamed:@"imagef"];
     tpicimg.image=[UIImage imageNamed:@"imagez"];
+    pic1=nil;
+    pic2=nil;
+    pic3=nil;
 }
 
 
@@ -148,18 +151,7 @@
         return;
     }
     NSString * pgoldtypett=[NSString stringWithFormat:@"%@",texttureText.text];
-    if (!pgoldtypett || [pgoldtypett isEqualToString:@""]) {
-        NSString *rowString =@"请选择材质！";
-        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alter show];
-        return;
-    }
-    if ([texttureText.text isEqualToString:@""] || [weightText.text isEqualToString:@""] || [mainweiText.text isEqualToString:@""] || [maincountText.text isEqualToString:@""] || [fitweiText.text isEqualToString:@""] || [fitcountText.text isEqualToString:@""] || [sizeText.text isEqualToString:@""] || [fontText.text isEqualToString:@""]) {
-        NSString *rowString =@"内容不能为空！";
-        UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alter show];
-        return;
-    }
+    
     
     sqlService * sql=[[sqlService alloc] init];
     AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
@@ -230,23 +222,28 @@
     NSString *fullPath =nil;
     //记录文件
     
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
     if (pictag==0) {
-        [self saveImage:image withName:@"currentImage1.png"];
+        NSString *pic1name=[NSString stringWithFormat:@"%@1.png",timeSp];
+        [self saveImage:image withName:pic1name];
         
-        fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage1.png"];
+        fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:pic1name];
         pic1=fullPath;
     }
     else if (pictag==1)
     {
-        [self saveImage:image withName:@"currentImage2.png"];
+        NSString *pic2name=[NSString stringWithFormat:@"%@2.png",timeSp];
+        [self saveImage:image withName:pic2name];
         
-        fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage2.png"];
+        fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:pic2name];
         pic2=fullPath;
     }
     else if (pictag==2){
-        [self saveImage:image withName:@"currentImage3.png"];
         
-        fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage3.png"];
+        NSString *pic3name=[NSString stringWithFormat:@"%@3.png",timeSp];
+        [self saveImage:image withName:pic3name];
+        
+        fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:pic3name];
         pic3=fullPath;
     }
     
