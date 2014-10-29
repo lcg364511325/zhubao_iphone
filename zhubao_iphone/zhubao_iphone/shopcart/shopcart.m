@@ -175,6 +175,7 @@
         cell.countLabel.text=goods.pcount;
     }
     [cell.deleteButton addTarget:self action:@selector(deleteshoppingcartgoods:) forControlEvents:UIControlEventTouchUpInside];
+    cell.deleteButton.tag=[indexPath row];
     
     
     return cell;
@@ -283,9 +284,7 @@
 -(void)deleteshoppingcartgoods:(id)sender
 {
     UIButton* btn = (UIButton*)sender;
-    UITableViewCell *cell = (UITableViewCell *)[[[btn superview] superview] superview];
-    NSIndexPath *indexPath = [shopcartTView indexPathForCell:cell];
-    entity1 = [shoppingcartlist objectAtIndex:[indexPath row]];
+    entity1 = [shoppingcartlist objectAtIndex:btn.tag];
     NSString *rowString =@"是否删除该商品?";
     UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alter show];

@@ -37,7 +37,8 @@
 - (IBAction)createDemoView:(id)sender
 {
     shadow=[[UIView alloc]initWithFrame:self.view.frame];
-    shadow.alpha=0.8;
+    shadow.backgroundColor=[UIColor blackColor];
+    shadow.alpha=0.5;
     
     demoView = [[UIView alloc] initWithFrame:CGRectMake(50, 224, 220, 105)];
     [demoView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]]];

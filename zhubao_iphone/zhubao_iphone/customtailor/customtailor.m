@@ -193,7 +193,7 @@
     sheet = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"从相册选择", nil];
     
     sheet.tag = 255;
-    [sheet showInView:self.view];
+    [sheet showInView:[UIApplication sharedApplication].keyWindow];
     UIButton * btn=(UIButton *)sender;
     pictag=[btn tag];
 }
