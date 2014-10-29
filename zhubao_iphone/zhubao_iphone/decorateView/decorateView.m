@@ -108,6 +108,7 @@
     [buycountbtn setHidden:YES];
     [buycountbtn.titleLabel setFont:[UIFont systemFontOfSize:10.0f]];
     buycountbtn.tintColor=[UIColor whiteColor];
+    [buycountbtn addTarget:self action:@selector(shopcartshow) forControlEvents:UIControlEventTouchDown];
     [topview addSubview:buycountbtn];
     
     //设置按钮
