@@ -191,9 +191,6 @@
                     
                     //女戒
                     
-                    //约重
-                    womanweightLabel.text=[NSString stringWithFormat:@"女戒：%@g",[productlist objectAtIndex:34]];
-                    
                     //主石数量
                     wmaincountLabel.text=[NSString stringWithFormat:@"女戒：%@颗",[productlist objectAtIndex:31]];
                     
@@ -205,7 +202,12 @@
                     
                     //主石
                     winlaylist=[self checkinlay:pid];
-                    wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
+                    float wminlay=[[[winlaylist objectAtIndex:0] objectAtIndex:2] floatValue];
+                    wmianinlayText.text=[NSString stringWithFormat:@"%.2f",wminlay];
+                    
+                    //约重
+                    wmweight=[[[winlaylist objectAtIndex:0] objectAtIndex:3] floatValue];
+                    womanweightLabel.text=[NSString stringWithFormat:@"女戒：%.3fg",wmweight];
                     
                     //净度
                     wnetText.text=@"SI";
@@ -236,9 +238,6 @@
                             [manpdetail replaceObjectAtIndex:44 withObject:[NSString stringWithFormat:@"0%@",oweight]];
                         }
                         
-                        //约重
-                        manweightLabel.text=[NSString stringWithFormat:@"男戒：%@g",[manpdetail objectAtIndex:34]];
-                        
                         //主石数量
                         mmaincountLabel.text=[NSString stringWithFormat:@"男戒：%@颗",[manpdetail objectAtIndex:31]];
                         
@@ -250,7 +249,12 @@
                         
                         //主石
                         minlaylist=[self checkinlay:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
-                        mmianinlayText.text=[NSString stringWithFormat:@"%@",[minlaylist objectAtIndex:0]];
+                        float mminlay=[[[minlaylist objectAtIndex:0] objectAtIndex:2] floatValue];
+                        mmianinlayText.text=[NSString stringWithFormat:@"%.2f",mminlay];
+                        
+                        //约重
+                        mmweight=[[[minlaylist objectAtIndex:0] objectAtIndex:3] floatValue];
+                        manweightLabel.text=[NSString stringWithFormat:@"男戒：%.3fg",mmweight];
                         
                         //净度
                         mnetText.text=@"SI";
@@ -258,10 +262,11 @@
                         mcolorText.text=@"I-J";
                         //材质
                         mtexttureText.text=@"18K黄";
+                        
+                        
+                        [self getPrice:[NSString stringWithFormat:@"%.3f",wmweight] minlay:[NSString stringWithFormat:@"%.3f",mmweight]];
                     }
                 }else{
-                    //约重
-                    womanweightLabel.text=[NSString stringWithFormat:@"%@g",[productlist objectAtIndex:34]];
                     
                     //主石数量
                     wmaincountLabel.text=[NSString stringWithFormat:@"%@颗",[productlist objectAtIndex:31]];
@@ -274,7 +279,13 @@
                     
                     //主石
                     winlaylist=[self checkinlay:pid];
-                    wmianinlayText.text=[NSString stringWithFormat:@"%@",[winlaylist objectAtIndex:0]];
+                    float wminlay=[[[winlaylist objectAtIndex:0] objectAtIndex:2] floatValue];
+                    wmianinlayText.text=[NSString stringWithFormat:@"%.2f",wminlay];
+                    
+                    //约重
+                    wmweight=[[[winlaylist objectAtIndex:0] objectAtIndex:3] floatValue];
+                    womanweightLabel.text=[NSString stringWithFormat:@"%.3fg",wmweight];
+                    mmweight=0.000;
                     
                     //净度
                     wnetText.text=@"SI";
@@ -282,8 +293,9 @@
                     wcolorText.text=@"I-J";
                     //材质
                     wtexttureText.text=@"18K黄";
+                    
+                    [self getPrice:[NSString stringWithFormat:@"%.3f",wmweight] minlay:[NSString stringWithFormat:@"%.3f",mmweight]];
                 }
-                [self getPrice];
             }
 
         });
@@ -295,7 +307,7 @@
 
 }
 
--(void)getPrice
+-(void)getPrice:(NSString *)wweight minlay:(NSString *)mweight
 {
     @try {
         //可以在此加代码提示用户说正在加载数据中
@@ -304,12 +316,12 @@
             
             NSString *proprice=nil;
             productApi *priceApi=[[productApi alloc]init];
-            womanprice=[priceApi getPrice:proclass goldType:wtexttureText.text goldWeight:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:17]] mDiaWeight:wmianinlayText.text mDiaColor:wcolorText.text mVVS:wnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:41]] proid:pid];
+            womanprice=[priceApi getPrice:proclass goldType:wtexttureText.text goldWeight:wweight mDiaWeight:wmianinlayText.text mDiaColor:wcolorText.text mVVS:wnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[productlist objectAtIndex:41]] proid:pid];
             
             float womp=[womanprice floatValue];
             if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"] && womp>0) {
                 priceApi=[[productApi alloc]init];
-                manprice=[priceApi getPrice:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:5]] goldType:mtexttureText.text goldWeight:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:17]] mDiaWeight:mmianinlayText.text mDiaColor:mcolorText.text mVVS:mnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:41]] proid:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
+                manprice=[priceApi getPrice:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:5]] goldType:mtexttureText.text goldWeight:mweight mDiaWeight:mmianinlayText.text mDiaColor:mcolorText.text mVVS:mnetText.text sDiaWeight:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:44]] sCount:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:41]] proid:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
                 
                 　float manp=[manprice floatValue];
                 if (manp>0) {
@@ -427,19 +439,8 @@
     NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
     NSMutableDictionary * dict = [DataService GetDataService:URL];
     NSArray *parray=[dict objectForKey:@"result"];
-    NSMutableArray *array=[[NSMutableArray alloc]initWithCapacity:1];
-    for (NSArray *a1 in parray) {
-        NSString *a1string=[NSString stringWithFormat:@"%@",[a1 objectAtIndex:2]];
-        
-        double sds=[a1string doubleValue];
-        if(!sds || sds<1){
-            a1string=[NSString stringWithFormat:@"0%@",a1string];
-        }
-        
-        [array addObject:a1string];
-    }
     
-    return array;
+    return parray;
 }
 
 //初始化tableview数据
@@ -463,7 +464,12 @@
     }
     
     NSUInteger row = [indexPath row];
-    cell.textLabel.text = [list objectAtIndex:row];
+    if (btntag==0 || btntag==4) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%.2f",[[[list objectAtIndex:row] objectAtIndex:2] floatValue]];
+    }else{
+        cell.textLabel.text = [list objectAtIndex:row];
+    }
+    
     cell.textLabel.font=[UIFont boldSystemFontOfSize:12.0f];
     return cell;
 }
@@ -472,10 +478,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger row = [indexPath row];
-    NSString *rowstring = [NSString stringWithFormat:@"%@",[list objectAtIndex:row]];
+    NSString *rowstring;
+    if (btntag==0 || btntag==4) {
+        rowstring = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%.2f",[[[list objectAtIndex:row] objectAtIndex:2] floatValue]]];
+    }else{
+        rowstring = [NSString stringWithFormat:@"%@",[list objectAtIndex:row]];
+    }
     
     if (btntag==0) {
         wmianinlayText.text=rowstring;
+        wmweight=[[[list objectAtIndex:row] objectAtIndex:3] floatValue];
+        if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
+            womanweightLabel.text=[NSString stringWithFormat:@"女戒：%.3fg",wmweight];
+        }else{
+            womanweightLabel.text=[NSString stringWithFormat:@"%.3fg",wmweight];
+        }
     }else if (btntag==1)
     {
         wnetText.text=rowstring;
@@ -489,6 +506,8 @@
     }else if (btntag==4)
     {
         mmianinlayText.text=rowstring;
+        mmweight=[[[list objectAtIndex:row] objectAtIndex:3] floatValue];
+        manweightLabel.text=[NSString stringWithFormat:@"男戒：%.3fg",mmweight];
     }else if (btntag==5)
     {
         mnetText.text=rowstring;
@@ -501,7 +520,7 @@
     }
     TView.hidden=YES;
     
-    [self getPrice];
+    [self getPrice:[NSString stringWithFormat:@"%.3f",wmweight] minlay:[NSString stringWithFormat:@"%.3f",mmweight]];
 }
 
 //点击tableview以外的地方触发事件
@@ -536,14 +555,14 @@
     entity.pvvs=wnetText.text;
     entity.psize=wsizeText.text;
     entity.pgoldtype=wtexttureText.text;
-    entity.pweight=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:34]];
+    entity.pweight=[NSString stringWithFormat:@"%.3f",wmweight];
     entity.customerid=myDelegate.entityl.uId;
     entity.pprice=womanprice;
     entity.pname=[productlist objectAtIndex:1];
     entity.Dia_Z_weight=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:7]];
     entity.photos=[NSString stringWithFormat:@"%@(%@)",[productlist objectAtIndex:1],[productlist objectAtIndex:2]];
     
-    entity.photom=[NSString stringWithFormat:@"金重：%@  材质：%@  钻重：%@",[productlist objectAtIndex:17],wtexttureText.text,[productlist objectAtIndex:34]];
+    entity.photom=[NSString stringWithFormat:@"金重：%.3f  材质：%@  钻重：%@",wmweight,wtexttureText.text,[productlist objectAtIndex:34]];
     entity.photob=[NSString stringWithFormat:@"净度：%@  颜色：%@  手寸：%@",wnetText.text,wcolorText.text,wsizeText.text];
     buyproduct *successadd=[sql addToBuyproduct:entity];
     buyproduct *successaddman=[[buyproduct alloc]init];
@@ -557,14 +576,14 @@
         manentity.pvvs=mnetText.text;
         manentity.psize=msizeText.text;
         manentity.pgoldtype=mtexttureText.text;
-        manentity.pweight=[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:34]];
+        manentity.pweight=[NSString stringWithFormat:@"%.3f",mmweight];
         manentity.customerid=myDelegate.entityl.uId;
         manentity.pprice=manprice;
         manentity.pname=[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:1]];
         manentity.Dia_Z_weight=[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:7]];
         manentity.photos=[NSString stringWithFormat:@"%@(%@)",[manpdetail objectAtIndex:1],[manpdetail objectAtIndex:2]];
         
-        manentity.photom=[NSString stringWithFormat:@"金重：%@  材质：%@  钻重：%@",[manpdetail objectAtIndex:17],mtexttureText.text,[manpdetail objectAtIndex:34]];
+        manentity.photom=[NSString stringWithFormat:@"金重：%.3f  材质：%@  钻重：%@",mmweight,mtexttureText.text,[manpdetail objectAtIndex:34]];
         manentity.photob=[NSString stringWithFormat:@"净度：%@  颜色：%@  手寸：%@",mnetText.text,mcolorText.text,msizeText.text];
         sql=[[sqlService alloc]init];
         successaddman=[sql addToBuyproduct:manentity];

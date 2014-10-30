@@ -26,6 +26,8 @@
     NSString *protypeWenProId;
     CGRect oldframe;
     CGRect frame;
+    float wmweight;
+    float mmweight;
 }
 
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象
