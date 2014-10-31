@@ -117,8 +117,8 @@
     textturelist=[[NSArray alloc] initWithObjects:@"18k黄",@"18K白",@"18K双色",@"18K玫瑰金",@"PT900",@"PT950",@"PD950", nil];
     
     //限制数字键盘
-    msizeText.keyboardType=UIKeyboardTypeNumberPad;
-    wsizeText.keyboardType=UIKeyboardTypeNumberPad;
+    msizeText.keyboardType=UIKeyboardTypeDecimalPad;
+    wsizeText.keyboardType=UIKeyboardTypeDecimalPad;
     countLabel.keyboardType=UIKeyboardTypeNumberPad;
     
     //要开线程来加载数据

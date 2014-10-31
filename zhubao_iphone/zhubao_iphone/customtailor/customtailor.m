@@ -53,12 +53,12 @@
                   @"18K双色", @"18K玫瑰金", @"PT900", @"Pt950", @"PD950",nil];
     texttureText.text=@"18K黄";
     
-    weightText.keyboardType=UIKeyboardTypeNumberPad;
-    mainweiText.keyboardType=UIKeyboardTypeNumberPad;
-    maincountText.keyboardType=UIKeyboardTypeNumberPad;
-    fitweiText.keyboardType=UIKeyboardTypeNumberPad;
-    fitcountText.keyboardType=UIKeyboardTypeNumberPad;
-    sizeText.keyboardType=UIKeyboardTypeNumberPad;
+    weightText.keyboardType=UIKeyboardTypeDecimalPad;
+    mainweiText.keyboardType=UIKeyboardTypeDecimalPad;
+    maincountText.keyboardType=UIKeyboardTypeDecimalPad;
+    fitweiText.keyboardType=UIKeyboardTypeDecimalPad;
+    fitcountText.keyboardType=UIKeyboardTypeDecimalPad;
+    sizeText.keyboardType=UIKeyboardTypeDecimalPad;
 }
 
 // 材质下拉框

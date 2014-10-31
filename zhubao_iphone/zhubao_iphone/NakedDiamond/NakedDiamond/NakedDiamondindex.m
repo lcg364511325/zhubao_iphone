@@ -70,7 +70,11 @@
     fluorescencevalue=@"";
     diplomavalue=@"";
     
-    noText.keyboardType=UIKeyboardTypeNumberPad;;
+    noText.keyboardType=UIKeyboardTypeNumberPad;
+    minprice.keyboardType=UIKeyboardTypeDecimalPad;
+    maxprice.keyboardType=UIKeyboardTypeDecimalPad;
+    minheight.keyboardType=UIKeyboardTypeDecimalPad;
+    maxheight.keyboardType=UIKeyboardTypeDecimalPad;
     
     isfirst=0;
     
