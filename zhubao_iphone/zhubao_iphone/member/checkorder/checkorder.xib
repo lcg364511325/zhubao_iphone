@@ -68,7 +68,7 @@
     </objects>
     <resources>
         <image name="plogo.png" width="69" height="70"/>
-        <image name="return_icon.png" width="45" height="45"/>
+        <image name="return_icon.png" width="43" height="33"/>
         <image name="titlebg.png" width="1" height="75"/>
     </resources>
 </document>

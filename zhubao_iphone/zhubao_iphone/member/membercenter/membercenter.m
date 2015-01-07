@@ -41,34 +41,42 @@
     shadow.alpha=0.5;
     
     demoView = [[UIView alloc] initWithFrame:CGRectMake(50, 224, 220, 105)];
-    [demoView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]]];
-    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(75, 5, 220, 30)];
+    [demoView setBackgroundColor:[UIColor colorWithRed:234.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1.0f]];
+    
+    
+    UIImageView *bgimgview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 220, 35)];
+    [bgimgview setBackgroundColor:[UIColor colorWithRed:8.0f/255.0f green:46.0f/255.0f blue:85.0f/255.0f alpha:1.0f]];
+    
+    
+    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 220, 35)];
     title.text=@"密码验证";
+    title.textAlignment = NSTextAlignmentCenter;
     title.font=[UIFont systemFontOfSize:17.0f];
-    [title setTextColor:[UIColor colorWithRed:185/255.0f green:12/255.0f blue:20/255.0f alpha:1.0f]];
+    [title setTextColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f]];
     title.backgroundColor=[UIColor clearColor];
     
-    password=[[UITextField alloc]initWithFrame:CGRectMake(13, 35, 200, 30)];
+    password=[[UITextField alloc]initWithFrame:CGRectMake(13, 45, 200, 30)];
     [password setBorderStyle:UITextBorderStyleBezel];
     password.placeholder=@"请输入密码";
-    [password setBackground:[UIImage imageNamed:@"writetextbox"]];
+    [password setBackground:[UIImage imageNamed:@"textbox_midbg"]];
     password.secureTextEntry=YES;
     password.font=[UIFont boldSystemFontOfSize:12.0f];
     
     UIButton *okbtn=[[UIButton alloc]initWithFrame:CGRectMake(13, 75, 60, 20)];
     [okbtn setTitle:@"确定" forState:UIControlStateNormal];
-    [okbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [okbtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     okbtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
     okbtn.tag=1;
     [okbtn addTarget:self action:@selector(lookfororder:) forControlEvents:UIControlEventTouchDown];
     
     UIButton *cancelbtn=[[UIButton alloc]initWithFrame:CGRectMake(150, 75, 60, 20)];
     [cancelbtn setTitle:@"取消" forState:UIControlStateNormal];
-    [cancelbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [cancelbtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     cancelbtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
     cancelbtn.tag=0;
     [cancelbtn addTarget:self action:@selector(lookfororder:) forControlEvents:UIControlEventTouchDown];
     
+    [demoView addSubview:bgimgview];
     [demoView addSubview:password];
     [demoView addSubview:title];
     [demoView addSubview:okbtn];
