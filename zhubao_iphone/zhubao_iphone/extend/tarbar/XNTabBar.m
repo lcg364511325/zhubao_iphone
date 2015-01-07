@@ -21,6 +21,7 @@
 - (void)addButtonWithImage:(UIImage *)image selectedImage:(UIImage *)selectedImage {
     UIButton *btn = [[UIButton alloc] init];
     
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(10.0, 15.0, 10.0, 15.0)];
     [btn setImage:image forState:UIControlStateNormal];
     [btn setImage:selectedImage forState:UIControlStateSelected];
     

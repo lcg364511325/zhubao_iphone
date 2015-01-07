@@ -33,15 +33,14 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" background="categorybg.png" id="w8W-HP-5fB">
-                            <rect key="frame" x="60" y="172" width="240" height="35"/>
+                            <rect key="frame" x="23" y="172" width="277" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" background="categorybg.png" id="50C-IR-ifK">
-                            <rect key="frame" x="60" y="255" width="240" height="35"/>
+                            <rect key="frame" x="23" y="255" width="277" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
@@ -59,16 +58,8 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="useriocn.png" id="TDY-fi-vTZ">
-                            <rect key="frame" x="26" y="172" width="35" height="35"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lockiocn.png" id="rcB-ZY-f21">
-                            <rect key="frame" x="26" y="255" width="35" height="35"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pfZ-mP-s6M">
-                            <rect key="frame" x="26" y="298" width="35" height="35"/>
+                            <rect key="frame" x="31" y="303" width="25" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="forget.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -85,7 +76,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zvh-Ra-rIZ">
-                            <rect key="frame" x="26" y="340" width="274" height="30"/>
+                            <rect key="frame" x="23" y="337.5" width="277" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="登   录" backgroundImage="categorybg.png">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -105,10 +96,8 @@
     </objects>
     <resources>
         <image name="body_bg.png" width="684" height="757"/>
-        <image name="categorybg.png" width="653" height="57"/>
-        <image name="forget.png" width="77" height="77"/>
-        <image name="lockiocn.png" width="48" height="52"/>
+        <image name="categorybg.png" width="600" height="82"/>
+        <image name="forget.png" width="32" height="32"/>
         <image name="logoshengyu.png" width="898" height="247"/>
-        <image name="useriocn.png" width="52" height="52"/>
     </resources>
 </document>

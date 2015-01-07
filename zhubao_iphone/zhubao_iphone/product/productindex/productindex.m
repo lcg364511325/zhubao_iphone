@@ -37,17 +37,13 @@
 
 @implementation productindex
 
-@synthesize searchview;
 @synthesize productCView;
-@synthesize hiddenbtn;
-@synthesize countimg;
-@synthesize countlabel;
 @synthesize conditionTView;
 @synthesize styleText;
 @synthesize serieaText;
 @synthesize textrueText;
 @synthesize inlayText;
-@synthesize selectbgimg;
+@synthesize searchbox;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -111,17 +107,18 @@
     
     isfirst=0;
     
+    UILabel *searchfont = [ [UILabel alloc]initWithFrame:CGRectZero];
+    searchfont.textColor=[UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1];
+    searchfont.text = @"   产品款号:";
+    searchfont.font=[UIFont boldSystemFontOfSize:10.0f];
+    [searchfont sizeToFit];
+    searchfont.backgroundColor=[UIColor colorWithRed:234.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1];
+    searchbox.leftView=searchfont;
+    searchbox.leftViewMode = UITextFieldViewModeAlways;
+    
     //初始化数据
     [self loaddata:@"" Pmetrial:@"" Pxk:@"" Pxilie:@"" twid:@"" MaxPerPage:10
 ];
-    NSInteger count=[list count];
-    if(count==0)
-    {
-        countlabel.text=@"共有首饰0件";
-    }else
-    {
-        countlabel.text=[NSString stringWithFormat:@"共有首饰%@件",[[list objectAtIndex:0] objectAtIndex:8]];
-    }
     
     //上拉刷新下拉加载提示
     [productCView addHeaderWithCallback:^{
@@ -138,11 +135,7 @@
         [productCView reloadData];
         [productCView footerEndRefreshing];
     }];
-    
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
-    {
-        searchview.frame=CGRectMake(searchview.frame.origin.x, searchview.frame.origin.y, searchview.frame.size.width, searchview.frame.size.height+50);
-    }
+
     
 }
 
@@ -176,30 +169,6 @@
     
 }
 
-
-//显示（隐藏）搜索条件栏
--(IBAction)sethiddenvalue:(id)sender
-{
-    if (hidden==0) {
-        searchview.hidden=YES;
-        countimg.frame=countlabel.frame=CGRectMake(countimg.frame.origin.x, 40, countimg.frame.size.width, countimg.frame.size.height);
-        hiddenbtn.frame=CGRectMake(hiddenbtn.frame.origin.x, 39, hiddenbtn.frame.size.width, hiddenbtn.frame.size.height);
-        productCView.frame=CGRectMake(productCView.frame.origin.x, 75, productCView.frame.size.width,self.view.frame.size.height-115);
-        [hiddenbtn setImage:[UIImage imageNamed:@"checkbox_show"] forState:UIControlStateNormal];
-        hidden=1;
-    }else
-    {
-        searchview.hidden=NO;
-        countimg.frame=countlabel.frame=CGRectMake(countimg.frame.origin.x, 129, countimg.frame.size.width, countimg.frame.size.height);
-        hiddenbtn.frame=CGRectMake(hiddenbtn.frame.origin.x, 129, hiddenbtn.frame.size.width, hiddenbtn.frame.size.height);
-        productCView.frame=CGRectMake(productCView.frame.origin.x, 163, productCView.frame.size.width,341);
-        [hiddenbtn setImage:[UIImage imageNamed:@"checkbox_no_show"] forState:UIControlStateNormal];
-        hidden=0;
-    }
-    [productCView reloadData];
-    
-}
-
 //显示条件下拉框
 -(IBAction)showcondition:(id)sender
 {
@@ -207,19 +176,19 @@
     btntag=btn.tag;
     if (btntag==0) {
         conditionlist=stylearray;
-        conditionTView.frame=CGRectMake(50, 75, 107, 320);
+        conditionTView.frame=CGRectMake(5, 75, 80, 320);
     }else if (btntag==1)
     {
         conditionlist=seriearray;
-        conditionTView.frame=CGRectMake(50, 115, 107, 130);
+        conditionTView.frame=CGRectMake(160, 75, 80, 130);
     }else if (btntag==2)
     {
         conditionlist=texturearray;
-        conditionTView.frame=CGRectMake(203, 75, 107, 320);
+        conditionTView.frame=CGRectMake(80, 75, 80, 320);
     }else if (btntag==3)
     {
         conditionlist=inlayarray;
-        conditionTView.frame=CGRectMake(203, 115, 107, 320);
+        conditionTView.frame=CGRectMake(235, 75, 80, 320);
     }
     conditionTView.hidden=NO;
     [conditionTView reloadData];
@@ -248,6 +217,7 @@
     NSUInteger row = [indexPath row];
     cell.textLabel.text = [conditionlist objectAtIndex:row];
     cell.textLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+    cell.textLabel.textColor=[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1];
     return cell;
 }
 
@@ -336,14 +306,6 @@
     page=1;
     [self loaddata:styleindex Pmetrial:textrueindex Pxk:inlayindex Pxilie:serieindex twid:@"" MaxPerPage:pagesize];
     [productCView reloadData];
-    NSInteger count=[list count];
-    if(count==0)
-    {
-        countlabel.text=@"共有首饰0件";
-    }else
-    {
-        countlabel.text=[NSString stringWithFormat:@"共有首饰%@件",[[list objectAtIndex:0] objectAtIndex:8]];
-    }
     
 }
 
@@ -356,6 +318,8 @@
         //to-do
         conditionTView.hidden=YES;
     }
+    
+    [searchbox resignFirstResponder];
 }
 
 //搜索结果数目

@@ -42,7 +42,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logoimg;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *noLabel;
 @property (weak, nonatomic) IBOutlet UITableView *TView;
 
 //女戒

@@ -99,7 +99,7 @@
     sizeLabel.text=[NSString stringWithFormat:@"尺寸：%@",[nakeddiamond objectAtIndex:12]];
     fluLabel.text=[NSString stringWithFormat:@"荧光：%@",[nakeddiamond objectAtIndex:13]];
     dipLabel.text=[NSString stringWithFormat:@"证书：%@",[nakeddiamond objectAtIndex:1]];
-    priceLabel.text=[NSString stringWithFormat:@"零售价：%@",[nakeddiamond objectAtIndex:14]];
+    priceLabel.text=[NSString stringWithFormat:@"%@",[nakeddiamond objectAtIndex:14]];
 }
 
 //加入购物车

@@ -29,15 +29,11 @@
 
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象
 
-@property (weak, nonatomic) IBOutlet UIView *searchview;
-@property (weak, nonatomic) IBOutlet UIImageView *selectbgimg;
+@property (weak, nonatomic) IBOutlet UITextField *searchbox;
 @property (weak, nonatomic) IBOutlet UICollectionView *productCView;
-@property (weak, nonatomic) IBOutlet UIImageView *countimg;
-@property (weak, nonatomic) IBOutlet UILabel *countlabel;
-@property (weak, nonatomic) IBOutlet UIButton *hiddenbtn;
 @property (weak, nonatomic) IBOutlet UITableView *conditionTView;
-@property (weak, nonatomic) IBOutlet UITextField *styleText;
-@property (weak, nonatomic) IBOutlet UITextField *serieaText;
-@property (weak, nonatomic) IBOutlet UITextField *textrueText;
-@property (weak, nonatomic) IBOutlet UITextField *inlayText;
+@property (weak, nonatomic) IBOutlet UILabel *styleText;
+@property (weak, nonatomic) IBOutlet UILabel *serieaText;
+@property (weak, nonatomic) IBOutlet UILabel *textrueText;
+@property (weak, nonatomic) IBOutlet UILabel *inlayText;
 @end

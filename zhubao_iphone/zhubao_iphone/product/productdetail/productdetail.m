@@ -45,7 +45,6 @@
 @synthesize clogoimg;
 @synthesize nameLabel;
 @synthesize priceLabel;
-@synthesize noLabel;
 @synthesize womanweightLabel;
 @synthesize TView;
 
@@ -182,10 +181,7 @@
                 }
                 
                 //名称
-                nameLabel.text=[NSString stringWithFormat:@"%@",[productlist objectAtIndex:3]];
-                
-                //型号
-                noLabel.text=[NSString stringWithFormat:@"型号：%@",[productlist objectAtIndex:1]];
+                nameLabel.text=[NSString stringWithFormat:@"%@  %@",[productlist objectAtIndex:3],[productlist objectAtIndex:1]];
                 
                 if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
                     
@@ -340,7 +336,7 @@
                 if (proprice) {
                     //pricelable.text=[@"¥" stringByAppendingString:proprice];
                     NSArray *price=[[NSString stringWithFormat:@"%@",proprice] componentsSeparatedByString:@"."];
-                    priceLabel.text=[NSString stringWithFormat:@"售价：%@",[price objectAtIndex:0]];
+                    priceLabel.text=[NSString stringWithFormat:@"¥%@",[price objectAtIndex:0]];
                 }else{
                     priceLabel.text=@"暂无价格信息";
                 }

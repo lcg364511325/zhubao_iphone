@@ -71,7 +71,7 @@
 //添加controller
 -(void)addcontroller
 {
-    frontindex *_frontindex=[[frontindex alloc]init];
+    membercenter *_membercenter=[[membercenter alloc]init];
     productindex *_productindex=[[productindex alloc]init];
     NakedDiamondindex *_NakedDiamondindex=[[NakedDiamondindex alloc]init];
     customtailor *_customtailor=[[customtailor alloc]init];
@@ -79,7 +79,7 @@
     _NakedDiamondindex.mydelegate=self;
     _productindex.mydelegate=self;
     _customtailor.mydelegate=self;
-    self.viewControllers=[NSArray arrayWithObjects:_frontindex,_productindex,_NakedDiamondindex,_customtailor,_diplomaselect, nil];
+    self.viewControllers=[NSArray arrayWithObjects:_productindex,_NakedDiamondindex,_customtailor,_diplomaselect,_membercenter, nil];
 }
 
 
@@ -89,15 +89,15 @@
     //菜单背景
     UIView *topview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
     UIImageView *topimg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
-    [topimg setImage:[UIImage imageNamed:@"menu_bg"]];
+    [topimg setBackgroundColor:[UIColor colorWithRed:8.0f/255.0f green:46.0f/255.0f blue:85.0f/255.0f alpha:1]];
     
     //logo图片
-    UIImageView *logoimg=[[UIImageView alloc]initWithFrame:CGRectMake(36, 5, 30, 30)];
+    UIImageView *logoimg=[[UIImageView alloc]initWithFrame:CGRectMake(16, 5, 30, 30)];
     [logoimg setImage:[UIImage imageNamed:@"plogo"]];
     [topview addSubview:logoimg];
     
     //购物车按钮
-    UIButton *buycartbtn=[[UIButton alloc]initWithFrame:CGRectMake(195, 7, 30, 25)];
+    UIButton *buycartbtn=[[UIButton alloc]initWithFrame:CGRectMake(240, 12, 24, 20)];
     [buycartbtn setImage:[UIImage imageNamed:@"shopping"] forState:UIControlStateNormal];
     [buycartbtn addTarget:self action:@selector(shopcartshow) forControlEvents:UIControlEventTouchDown];
     [topview addSubview:buycartbtn];
@@ -112,7 +112,7 @@
     [topview addSubview:buycountbtn];
     
     //设置按钮
-    UIButton *settingbtn=[[UIButton alloc]initWithFrame:CGRectMake(buycartbtn.frame.origin.x+50, 7, 25, 25)];
+    UIButton *settingbtn=[[UIButton alloc]initWithFrame:CGRectMake(buycartbtn.frame.origin.x+40, 12, 20, 20)];
     [settingbtn setImage:[UIImage imageNamed:@"set"] forState:UIControlStateNormal];
     [settingbtn addTarget:self action:@selector(settingviewshow) forControlEvents:UIControlEventTouchDown];
     [topview addSubview:settingbtn];
@@ -163,13 +163,13 @@
     NSUInteger count=self.viewControllers.count;
     UIImageView *bgimg=[[UIImageView alloc]initWithFrame:rect];
     [bgimg setImage:[UIImage imageNamed:@"footer_bg1"]];
-    for (int i=0; i<count-1; i++) {
-        UIImageView *lineimg=[[UIImageView alloc]init];
-        [lineimg setImage:[UIImage imageNamed:@"footer_line"]];
-        NSInteger width=self.view.frame.size.width/count;
-        lineimg.frame=CGRectMake(width*(i+1), 0, 2, 50);
-        [bgimg addSubview:lineimg];
-    }
+//    for (int i=0; i<count-1; i++) {
+//        UIImageView *lineimg=[[UIImageView alloc]init];
+//        [lineimg setImage:[UIImage imageNamed:@"footer_line"]];
+//        NSInteger width=self.view.frame.size.width/count;
+//        lineimg.frame=CGRectMake(width*(i+1), 0, 2, 50);
+//        [bgimg addSubview:lineimg];
+//    }
     [self.tabBar addSubview:bgimg];
     XNTabBar *myView = [[XNTabBar alloc] init]; //设置代理必须改掉前面的类型,不能用UIView
     myView.delegate = self; //设置代理

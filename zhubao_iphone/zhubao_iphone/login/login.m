@@ -44,6 +44,17 @@ NSInteger i=0;
     }
     
     
+    UIImageView *usericon=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"useriocn.png"]];
+    usericon.frame=CGRectMake(0, 0, 24, 26);
+    _account.leftView=usericon;
+    _account.leftViewMode = UITextFieldViewModeAlways;
+    
+    UIImageView *lockiocn=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lockiocn.png"]];
+    lockiocn.frame=CGRectMake(0, 0, 24, 26);
+    _password.leftView=lockiocn;
+    _password.leftViewMode = UITextFieldViewModeAlways;
+    
+    
     
     //判断是否自动登录
     AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
@@ -58,8 +69,8 @@ NSInteger i=0;
         [passwordbtn setImage:[UIImage imageNamed:@"remember"] forState:UIControlStateNormal];
         i=1;
     }else{
-        //_account.text=@"13428706220";
-        //_password.text=@"111111";
+        _account.text=@"13428706220";
+        _password.text=@"111111";
     }
     
        

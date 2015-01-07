@@ -58,45 +58,45 @@
     NSArray *value;
     NSInteger btnvalue=[btntag integerValue];
     if (btnvalue==0) {
-        titleLabel.text=@"形状";
+//        titleLabel.text=@"形状";
         
         key=[[NSArray alloc] initWithObjects:@"圆形",@"公主方",@"祖母绿",@"雷蒂恩",@"椭圆形",@"橄榄形",@"枕形",@"梨形",@"心形",@"辐射形",nil];
         value=[[NSArray alloc] initWithObjects:@"RB",@"PE",@"EM",@"RD",@"OL",@"MQ",@"CU",@"PR",@"HT",@"ASH",nil];
         
     }else if(btnvalue==1)
     {
-        titleLabel.text=@"颜色";
+//        titleLabel.text=@"颜色";
         
         value=key=[[NSArray alloc] initWithObjects:@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M", nil];
     }else if(btnvalue==2)
     {
-        titleLabel.text=@"净度";
+//        titleLabel.text=@"净度";
         
         value=key=[[NSArray alloc] initWithObjects:@"FL",@"IF",@"VVS1",@"VVS2",@"VS1",@"VS2",@"SI1",@"SI2",@"I1",@"I2", nil];
     }else if(btnvalue==3)
     {
-        titleLabel.text=@"切工";
+//        titleLabel.text=@"切工";
         
         value=key=[[NSArray alloc] initWithObjects:@"EX",@"VG",@"GD",@"Fair", nil];
     }else if(btnvalue==4)
     {
-        titleLabel.text=@"抛光";
+//        titleLabel.text=@"抛光";
         
         value=key=[[NSArray alloc] initWithObjects:@"EX",@"VG",@"GD",@"Fair", nil];
     }else if(btnvalue==5)
     {
-        titleLabel.text=@"对称";
+//        titleLabel.text=@"对称";
         
         value=key=[[NSArray alloc] initWithObjects:@"EX",@"VG",@"GD",@"Fair", nil];
     }else if(btnvalue==6)
     {
-        titleLabel.text=@"荧光";
+//        titleLabel.text=@"荧光";
         
         key=[[NSArray alloc] initWithObjects:@"N",@"F",@"M",@"S",@"VS", nil];
         value=[[NSArray alloc] initWithObjects:@"Non,None",@"Fnt",@"Med",@"Stg,Sl",@"Vsl,Vst", nil];
     }else if(btnvalue==7)
     {
-        titleLabel.text=@"证书";
+//        titleLabel.text=@"证书";
         
         key=[[NSArray alloc] initWithObjects:@"GIA",@"IGI",@"NGTC",@"HRD",@"EGL",@"Other", nil];
         value=[[NSArray alloc] initWithObjects:@"GIA",@"IGI",@"NGTC",@"HRD",@"EGL",@"", nil];
@@ -131,11 +131,18 @@
                 btn=[[UIButton alloc]initWithFrame:CGRectMake(213, 61+50*line, 100, 30)];
             }
             [btn setTitle:[dict objectForKey:@"key"] forState:UIControlStateNormal];
-            [btn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
+            [btn setBackgroundColor:[UIColor colorWithRed:234.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1]];
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(changgestate:) forControlEvents:UIControlEventTouchDown];
             btn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
             btn.tag=i;
+            
+            CALayer * downButtonLayer = [btn layer];
+            [downButtonLayer setMasksToBounds:YES];
+            [downButtonLayer setBorderWidth:1.0];
+            [downButtonLayer setBorderColor:[[UIColor colorWithRed:223.0f/255.0f green:223.0f/255.0f blue:223.0f/255.0f alpha:1] CGColor]];
+            [self.view insertSubview:btn atIndex:i];
+            
             [self.view addSubview:btn];
             
         }
@@ -149,24 +156,31 @@
                 line=i/2;
             }
             if (row==0) {
-                btn=[[UIButton alloc]initWithFrame:CGRectMake(7, 61+50*line, 150, 50)];
+                btn=[[UIButton alloc]initWithFrame:CGRectMake(0, 61+50*line, 160, 50)];
             }else if (row==1){
-                btn=[[UIButton alloc]initWithFrame:CGRectMake(160, 61+50*line, 150, 50)];
+                btn=[[UIButton alloc]initWithFrame:CGRectMake(160, 61+50*line, 160, 50)];
             }
             if (i==9) {
                 img=[UIImage imageNamed:@"diamond10"];
             }else{
                 img=[UIImage imageNamed:[NSString stringWithFormat:@"diamond0%d",i+1]];
             }
-            [btn setImage:[self scaleToSize:img :CGSizeMake(40, 40)] forState:UIControlStateNormal];
+            [btn setImage:[self scaleToSize:img :CGSizeMake(30, 30)] forState:UIControlStateNormal];
             [btn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 110)];
             [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 60)];
             [btn setTitle:[dict objectForKey:@"key"] forState:UIControlStateNormal];
-            [btn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
+            [btn setBackgroundColor:[UIColor colorWithRed:234.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1]];
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(changgestate:) forControlEvents:UIControlEventTouchDown];
             btn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
             btn.tag=i;
+            
+            CALayer * downButtonLayer = [btn layer];
+            [downButtonLayer setMasksToBounds:YES];
+            [downButtonLayer setBorderWidth:1.0];
+            [downButtonLayer setBorderColor:[[UIColor colorWithRed:223.0f/255.0f green:223.0f/255.0f blue:223.0f/255.0f alpha:1] CGColor]];
+            [self.view insertSubview:btn atIndex:i];
+            
             [self.view addSubview:btn];
             
         }
