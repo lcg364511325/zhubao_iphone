@@ -306,9 +306,9 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                if (womanprice) {
+                if (proprice) {
                     //pricelable.text=[@"¥" stringByAppendingString:proprice];
-                    NSArray *price=[[NSString stringWithFormat:@"%@",womanprice] componentsSeparatedByString:@"."];
+                    NSArray *price=[[NSString stringWithFormat:@"%@",proprice] componentsSeparatedByString:@"."];
                     priceLabel.text=[NSString stringWithFormat:@"¥%@",[price objectAtIndex:0]];
                 }else{
                     priceLabel.text=@"暂无价格信息";
