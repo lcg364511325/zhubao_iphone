@@ -34,6 +34,7 @@
 @property (nonatomic, retain) NSString * Dia_Z_count;//主石数量(高级定制)
 @property (nonatomic, retain) NSString * Dia_F_weight;//副石重	单位克拉(高级定制)
 @property (nonatomic, retain) NSString * Dia_F_count;//副石数量(高级定制)
+@property (nonatomic, retain) NSString * remark;//备注
 
 
 

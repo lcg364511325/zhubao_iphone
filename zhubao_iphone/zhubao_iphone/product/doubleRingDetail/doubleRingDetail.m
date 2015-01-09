@@ -528,6 +528,7 @@
         
         entity.photom=[NSString stringWithFormat:@"金重：%.3f  材质：%@  钻重：%@",wmweight,wtexttureText.text,[productlist objectAtIndex:34]];
         entity.photob=[NSString stringWithFormat:@"净度：%@  颜色：%@  手寸：%@",wnetText.text,wcolorText.text,wsizeText.text];
+        entity.remark=remarkText.text;
         buyproduct *successadd=[sql addToBuyproduct:entity];
         buyproduct *successaddman=[[buyproduct alloc]init];
         if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
@@ -549,6 +550,7 @@
             
             manentity.photom=[NSString stringWithFormat:@"金重：%.3f  材质：%@  钻重：%@",mmweight,mtexttureText.text,[manpdetail objectAtIndex:34]];
             manentity.photob=[NSString stringWithFormat:@"净度：%@  颜色：%@  手寸：%@",mnetText.text,mcolorText.text,msizeText.text];
+            manentity.remark=remarkText.text;
             sql=[[sqlService alloc]init];
             successaddman=[sql addToBuyproduct:manentity];
         }

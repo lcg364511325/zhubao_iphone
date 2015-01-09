@@ -1046,7 +1046,7 @@
         
         sqlite3_stmt *statement = nil;
         //sql语句
-        NSString *querySQL = [NSString stringWithFormat:@"SELECT buy.Id,buy.pcolor,buy.pcount,buy.pdetail,buy.psize,buy.pprice,buy.producttype,buy.pvvs,buy.pweight,buy.pgoldtype,buy.photos,buy.photom,buy.photob,buy.Dia_Z_weight,buy.Dia_Z_count,buy.Dia_F_weight,buy.Dia_F_count,buy.pname from buyproduct as buy where buy.customerid=%@ ",customerid];
+        NSString *querySQL = [NSString stringWithFormat:@"SELECT buy.Id,buy.pcolor,buy.pcount,buy.pdetail,buy.psize,buy.pprice,buy.producttype,buy.pvvs,buy.pweight,buy.pgoldtype,buy.photos,buy.photom,buy.photob,buy.Dia_Z_weight,buy.Dia_Z_count,buy.Dia_F_weight,buy.Dia_F_count,buy.pname,buy.remark from buyproduct as buy where buy.customerid=%@ ",customerid];
         
         const char *sql = [querySQL UTF8String];
         if (sqlite3_prepare_v2(_database, sql, -1, &statement, NULL) != SQLITE_OK) {
@@ -1138,6 +1138,10 @@
                 char * pname   = (char *)sqlite3_column_text(statement,17);
                 if(pname != nil)
                     entity.pname = [NSString stringWithUTF8String:pname];
+                
+                char * remark   = (char *)sqlite3_column_text(statement,18);
+                if(remark != nil)
+                    entity.remark = [NSString stringWithUTF8String:remark];
 
                 
                 [array addObject:entity];
@@ -1452,9 +1456,9 @@
         
         //NSString * timesd=[self getTimeNowOT];
         
-        NSString *tablekey=@"productid,pcolor,pcount,pdetail,psize,pprice,customerid,producttype,pvvs,pweight,pgoldtype,pname,photos,photom,photob,Dia_Z_weight,Dia_Z_count,Dia_F_weight,Dia_F_count";
+        NSString *tablekey=@"productid,pcolor,pcount,pdetail,psize,pprice,customerid,producttype,pvvs,pweight,pgoldtype,pname,photos,photom,photob,Dia_Z_weight,Dia_Z_count,Dia_F_weight,Dia_F_count,remark";
         
-        NSString * values =[NSString stringWithFormat:@"'%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@'",entity.productid,entity.pcolor,entity.pcount,entity.pdetail,entity.psize,entity.pprice,entity.customerid,entity.producttype,entity.pvvs,entity.pweight,entity.pgoldtype,entity.pname,entity.photos,entity.photom,entity.photob,entity.Dia_Z_weight,entity.Dia_Z_count,entity.Dia_F_weight,entity.Dia_F_count];
+        NSString * values =[NSString stringWithFormat:@"'%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@'",entity.productid,entity.pcolor,entity.pcount,entity.pdetail,entity.psize,entity.pprice,entity.customerid,entity.producttype,entity.pvvs,entity.pweight,entity.pgoldtype,entity.pname,entity.photos,entity.photom,entity.photob,entity.Dia_Z_weight,entity.Dia_Z_count,entity.Dia_F_weight,entity.Dia_F_count,entity.remark];
         
         NSString * sql=[NSString stringWithFormat:@"insert into [buyproduct](%@)values(%@);",tablekey,values];
         
@@ -1792,7 +1796,7 @@
         
         sqlite3_stmt *statement = nil;
         //sql语句
-        NSString *querySQL = [NSString stringWithFormat:@"SELECT Id,productid,pcolor,pcount,pdetail,psize,pprice,customerid,producttype,pvvs,pweight,pgoldtype,photos,photom,photob,pname,Dia_Z_weight,Dia_Z_count,Dia_F_weight,Dia_F_count from buyproduct where customerid=%@ ",customerid];
+        NSString *querySQL = [NSString stringWithFormat:@"SELECT Id,productid,pcolor,pcount,pdetail,psize,pprice,customerid,producttype,pvvs,pweight,pgoldtype,photos,photom,photob,pname,Dia_Z_weight,Dia_Z_count,Dia_F_weight,Dia_F_count,remark from buyproduct where customerid=%@ ",customerid];
         
         const char *sql = [querySQL UTF8String];
         if (sqlite3_prepare_v2(_database, sql, -1, &statement, NULL) != SQLITE_OK) {
@@ -1938,6 +1942,7 @@
                     //        8	nums	Int	1	数量
                     //        9	diaClar	String	“”	净度	2013/10/24新增
                     //        10	diaColor	String	“”	颜色	2013/10/24新增
+                    //        11 remark  备注
                     
                     if(CPInfocount>0)[CPInfo appendString:@","];
                     [CPInfo appendString:@"["];//商品数组
@@ -2006,6 +2011,12 @@
 //                    if(pcolor != nil && ![[NSString stringWithUTF8String:pcolor] isEqualToString:@"(null)"])
 //                        [CPInfo appendString:[NSString stringWithFormat:@",\"%@\"",[NSString stringWithUTF8String:pcolor]]];//商品数组
 //                    else
+                        [CPInfo appendString:@",\"\""];
+                    
+                    char * remark   = (char *)sqlite3_column_text(statement,20);//备注
+                    if(remark != nil && ![[NSString stringWithUTF8String:remark] isEqualToString:@"(null)"])
+                        [CPInfo appendString:[NSString stringWithFormat:@",\"%@\"",[NSString stringWithUTF8String:remark]]];//商品数组
+                    else
                         [CPInfo appendString:@",\"\""];
                     
                     [CPInfo appendString:@"]"];//商品数组

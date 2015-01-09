@@ -230,6 +230,9 @@
     NSUInteger row = [indexPath row];
     NSString *rowstring = [conditionlist objectAtIndex:row];
     if (btntag==0) {
+        if ([rowstring isEqualToString:@"全部"]) {
+            rowstring=@"款式";
+        }
         styleText.text=rowstring;
         if (row==0) {
             styleindex=@"";
@@ -239,6 +242,9 @@
         }
     }else if (btntag==1)
     {
+        if ([rowstring isEqualToString:@"全部"]) {
+            rowstring=@"系列";
+        }
         serieaText.text=rowstring;
         if (row==0) {
             serieindex=@"";
@@ -248,6 +254,9 @@
         }
     }else if (btntag==2)
     {
+        if ([rowstring isEqualToString:@"全部"]) {
+            rowstring=@"材质";
+        }
         textrueText.text=rowstring;
         if (row==0) {
             textrueindex=@"";
@@ -257,6 +266,9 @@
         }
     }else if (btntag==3)
     {
+        if ([rowstring isEqualToString:@"全部"]) {
+            rowstring=@"镶口";
+        }
         inlayText.text=rowstring;
         if (row==0) {
             inlayindex=@"";
@@ -339,7 +351,13 @@
     
     cell.nameLabel.text=[NSString stringWithFormat:@"%@",[productdetail objectAtIndex:1]];
     
-    NSString *url=[NSString stringWithFormat:@"http://seyuu.com%@",[productdetail objectAtIndex:4]];
+    NSInteger picurlindex=0;
+    if (![gid isEqualToString:@"0"]) {
+        picurlindex=7;
+    }else{
+        picurlindex=4;
+    }
+    NSString *url=[NSString stringWithFormat:@"http://seyuu.com%@",[productdetail objectAtIndex:picurlindex]];
     NSURL *imgUrl=[NSURL URLWithString:url];
     if (hasCachedImage(imgUrl)) {
         [cell.productimg setImage:[UIImage imageWithContentsOfFile:pathForURL(imgUrl)]];
@@ -356,8 +374,14 @@
 {
     
     NSArray *productdetailinfo = [list objectAtIndex:[indexPath row]];
+    NSString *isdouble=@"";
+    if (![gid isEqualToString:@"0"]) {
+        isdouble=[productdetailinfo objectAtIndex:5];
+    }else{
+        isdouble=[productdetailinfo objectAtIndex:3];
+    }
     
-    if ([[productdetailinfo objectAtIndex:3] isEqualToString:@"3"]) {
+    if ([isdouble isEqualToString:@"3"]) {
         
         doubleRingDetail *_doubleRingDetail=[[doubleRingDetail alloc]init];
         _doubleRingDetail.pid=[NSString stringWithFormat:@"%@",[productdetailinfo objectAtIndex:0]];

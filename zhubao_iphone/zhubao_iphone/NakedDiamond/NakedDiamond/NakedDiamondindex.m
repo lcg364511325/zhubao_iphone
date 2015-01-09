@@ -169,6 +169,32 @@
             diplomavalue=value;
         }
         key=name;
+    }else{
+        if (tagint==0) {
+            modelvalue=value;
+            
+        }else if(tagint==1)
+        {
+            colorvalue=value;
+        }else if(tagint==2)
+        {
+            netvalue=value;
+        }else if(tagint==3)
+        {
+            cutvalue=value;
+        }else if(tagint==4)
+        {
+            chasingvalue=value;
+        }else if(tagint==5)
+        {
+            symmetryvalue=value;
+        }else if(tagint==6)
+        {
+            fluorescencevalue=value;
+        }else if(tagint==7)
+        {
+            diplomavalue=value;
+        }
     }
     for (UIButton *btn in btnarray) {
         if (btn.tag==tagint) {

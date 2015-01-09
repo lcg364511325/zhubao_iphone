@@ -265,6 +265,9 @@
                     [oldbtn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
                 }
             }
+            [btn setBackgroundImage:[UIImage imageNamed:@"cateselected"] forState:UIControlStateNormal];
+            skey=[selectdata objectForKey:@"key"];
+            svalue=[selectdata objectForKey:@"value"];
         }
         
     }else{
