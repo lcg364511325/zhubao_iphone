@@ -132,46 +132,47 @@
 {
     NSInteger tagint=[tag integerValue];
     if (!key) {
-        key=@"全部";
-        value=@"";
-    }
-    NSString *name=@"";
-    if (tagint==0) {
-        name=@"形状";
-        modelvalue=value;
         
-    }else if(tagint==1)
-    {
-        name=@"颜色";
-        colorvalue=value;
-    }else if(tagint==2)
-    {
-        name=@"净度";
-        netvalue=value;
-    }else if(tagint==3)
-    {
-        name=@"切工";
-        cutvalue=value;
-    }else if(tagint==4)
-    {
-        name=@"抛光";
-        chasingvalue=value;
-    }else if(tagint==5)
-    {
-        name=@"对称";
-        symmetryvalue=value;
-    }else if(tagint==6)
-    {
-        name=@"荧光";
-        fluorescencevalue=value;
-    }else if(tagint==7)
-    {
-        name=@"证书";
-        diplomavalue=value;
+        value=@"";
+        NSString *name=@"";
+        if (tagint==0) {
+            name=@"形状";
+            modelvalue=value;
+            
+        }else if(tagint==1)
+        {
+            name=@"颜色";
+            colorvalue=value;
+        }else if(tagint==2)
+        {
+            name=@"净度";
+            netvalue=value;
+        }else if(tagint==3)
+        {
+            name=@"切工";
+            cutvalue=value;
+        }else if(tagint==4)
+        {
+            name=@"抛光";
+            chasingvalue=value;
+        }else if(tagint==5)
+        {
+            name=@"对称";
+            symmetryvalue=value;
+        }else if(tagint==6)
+        {
+            name=@"荧光";
+            fluorescencevalue=value;
+        }else if(tagint==7)
+        {
+            name=@"证书";
+            diplomavalue=value;
+        }
+        key=name;
     }
     for (UIButton *btn in btnarray) {
         if (btn.tag==tagint) {
-            [btn setTitle:[NSString stringWithFormat:@"%@：%@",name,key] forState:UIControlStateNormal];
+            [btn setTitle:[NSString stringWithFormat:@"%@",key] forState:UIControlStateNormal];
         }
     }
 }

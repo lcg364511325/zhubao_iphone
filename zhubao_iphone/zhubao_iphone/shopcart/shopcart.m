@@ -33,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [shopcartTView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]]];
+    [shopcartTView setBackgroundColor:[UIColor colorWithRed:234.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1]];
     
     [self loaddata];
 }
@@ -190,49 +190,57 @@
     hiview=[[UIView alloc]initWithFrame:self.view.frame];
     hiview.backgroundColor=[UIColor blackColor];
     hiview.alpha=0.5;
+    
+    
     demoView = [[UIView alloc] initWithFrame:CGRectMake(50, 230, 220, 100)];
-    [demoView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]]];
-    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(75, 5, 70, 30)];
+    [demoView setBackgroundColor:[UIColor colorWithRed:234.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1.0f]];
+    
+    UIImageView *bgimgview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 220, 35)];
+    [bgimgview setBackgroundColor:[UIColor colorWithRed:8.0f/255.0f green:46.0f/255.0f blue:85.0f/255.0f alpha:1.0f]];
+    
+    
+    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 70, 35)];
     title.text=@"商品数量";
     title.font=[UIFont systemFontOfSize:17.0f];
-    [title setTextColor:[UIColor colorWithRed:185/255.0f green:12/255.0f blue:20/255.0f alpha:1.0f]];
-    [title setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundcolor"]]];
+    [title setTextColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f]];
+    [title setBackgroundColor:[UIColor clearColor]];
     
-    UIButton *reducebtn=[[UIButton alloc]initWithFrame:CGRectMake(11, 35, 30, 30)];
+    UIButton *reducebtn=[[UIButton alloc]initWithFrame:CGRectMake(11, 45, 30, 30)];
     [reducebtn setTitle:@"-" forState:UIControlStateNormal];
-    [reducebtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [reducebtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     reducebtn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
     reducebtn.tag=0;
     [reducebtn addTarget:self action:@selector(changecount:) forControlEvents:UIControlEventTouchDown];
     
-    goodsno=[[UITextField alloc]initWithFrame:CGRectMake(35, 35, 150, 30)];
+    goodsno=[[UITextField alloc]initWithFrame:CGRectMake(35, 45, 150, 30)];
     [goodsno setBorderStyle:UITextBorderStyleBezel];
-    [goodsno setBackground:[UIImage imageNamed:@"writetextbox"]];
+    [goodsno setBackground:[UIImage imageNamed:@"textbox_midbg"]];
     goodsno.font=[UIFont boldSystemFontOfSize:12.0f];
     goodsno.text=goodnumber;
     goodsno.keyboardType=UIKeyboardTypeNumberPad;
     
-    UIButton *addbtn=[[UIButton alloc]initWithFrame:CGRectMake(181, 35, 30, 30)];
+    UIButton *addbtn=[[UIButton alloc]initWithFrame:CGRectMake(181, 45, 30, 30)];
     [addbtn setTitle:@"+" forState:UIControlStateNormal];
-    [addbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [addbtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     addbtn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
     addbtn.tag=1;
     [addbtn addTarget:self action:@selector(changecount:) forControlEvents:UIControlEventTouchDown];
     
-    UIButton *okbtn=[[UIButton alloc]initWithFrame:CGRectMake(41, 67, 30, 30)];
+    UIButton *okbtn=[[UIButton alloc]initWithFrame:CGRectMake(41, 70, 30, 30)];
     [okbtn setTitle:@"确定" forState:UIControlStateNormal];
-    [okbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [okbtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     okbtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
     okbtn.tag=1;
     [okbtn addTarget:self action:@selector(demoviewtarget:) forControlEvents:UIControlEventTouchDown];
     
-    UIButton *canclebtn=[[UIButton alloc]initWithFrame:CGRectMake(141, 67, 30, 30)];
+    UIButton *canclebtn=[[UIButton alloc]initWithFrame:CGRectMake(141, 70, 30, 30)];
     [canclebtn setTitle:@"取消" forState:UIControlStateNormal];
-    [canclebtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [canclebtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     canclebtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
     canclebtn.tag=0;
     [canclebtn addTarget:self action:@selector(demoviewtarget:) forControlEvents:UIControlEventTouchDown];
     
+    [demoView addSubview:bgimgview];
     [demoView addSubview:okbtn];
     [demoView addSubview:canclebtn];
     [demoView addSubview:addbtn];

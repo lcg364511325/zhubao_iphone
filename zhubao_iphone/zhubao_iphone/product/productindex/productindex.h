@@ -25,6 +25,7 @@
     NSString *serieindex;
     NSInteger btntag;
     NSInteger isfirst;
+    NSString *gid;
 }
 
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象
@@ -35,5 +36,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *styleText;
 @property (weak, nonatomic) IBOutlet UILabel *serieaText;
 @property (weak, nonatomic) IBOutlet UILabel *textrueText;
+@property (weak, nonatomic) IBOutlet UITextField *gidText;
 @property (weak, nonatomic) IBOutlet UILabel *inlayText;
 @end

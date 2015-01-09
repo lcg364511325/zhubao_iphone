@@ -14,6 +14,7 @@
     NSMutableString * skey;
     NSMutableString * svalue;
     NSMutableArray * namelist;
+    NSMutableArray * btnlist;
 }
 
 @property(nonatomic, retain) NSObject<UIViewPassValueDelegate> * delegate; //当前请求过来的对象

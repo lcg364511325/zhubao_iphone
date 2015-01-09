@@ -313,6 +313,8 @@
 		2C42EE1619C7DCD100BB4692 /* NakedDiamondsrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */; };
 		2C44651819D561C10089AC50 /* cateselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C44651719D561C10089AC50 /* cateselected.png */; };
 		2C4961ED19E2922A001AE063 /* plogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4961EC19E2922A001AE063 /* plogo.png */; };
+		2C49A8481A5E82CA005B8C5C /* doubleRingDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C49A8461A5E82CA005B8C5C /* doubleRingDetail.m */; };
+		2C49A8491A5E82CA005B8C5C /* doubleRingDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C49A8471A5E82CA005B8C5C /* doubleRingDetail.xib */; };
 		2C589FB119CC15D90062FC93 /* footer_bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C589FB019CC15D90062FC93 /* footer_bg1.png */; };
 		2C5B4A5819CAE43B000F269D /* zhubao.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2C5B4A5719CAE43B000F269D /* zhubao.sqlite */; };
 		2C5D1DE119CD1151005C1084 /* footer_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5D1DE019CD1151005C1084 /* footer_line.png */; };
@@ -794,6 +796,9 @@
 		2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NakedDiamondsrCell.xib; path = NakedDiamondsrCell/NakedDiamondsrCell.xib; sourceTree = "<group>"; };
 		2C44651719D561C10089AC50 /* cateselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cateselected.png; sourceTree = "<group>"; };
 		2C4961EC19E2922A001AE063 /* plogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plogo.png; sourceTree = "<group>"; };
+		2C49A8451A5E82CA005B8C5C /* doubleRingDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = doubleRingDetail.h; path = doubleRingDetail/doubleRingDetail.h; sourceTree = "<group>"; };
+		2C49A8461A5E82CA005B8C5C /* doubleRingDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = doubleRingDetail.m; path = doubleRingDetail/doubleRingDetail.m; sourceTree = "<group>"; };
+		2C49A8471A5E82CA005B8C5C /* doubleRingDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = doubleRingDetail.xib; path = doubleRingDetail/doubleRingDetail.xib; sourceTree = "<group>"; };
 		2C589FB019CC15D90062FC93 /* footer_bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = footer_bg1.png; sourceTree = "<group>"; };
 		2C5B4A5719CAE43B000F269D /* zhubao.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = zhubao.sqlite; sourceTree = SOURCE_ROOT; };
 		2C5D1DE019CD1151005C1084 /* footer_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = footer_line.png; sourceTree = "<group>"; };
@@ -1664,6 +1669,7 @@
 		2C42ECCB19C7D10B00BB4692 /* product */ = {
 			isa = PBXGroup;
 			children = (
+				2C49A84A1A5E82D1005B8C5C /* doubleRingDetail */,
 				2C42ECCC19C7D10B00BB4692 /* productdetail */,
 				2C42ECD019C7D10B00BB4692 /* productindex */,
 			);
@@ -1729,6 +1735,16 @@
 				2C42EE1419C7DCD100BB4692 /* NakedDiamondsrCell.xib */,
 			);
 			name = NakedDiamondsrCell;
+			sourceTree = "<group>";
+		};
+		2C49A84A1A5E82D1005B8C5C /* doubleRingDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2C49A8451A5E82CA005B8C5C /* doubleRingDetail.h */,
+				2C49A8461A5E82CA005B8C5C /* doubleRingDetail.m */,
+				2C49A8471A5E82CA005B8C5C /* doubleRingDetail.xib */,
+			);
+			name = doubleRingDetail;
 			sourceTree = "<group>";
 		};
 		2CF6C19119C8095C00A18793 /* NakedDiamonddetail */ = {
@@ -2042,6 +2058,7 @@
 				2C42ED3A19C7D10B00BB4692 /* Seq_v04_640x378_19.jpg in Resources */,
 				2C42ED6619C7D10B00BB4692 /* Seq_v04_640x378_59.jpg in Resources */,
 				2C42EDAB19C7D10B00BB4692 /* menu_bg.png in Resources */,
+				2C49A8491A5E82CA005B8C5C /* doubleRingDetail.xib in Resources */,
 				2C7F1DCA1A5BCA630064388F /* triangle_icon.png in Resources */,
 				2C7F1DD01A5BCDE00064388F /* searchiocn.png in Resources */,
 				2C42ED6819C7D10B00BB4692 /* Seq_v04_640x378_60.jpg in Resources */,
@@ -2247,6 +2264,7 @@
 				2C42ED2319C7D10B00BB4692 /* SDWebImageManager.m in Sources */,
 				2C42ED8219C7D10B00BB4692 /* ZipArchive.m in Sources */,
 				2C42ED0F19C7D10B00BB4692 /* PSTCollectionViewController.m in Sources */,
+				2C49A8481A5E82CA005B8C5C /* doubleRingDetail.m in Sources */,
 				2C42EDDB19C7D10B00BB4692 /* buyproduct.m in Sources */,
 				2C42EDE319C7D10B00BB4692 /* withmouth.m in Sources */,
 				2C42ED0119C7D10B00BB4692 /* MWCaptionView.m in Sources */,

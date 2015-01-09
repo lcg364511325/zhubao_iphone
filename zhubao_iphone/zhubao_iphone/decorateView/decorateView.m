@@ -103,7 +103,7 @@
     [topview addSubview:buycartbtn];
     
     //购物车数量显示
-    buycountbtn=[[UIButton alloc]initWithFrame:CGRectMake(buycartbtn.frame.origin.x+23, 5, 15, 15)];
+    buycountbtn=[[UIButton alloc]initWithFrame:CGRectMake(buycartbtn.frame.origin.x+19, 5, 15, 15)];
     [buycountbtn setBackgroundImage:[UIImage imageNamed:@"round"] forState:UIControlStateNormal];
     [buycountbtn setHidden:YES];
     [buycountbtn.titleLabel setFont:[UIFont systemFontOfSize:10.0f]];
@@ -119,27 +119,20 @@
     
     //设置按钮菜单
     hiddenview=[[UIView alloc]initWithFrame:self.view.frame];
-    settingview=[[UIView alloc]initWithFrame:CGRectMake(210, 40, 100, 90)];
-    UIImageView *settingimg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 90)];
+    settingview=[[UIView alloc]initWithFrame:CGRectMake(210, 40, 100, 60)];
+    UIImageView *settingimg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
     [settingimg setImage:[UIImage imageNamed:@"settingbg"]];
     //settingimg.hidden=YES;
     [settingview addSubview:settingimg];
     
-    UIButton *membercenterbtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 7, 80, 30)];
-    [membercenterbtn setTitle:@"会员中心" forState:UIControlStateNormal];
-    [membercenterbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    membercenterbtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
-    [membercenterbtn addTarget:self action:@selector(setmembercenter) forControlEvents:UIControlEventTouchDown];
-    [settingview addSubview:membercenterbtn];
-    
-    UIButton *versonupdatebtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 35, 80, 30)];
+    UIButton *versonupdatebtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 7, 80, 30)];
     [versonupdatebtn setTitle:@"版本更新" forState:UIControlStateNormal];
     [versonupdatebtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     versonupdatebtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
     [versonupdatebtn addTarget:self action:@selector(updateVerson) forControlEvents:UIControlEventTouchDown];
     [settingview addSubview:versonupdatebtn];
     
-    UIButton *logoutbtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 63, 80, 30)];
+    UIButton *logoutbtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 35, 80, 30)];
     [logoutbtn setTitle:@"退出登录" forState:UIControlStateNormal];
     [logoutbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     logoutbtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
@@ -243,44 +236,6 @@
     NSString *rowString =@"是否退出登录？";
     UIAlertView * alter = [[UIAlertView alloc] initWithTitle:@"提示" message:rowString delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alter show];
-}
-
-//会员中心
--(void)setmembercenter
-{
-    if (self.viewControllers.count!=1) {
-        membercenter *_membercenter=[[membercenter alloc]init];
-        self.viewControllers=[NSArray arrayWithObjects:_membercenter,nil];
-        [settingview removeFromSuperview];
-        [hiddenview removeFromSuperview];
-        
-        //测试添加自己的视图
-        CGRect rect = self.tabBar.frame;
-        
-        //底层视图
-        bgview=[[UIView alloc]initWithFrame:rect];
-        //背景
-        bgfimg=[[UIImageView alloc]initWithFrame:rect];
-        [bgfimg setImage:[UIImage imageNamed:@"footer_bg1"]];
-        
-        //返回按钮
-        UIButton *backbutton=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 40, 40)];
-        [backbutton setImage:[UIImage imageNamed:@"return_icon"] forState:UIControlStateNormal];
-        [backbutton addTarget:self action:@selector(closemembercenter) forControlEvents:UIControlEventTouchDown];
-        
-        //标题
-        UIButton *titlebtn=[[UIButton alloc] initWithFrame:CGRectMake(45, 5, 100, 40)];
-        [titlebtn setTitle:@"返回首页" forState:UIControlStateNormal];
-        titlebtn.titleLabel.font=[UIFont boldSystemFontOfSize:17.0f];
-        [titlebtn setTitleColor:[UIColor colorWithRed:190/255.0 green:148/255.0 blue:80/255.0 alpha:1.0f]forState:UIControlStateNormal];
-        [titlebtn addTarget:self action:@selector(closemembercenter) forControlEvents:UIControlEventTouchDown];
-        [bgview addSubview:titlebtn];
-        
-        [bgview addSubview:backbutton];
-        
-        [self.view addSubview:bgfimg];
-        [self.view addSubview:bgview];
-    }
 }
 
 -(void)closemembercenter

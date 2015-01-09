@@ -11,6 +11,7 @@
 #import "MJRefresh.h"
 #import "productCell.h"
 #import "productdetail.h"
+#import "doubleRingDetail.h"
 
 @interface productindex ()
 
@@ -44,6 +45,7 @@
 @synthesize textrueText;
 @synthesize inlayText;
 @synthesize searchbox;
+@synthesize gidText;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -117,21 +119,22 @@
     searchbox.leftViewMode = UITextFieldViewModeAlways;
     
     //初始化数据
-    [self loaddata:@"" Pmetrial:@"" Pxk:@"" Pxilie:@"" twid:@"" MaxPerPage:10
+    gid=@"0";
+    [self loaddata:@"" Pmetrial:@"" Pxk:@"" Pxilie:@"" twid:@"" MaxPerPage:10 cid:gid
 ];
     
     //上拉刷新下拉加载提示
     [productCView addHeaderWithCallback:^{
         [list removeAllObjects];
         page=1;
-        [self loaddata:styleindex Pmetrial:textrueindex Pxk:inlayindex Pxilie:serieindex twid:@"" MaxPerPage:pagesize];
+        [self loaddata:styleindex Pmetrial:textrueindex Pxk:inlayindex Pxilie:serieindex twid:@"" MaxPerPage:pagesize cid:gid];
         [productCView reloadData];
         [productCView headerEndRefreshing];
     }];
     
     [productCView addFooterWithCallback:^{
         page=page+1;
-        [self loaddata:styleindex Pmetrial:textrueindex Pxk:inlayindex Pxilie:serieindex twid:@"" MaxPerPage:pagesize];
+        [self loaddata:styleindex Pmetrial:textrueindex Pxk:inlayindex Pxilie:serieindex twid:@"" MaxPerPage:pagesize cid:gid];
         [productCView reloadData];
         [productCView footerEndRefreshing];
     }];
@@ -141,7 +144,7 @@
 
 
 //加载数据
--(void)loaddata:(NSString *)Ptype Pmetrial:(NSString *)Pmetrial Pxk:(NSString *)Pxk Pxilie:(NSString *)Pxilie twid:(NSString *)twid MaxPerPage:(NSInteger )MaxPerPage
+-(void)loaddata:(NSString *)Ptype Pmetrial:(NSString *)Pmetrial Pxk:(NSString *)Pxk Pxilie:(NSString *)Pxilie twid:(NSString *)twid MaxPerPage:(NSInteger )MaxPerPage cid:(NSString *)cid
 {
     getNowTime * time=[[getNowTime alloc] init];
     NSString * nowt=[time nowTime];
@@ -156,7 +159,7 @@
     //Kstr=md5(uId|type|Upt|Key|Nowt|cid)
     NSString * Kstr=[Commons md5:[NSString stringWithFormat:@"%@|%@|%@|%@|%@",uId,@"1001",Upt,apikey,nowt]];
     
-    NSString * surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&cid=0&MaxPerPage=%d&Ptype=%@&Pmetrial=%@&Pxk=%@&Pxilie=%@&twid=%@&page=%d",uId,Upt,nowt,Kstr,MaxPerPage,Ptype,Pmetrial,Pxk,Pxilie,twid,page];
+    NSString * surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&cid=%@&MaxPerPage=%d&Ptype=%@&Pmetrial=%@&Pxk=%@&Pxilie=%@&twid=%@&page=%d",uId,Upt,nowt,Kstr,cid,MaxPerPage,Ptype,Pmetrial,Pxk,Pxilie,twid,page];
     
     
     NSString * URL = [NSString stringWithFormat:@"%@%@",domainser,surl];
@@ -304,7 +307,7 @@
     conditionTView.hidden=YES;
     [list removeAllObjects];
     page=1;
-    [self loaddata:styleindex Pmetrial:textrueindex Pxk:inlayindex Pxilie:serieindex twid:@"" MaxPerPage:pagesize];
+    [self loaddata:styleindex Pmetrial:textrueindex Pxk:inlayindex Pxilie:serieindex twid:@"" MaxPerPage:pagesize cid:gid];
     [productCView reloadData];
     
 }
@@ -351,13 +354,33 @@
 //点击事件
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    productdetail *_productdetail=[[productdetail alloc]init];
-    NSArray *productdetail = [list objectAtIndex:[indexPath row]];
-    _productdetail.pid=[NSString stringWithFormat:@"%@",[productdetail objectAtIndex:0]];
-    _productdetail.mydelegate=_mydelegate;
-    [self.navigationController pushViewController:_productdetail animated:NO];
+    
+    NSArray *productdetailinfo = [list objectAtIndex:[indexPath row]];
+    
+    if ([[productdetailinfo objectAtIndex:3] isEqualToString:@"3"]) {
+        
+        doubleRingDetail *_doubleRingDetail=[[doubleRingDetail alloc]init];
+        _doubleRingDetail.pid=[NSString stringWithFormat:@"%@",[productdetailinfo objectAtIndex:0]];
+        _doubleRingDetail.mydelegate=_mydelegate;
+        [self.navigationController pushViewController:_doubleRingDetail animated:NO];
+    }else{
+        
+        productdetail *_productdetail=[[productdetail alloc]init];
+        _productdetail.pid=[NSString stringWithFormat:@"%@",[productdetailinfo objectAtIndex:0]];
+        _productdetail.mydelegate=_mydelegate;
+        [self.navigationController pushViewController:_productdetail animated:NO];
+    }
 }
 
+
+//产品编号搜索
+-(IBAction)cidsearch:(id)sender
+{
+    gid=gidText.text;
+    [list removeAllObjects];
+    [self loaddata:styleindex Pmetrial:textrueindex Pxk:inlayindex Pxilie:serieindex twid:@"" MaxPerPage:pagesize cid:gid];
+    [productCView reloadData];
+}
 
 - (void)didReceiveMemoryWarning
 {

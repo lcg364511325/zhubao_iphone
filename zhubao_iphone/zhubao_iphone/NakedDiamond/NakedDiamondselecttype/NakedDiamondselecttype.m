@@ -36,6 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     namelist=[[NSMutableArray alloc]initWithCapacity:5];
+    btnlist=[[NSMutableArray alloc]initWithCapacity:5];
     
     [self setbartitle];
     
@@ -143,6 +144,7 @@
             [downButtonLayer setBorderColor:[[UIColor colorWithRed:223.0f/255.0f green:223.0f/255.0f blue:223.0f/255.0f alpha:1] CGColor]];
             [self.view insertSubview:btn atIndex:i];
             
+            [btnlist addObject:btn];
             [self.view addSubview:btn];
             
         }
@@ -181,6 +183,8 @@
             [downButtonLayer setBorderColor:[[UIColor colorWithRed:223.0f/255.0f green:223.0f/255.0f blue:223.0f/255.0f alpha:1] CGColor]];
             [self.view insertSubview:btn atIndex:i];
             
+            
+            [btnlist addObject:btn];
             [self.view addSubview:btn];
             
         }
@@ -193,52 +197,82 @@
 //按钮点击事件
 -(void)changgestate:(UIButton *)btn
 {
+//    NSDictionary *selectdata=[namelist objectAtIndex:btn.tag];
+//    NSMutableArray *keyMutableArray = [[NSMutableArray alloc]initWithCapacity:5];
+//    NSMutableArray *valueMutableArray = [[NSMutableArray alloc]initWithCapacity:5];
+//    if (skey.length!=0) {
+//        NSArray  * keyarray= [skey componentsSeparatedByString:@","];
+//        NSArray  * valuearray= [svalue componentsSeparatedByString:@","];
+//        keyMutableArray = [NSMutableArray arrayWithArray:keyarray];
+//        valueMutableArray = [NSMutableArray arrayWithArray:valuearray];
+//    }
+//    NSInteger count=[keyMutableArray count];
+//    int i;
+//    BOOL isequal=NO;
+//    for (i=0; i<count; i++) {
+//        isequal=[[selectdata objectForKey:@"key"] isEqualToString:[keyMutableArray objectAtIndex:i]];
+//        if (isequal) {
+//            [keyMutableArray removeObjectAtIndex:i];
+//            [valueMutableArray removeObjectAtIndex:i];
+//            i=count;
+//        }
+//    }
+//    if (!isequal) {
+//        [keyMutableArray addObject:[selectdata objectForKey:@"key"]];
+//        [valueMutableArray addObject:[selectdata objectForKey:@"value"]];
+//        [btn setBackgroundImage:[UIImage imageNamed:@"cateselected"] forState:UIControlStateNormal];
+//    }else
+//    {
+//        [btn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
+//    }
+//    skey=[[NSMutableString alloc] init];
+//    svalue=[[NSMutableString alloc] init];
+//    for (NSString *index in keyMutableArray) {
+//        if (skey.length!=0) {
+//            [skey appendString:@","];
+//            [skey appendString:index];
+//        }else{
+//            [skey appendString:index];
+//        }
+//    }
+//    for (NSString *index in valueMutableArray) {
+//        if (svalue.length!=0) {
+//            [svalue appendString:@","];
+//            [svalue appendString:index];
+//        }else{
+//            [svalue appendString:index];
+//        }
+//    }
+    
     NSDictionary *selectdata=[namelist objectAtIndex:btn.tag];
-    NSMutableArray *keyMutableArray = [[NSMutableArray alloc]initWithCapacity:5];
-    NSMutableArray *valueMutableArray = [[NSMutableArray alloc]initWithCapacity:5];
+    NSString *newkey=[selectdata objectForKey:@"key"];
     if (skey.length!=0) {
-        NSArray  * keyarray= [skey componentsSeparatedByString:@","];
-        NSArray  * valuearray= [svalue componentsSeparatedByString:@","];
-        keyMutableArray = [NSMutableArray arrayWithArray:keyarray];
-        valueMutableArray = [NSMutableArray arrayWithArray:valuearray];
-    }
-    NSInteger count=[keyMutableArray count];
-    int i;
-    BOOL isequal=NO;
-    for (i=0; i<count; i++) {
-        isequal=[[selectdata objectForKey:@"key"] isEqualToString:[keyMutableArray objectAtIndex:i]];
-        if (isequal) {
-            [keyMutableArray removeObjectAtIndex:i];
-            [valueMutableArray removeObjectAtIndex:i];
-            i=count;
+        NSString *key=skey;
+        if ([skey isEqualToString:newkey]) {
+            skey=nil;
+            svalue=nil;
+            [btn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
+        }else{
+            int i=0;
+            for (i=0; i<namelist.count; i++) {
+                if ([key isEqualToString:[[namelist objectAtIndex:i] objectForKey:@"key"]]) {
+                    break;
+                }
+            }
+            for (int j=0; j<btnlist.count; j++) {
+                UIButton *oldbtn=[btnlist objectAtIndex:j];
+                if (oldbtn.tag==i) {
+                    [oldbtn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
+                }
+            }
         }
-    }
-    if (!isequal) {
-        [keyMutableArray addObject:[selectdata objectForKey:@"key"]];
-        [valueMutableArray addObject:[selectdata objectForKey:@"value"]];
+        
+    }else{
         [btn setBackgroundImage:[UIImage imageNamed:@"cateselected"] forState:UIControlStateNormal];
-    }else
-    {
-        [btn setBackgroundImage:[UIImage imageNamed:@"categorybg"] forState:UIControlStateNormal];
+        skey=[selectdata objectForKey:@"key"];
+        svalue=[selectdata objectForKey:@"value"];
     }
-    skey=[[NSMutableString alloc] init];
-    svalue=[[NSMutableString alloc] init];
-    for (NSString *index in keyMutableArray) {
-        if (skey.length!=0) {
-            [skey appendString:@","];
-            [skey appendString:index];
-        }else{
-            [skey appendString:index];
-        }
-    }
-    for (NSString *index in valueMutableArray) {
-        if (svalue.length!=0) {
-            [svalue appendString:@","];
-            [svalue appendString:index];
-        }else{
-            [svalue appendString:index];
-        }
-    }
+
 }
 
 -(IBAction)returnvalue:(id)sender
