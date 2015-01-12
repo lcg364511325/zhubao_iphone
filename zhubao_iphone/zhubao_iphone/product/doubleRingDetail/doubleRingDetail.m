@@ -330,7 +330,7 @@
     UIButton *btn=(UIButton *)sender;
     btntag=btn.tag;
     if (btntag==0) {
-        TView.frame=CGRectMake(58, 799, 54, 180);
+        TView.frame=CGRectMake(58, 799, 60, 180);
         list=winlaylist;
     }else if (btntag==1)
     {
@@ -347,11 +347,11 @@
         list=textturelist;
     }else if (btntag==4)
     {
-        TView.frame=CGRectMake(58, 949, 54, 120);
+        TView.frame=CGRectMake(58, 949, 60, 120);
         list=sizelist;
     }else if (btntag==5)
     {
-        TView.frame=CGRectMake(58, 843, 54, 120);
+        TView.frame=CGRectMake(58, 843, 60, 120);
         list=minlaylist;
     }else if (btntag==6)
     {
@@ -367,7 +367,7 @@
         list=mtextturelist;
     }else if (btntag==9)
     {
-        TView.frame=CGRectMake(159, 950, 54, 120);
+        TView.frame=CGRectMake(159, 950, 60, 120);
         list=sizelist;
     }
     TView.hidden=NO;

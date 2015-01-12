@@ -60,19 +60,19 @@
     password.placeholder=@"请输入密码";
     [password setBackground:[UIImage imageNamed:@"textbox_midbg"]];
     password.secureTextEntry=YES;
-    password.font=[UIFont boldSystemFontOfSize:12.0f];
+    password.font=[UIFont systemFontOfSize:12.0f];
     
     UIButton *okbtn=[[UIButton alloc]initWithFrame:CGRectMake(13, 75, 60, 20)];
     [okbtn setTitle:@"确定" forState:UIControlStateNormal];
     [okbtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    okbtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
+    okbtn.titleLabel.font=[UIFont systemFontOfSize:15.0f];
     okbtn.tag=1;
     [okbtn addTarget:self action:@selector(lookfororder:) forControlEvents:UIControlEventTouchDown];
     
     UIButton *cancelbtn=[[UIButton alloc]initWithFrame:CGRectMake(150, 75, 60, 20)];
     [cancelbtn setTitle:@"取消" forState:UIControlStateNormal];
     [cancelbtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    cancelbtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
+    cancelbtn.titleLabel.font=[UIFont systemFontOfSize:15.0f];
     cancelbtn.tag=0;
     [cancelbtn addTarget:self action:@selector(lookfororder:) forControlEvents:UIControlEventTouchDown];
     

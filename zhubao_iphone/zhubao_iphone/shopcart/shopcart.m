@@ -199,8 +199,9 @@
     [bgimgview setBackgroundColor:[UIColor colorWithRed:8.0f/255.0f green:46.0f/255.0f blue:85.0f/255.0f alpha:1.0f]];
     
     
-    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 70, 35)];
+    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 220, 35)];
     title.text=@"商品数量";
+    title.textAlignment = NSTextAlignmentCenter;
     title.font=[UIFont systemFontOfSize:17.0f];
     [title setTextColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f]];
     [title setBackgroundColor:[UIColor clearColor]];
@@ -208,35 +209,35 @@
     UIButton *reducebtn=[[UIButton alloc]initWithFrame:CGRectMake(11, 45, 30, 30)];
     [reducebtn setTitle:@"-" forState:UIControlStateNormal];
     [reducebtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    reducebtn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+    reducebtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
     reducebtn.tag=0;
     [reducebtn addTarget:self action:@selector(changecount:) forControlEvents:UIControlEventTouchDown];
     
     goodsno=[[UITextField alloc]initWithFrame:CGRectMake(35, 45, 150, 30)];
     [goodsno setBorderStyle:UITextBorderStyleBezel];
     [goodsno setBackground:[UIImage imageNamed:@"textbox_midbg"]];
-    goodsno.font=[UIFont boldSystemFontOfSize:12.0f];
+    goodsno.font=[UIFont systemFontOfSize:12.0f];
     goodsno.text=goodnumber;
     goodsno.keyboardType=UIKeyboardTypeNumberPad;
     
     UIButton *addbtn=[[UIButton alloc]initWithFrame:CGRectMake(181, 45, 30, 30)];
     [addbtn setTitle:@"+" forState:UIControlStateNormal];
     [addbtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    addbtn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+    addbtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
     addbtn.tag=1;
     [addbtn addTarget:self action:@selector(changecount:) forControlEvents:UIControlEventTouchDown];
     
     UIButton *okbtn=[[UIButton alloc]initWithFrame:CGRectMake(41, 70, 30, 30)];
     [okbtn setTitle:@"确定" forState:UIControlStateNormal];
     [okbtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    okbtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
+    okbtn.titleLabel.font=[UIFont systemFontOfSize:15.0f];
     okbtn.tag=1;
     [okbtn addTarget:self action:@selector(demoviewtarget:) forControlEvents:UIControlEventTouchDown];
     
     UIButton *canclebtn=[[UIButton alloc]initWithFrame:CGRectMake(141, 70, 30, 30)];
     [canclebtn setTitle:@"取消" forState:UIControlStateNormal];
     [canclebtn setTitleColor:[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    canclebtn.titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
+    canclebtn.titleLabel.font=[UIFont systemFontOfSize:15.0f];
     canclebtn.tag=0;
     [canclebtn addTarget:self action:@selector(demoviewtarget:) forControlEvents:UIControlEventTouchDown];
     
