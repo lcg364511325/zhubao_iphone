@@ -127,14 +127,14 @@
     
     UIButton *versonupdatebtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 7, 80, 30)];
     [versonupdatebtn setTitle:@"版本更新" forState:UIControlStateNormal];
-    [versonupdatebtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [versonupdatebtn setTitleColor:[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1] forState:UIControlStateNormal];
     versonupdatebtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
     [versonupdatebtn addTarget:self action:@selector(updateVerson) forControlEvents:UIControlEventTouchDown];
     [settingview addSubview:versonupdatebtn];
     
     UIButton *logoutbtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 35, 80, 30)];
     [logoutbtn setTitle:@"退出登录" forState:UIControlStateNormal];
-    [logoutbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [logoutbtn setTitleColor:[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1] forState:UIControlStateNormal];
     logoutbtn.titleLabel.font=[UIFont systemFontOfSize:12.0f];
     [logoutbtn addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchDown];
     [settingview addSubview:logoutbtn];

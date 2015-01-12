@@ -110,9 +110,9 @@
     isfirst=0;
     
     UILabel *searchfont = [ [UILabel alloc]initWithFrame:CGRectZero];
-    searchfont.textColor=[UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1];
+    searchfont.textColor=[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1];
     searchfont.text = @"   产品款号:";
-    searchfont.font=[UIFont boldSystemFontOfSize:10.0f];
+    searchfont.font=[UIFont systemFontOfSize:10.0f];
     [searchfont sizeToFit];
     searchfont.backgroundColor=[UIColor colorWithRed:234.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1];
     searchbox.leftView=searchfont;
@@ -219,7 +219,7 @@
     
     NSUInteger row = [indexPath row];
     cell.textLabel.text = [conditionlist objectAtIndex:row];
-    cell.textLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+    cell.textLabel.font=[UIFont systemFontOfSize:12.0f];
     cell.textLabel.textColor=[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1];
     return cell;
 }

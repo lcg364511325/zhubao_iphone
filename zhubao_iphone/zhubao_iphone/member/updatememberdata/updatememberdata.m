@@ -114,17 +114,17 @@
     //省
     if (btntag==0) {
         
-        tview.frame=tableviewframe;
+        tview.frame=CGRectMake(tableviewframe.origin.x, tableviewframe.origin.y, paddr.frame.size.width, tableviewframe.size.height);
         list=provincelist;
      //市
     }else if (btntag==1){
         
-        tview.frame=CGRectMake(tableviewframe.origin.x, tableviewframe.origin.y+40, tableviewframe.size.width, tableviewframe.size.height);
+        tview.frame=CGRectMake(tableviewframe.origin.x+94, tableviewframe.origin.y, caddr.frame.size.width, tableviewframe.size.height);
         list=citylist;
      //部门
     }else if (btntag==2){
         
-        tview.frame=CGRectMake(tableviewframe.origin.x, tableviewframe.origin.y+120, tableviewframe.size.width, tableviewframe.size.height);
+        tview.frame=CGRectMake(tableviewframe.origin.x, tableviewframe.origin.y+77, division.frame.size.width, tableviewframe.size.height);
         list=Divisionlist;
     }
     [tview reloadData];
@@ -152,6 +152,7 @@
     NSUInteger row = [indexPath row];
     
     cell.textLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+    cell.textLabel.textColor=[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1.0f];
     if (selecttable==0) {
         NSDictionary *rowString = [provincelist objectAtIndex:[indexPath row]];
         cell.textLabel.text = [rowString objectForKey:@"state"];

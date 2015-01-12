@@ -79,9 +79,9 @@
     isfirst=0;
     
     UILabel *searchfont = [ [UILabel alloc]initWithFrame:CGRectZero];
-    searchfont.textColor=[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1];
+    searchfont.textColor=[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1];
     searchfont.text = @"   钻石编号:";
-    searchfont.font=[UIFont boldSystemFontOfSize:10.0f];
+    searchfont.font=[UIFont systemFontOfSize:10.0f];
     [searchfont sizeToFit];
     searchfont.backgroundColor=[UIColor colorWithRed:234.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1];
     noText.leftView=searchfont;

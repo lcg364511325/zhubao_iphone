@@ -133,7 +133,7 @@
             }
             [btn setTitle:[dict objectForKey:@"key"] forState:UIControlStateNormal];
             [btn setBackgroundColor:[UIColor colorWithRed:234.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1]];
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(changgestate:) forControlEvents:UIControlEventTouchDown];
             btn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
             btn.tag=i;
@@ -158,9 +158,9 @@
                 line=i/2;
             }
             if (row==0) {
-                btn=[[UIButton alloc]initWithFrame:CGRectMake(0, 61+50*line, 160, 50)];
+                btn=[[UIButton alloc]initWithFrame:CGRectMake(0, 61+50*line, 161, 51)];
             }else if (row==1){
-                btn=[[UIButton alloc]initWithFrame:CGRectMake(160, 61+50*line, 160, 50)];
+                btn=[[UIButton alloc]initWithFrame:CGRectMake(160, 61+50*line, 161, 51)];
             }
             if (i==9) {
                 img=[UIImage imageNamed:@"diamond10"];
@@ -172,7 +172,7 @@
             [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 60)];
             [btn setTitle:[dict objectForKey:@"key"] forState:UIControlStateNormal];
             [btn setBackgroundColor:[UIColor colorWithRed:234.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1]];
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(changgestate:) forControlEvents:UIControlEventTouchDown];
             btn.titleLabel.font=[UIFont boldSystemFontOfSize:12.0f];
             btn.tag=i;

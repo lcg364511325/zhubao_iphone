@@ -16,6 +16,7 @@
 		2C19C61819C971BA00D9CF1E /* shopcart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C19C61619C971BA00D9CF1E /* shopcart.xib */; };
 		2C19C61D19C9739900D9CF1E /* shopcartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C19C61B19C9739900D9CF1E /* shopcartCell.m */; };
 		2C19C61E19C9739900D9CF1E /* shopcartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C19C61C19C9739900D9CF1E /* shopcartCell.xib */; };
+		2C1E62271A63AB700016983A /* addshoppingcat1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1E62261A63AB700016983A /* addshoppingcat1.png */; };
 		2C42EB0519C7D06300BB4692 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB0419C7D06300BB4692 /* Foundation.framework */; };
 		2C42EB0719C7D06300BB4692 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB0619C7D06300BB4692 /* CoreGraphics.framework */; };
 		2C42EB0919C7D06300BB4692 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C42EB0819C7D06300BB4692 /* UIKit.framework */; };
@@ -379,6 +380,7 @@
 		2C19C61A19C9739900D9CF1E /* shopcartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shopcartCell.h; path = shopcartCell/shopcartCell.h; sourceTree = "<group>"; };
 		2C19C61B19C9739900D9CF1E /* shopcartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = shopcartCell.m; path = shopcartCell/shopcartCell.m; sourceTree = "<group>"; };
 		2C19C61C19C9739900D9CF1E /* shopcartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = shopcartCell.xib; path = shopcartCell/shopcartCell.xib; sourceTree = "<group>"; };
+		2C1E62261A63AB700016983A /* addshoppingcat1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addshoppingcat1.png; sourceTree = "<group>"; };
 		2C42EB0119C7D06300BB4692 /* 定制神器.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "定制神器.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C42EB0419C7D06300BB4692 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C42EB0619C7D06300BB4692 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1496,6 +1498,7 @@
 		2C42EC5619C7D10B00BB4692 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				2C1E62261A63AB700016983A /* addshoppingcat1.png */,
 				2C815C2C1A5D35FF00C766CF /* list_icon.png */,
 				2C815C2A1A5D307200C766CF /* line.png */,
 				2C815C281A5D1B2100C766CF /* bluebuttonbg.png */,
@@ -1944,6 +1947,7 @@
 				2C42ED6219C7D10B00BB4692 /* Seq_v04_640x378_55.jpg in Resources */,
 				2C7F1DCC1A5BCB840064388F /* topmenu_line.png in Resources */,
 				2C42ECE619C7D10B00BB4692 /* productCell.xib in Resources */,
+				2C1E62271A63AB700016983A /* addshoppingcat1.png in Resources */,
 				2C42ED8419C7D10B00BB4692 /* frontindex.xib in Resources */,
 				2C42ED3B19C7D10B00BB4692 /* Seq_v04_640x378_2.jpg in Resources */,
 				2C42ED4219C7D10B00BB4692 /* Seq_v04_640x378_26.jpg in Resources */,

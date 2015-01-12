@@ -94,7 +94,6 @@
     pdSView.scrollEnabled=YES;
     
     //设置背景图片圆角和边框
-    bgimg1.layer.cornerRadius=4;
     bgimg1.layer.masksToBounds=YES;
     CALayer *layer = [bgimg1 layer];
     layer.borderColor=[UIColor colorWithRed:133.0/255.0 green:130.0/255.0 blue:154.0/255.0 alpha:0.5].CGColor;
@@ -427,7 +426,8 @@
         cell.textLabel.text = [list objectAtIndex:row];
     }
     
-    cell.textLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+    cell.textLabel.font=[UIFont systemFontOfSize:12.0f];
+    cell.textLabel.textColor=[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1.0f];
     return cell;
 }
 

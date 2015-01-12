@@ -87,7 +87,8 @@
     
     NSUInteger row = [indexPath row];
     cell.textLabel.text = [textturelist objectAtIndex:row];
-    cell.textLabel.font=[UIFont boldSystemFontOfSize:12.0f];
+    cell.textLabel.font=[UIFont systemFontOfSize:12.0f];
+    cell.textLabel.textColor=[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1.0f];
     return cell;
 }
 
