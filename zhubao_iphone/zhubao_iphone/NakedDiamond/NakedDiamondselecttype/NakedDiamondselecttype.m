@@ -287,7 +287,7 @@
     }
     
     //回调方法更新
-    [delegate passValue:svalue key:skey tag:btntag];
+    //[delegate passValue:svalue key:skey tag:btntag];
     
     [self.navigationController popViewControllerAnimated:NO];
 }

@@ -102,7 +102,7 @@
     //初始化数组
     mnetlist=netlist=[[NSArray alloc]initWithObjects:@"SI",@"VVS",@"VS",@"P", nil];
     mcolorlist=colorlist=[[NSArray alloc]initWithObjects:@"I-J",@"F-G",@"H",@"K-L",@"M-N", nil];
-    mtextturelist=textturelist=[[NSArray alloc] initWithObjects:@"18k黄",@"18K白",@"18K双色",@"18K玫瑰金",@"PT900",@"PT950",@"PD950", nil];
+    mtextturelist=textturelist=[[NSArray alloc] initWithObjects:@"18K黄",@"18K白",@"18K双色",@"18K玫瑰金",@"PT900",@"PT950",@"PD950", nil];
     sizelist=[[NSArray alloc] initWithObjects:@"9号",@"10号",@"11号",@"12号",@"13号",@"14号",@"15号",@"16号",@"17号",@"18号",@"19号",@"20号",@"21号",@"22号",@"23号",@"24号",@"25号",@"26号",@"27号",@"28号",@"29号",@"30号", nil];
     
     //限制数字键盘
@@ -175,24 +175,76 @@
                 //主石数量
                 wmaincountLabel.text=[NSString stringWithFormat:@" X %@颗",[productlist objectAtIndex:31]];
                 
-                //副石重量
-                wfitweightLabel.text=[NSString stringWithFormat:@"%@ct  X %@颗",[productlist objectAtIndex:44],[productlist objectAtIndex:41]];
-                
                 //主石
                 winlaylist=[self checkinlay:pid];
-                float wminlay=[[[winlaylist objectAtIndex:0] objectAtIndex:2] floatValue];
-                wmianinlayText.text=[NSString stringWithFormat:@"%.2f",wminlay];
-                
-                //约重
-                wmweight=[[[winlaylist objectAtIndex:0] objectAtIndex:3] floatValue];
-                womanweightLabel.text=[NSString stringWithFormat:@"女：%.3fg",wmweight];
+                if ([winlaylist count]<1) {
+                    
+                    //主石
+                    NSString *wmt=[productlist objectAtIndex:34];
+                    if(wmt==nil || [wmt isEqualToString:@""])
+                    {
+                        wmianinlayText.text=@"0.0";
+                    }else{
+                        wmianinlayText.text=[NSString stringWithFormat:@"%@",wmt];
+                    }
+                    
+                    //副石重量
+                    NSString *wfl=[productlist objectAtIndex:44];
+                    if(wfl==nil || [wfl isEqualToString:@""])
+                    {
+                        wfitweightLabel.text=[NSString stringWithFormat:@"0.0ct  X %@颗",[productlist objectAtIndex:41]];
+                    }else{
+                        
+                        wfitweightLabel.text=[NSString stringWithFormat:@"%@ct  X %@颗",wfl,[productlist objectAtIndex:41]];
+                    }
+                    
+                    //约重
+                    NSString *wwl=[productlist objectAtIndex:17];
+                    if(wwl==nil || [wwl isEqualToString:@""])
+                    {
+                        womanweightLabel.text=@"女：0.0g";
+                    }else{
+                        womanweightLabel.text=[NSString stringWithFormat:@"女：%@g",wwl];
+                    }
+                }else{
+                    
+                    //主石
+                    NSString *wmt=[[winlaylist objectAtIndex:0] objectAtIndex:2];
+                    if((NSNull *)wmt==[NSNull null] || wmt==nil || [wmt isEqualToString:@""])
+                    {
+                        wmianinlayText.text=@"0.0";
+                    }else{
+                        wminlay=[wmt floatValue];
+                        wmianinlayText.text=[NSString stringWithFormat:@"%.2f",wminlay];
+                    }
+                    
+                    //副石重量
+                    NSString *wfl=[[winlaylist objectAtIndex:0] objectAtIndex:7];
+                    if((NSNull *)wfl==[NSNull null] || wfl==nil || [wfl isEqualToString:@""])
+                    {
+                        wfitweightLabel.text=[NSString stringWithFormat:@"0.0ct  X %@颗",[productlist objectAtIndex:41]];
+                    }else{
+                        
+                        wfitweightLabel.text=[NSString stringWithFormat:@"%.3fct  X %@颗",[wfl floatValue],[productlist objectAtIndex:41]];
+                    }
+                    
+                    //约重
+                    NSString *wwl=[[winlaylist objectAtIndex:0] objectAtIndex:3];
+                    if((NSNull *)wwl==[NSNull null] || wwl==nil || [wwl isEqualToString:@""])
+                    {
+                        womanweightLabel.text=@"女：0.0g";
+                    }else{
+                        wmweight=[wwl floatValue];
+                        womanweightLabel.text=[NSString stringWithFormat:@"女：%.3fg",wmweight];
+                    }
+                }
                 
                 //净度
                 wnetText.text=@"净度";
                 //颜色
                 wcolorText.text=@"颜色";
                 //材质
-                wtexttureText.text=@"18K黄";
+                wtexttureText.text=@"18K白";
                 
                 //男戒
                 NSString *surl = [NSString stringWithFormat:@"/app/aifacen.php?uId=%@&type=1001&Upt=%@&Nowt=%@&Kstr=%@&twid=%@",uId,Upt,nowt,Kstr,pid];
@@ -228,24 +280,77 @@
                     //主石数量
                     mmaincountLabel.text=[NSString stringWithFormat:@" X %@颗",[manpdetail objectAtIndex:31]];
                     
-                    //副石重量
-                    mfitweightLabel.text=[NSString stringWithFormat:@"%@ct X %@颗",[manpdetail objectAtIndex:44],[manpdetail objectAtIndex:41]];
-                    
                     //主石
                     minlaylist=[self checkinlay:[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:0]]];
-                    float mminlay=[[[minlaylist objectAtIndex:0] objectAtIndex:2] floatValue];
-                    mmianinlayText.text=[NSString stringWithFormat:@"%.2f",mminlay];
-                    
-                    //约重
-                    mmweight=[[[minlaylist objectAtIndex:0] objectAtIndex:3] floatValue];
-                    manweightLabel.text=[NSString stringWithFormat:@"男：%.3fg",mmweight];
+                    if ([minlaylist count]<1) {
+                        
+                        //主石
+                        NSString *mmt=[manpdetail objectAtIndex:34];
+                        if(mmt==nil || [mmt isEqualToString:@""])
+                        {
+                            mmianinlayText.text=@"0.0";
+                        }else{
+                            mmianinlayText.text=[NSString stringWithFormat:@"%@",mmt];
+                        }
+                        
+                        //副石重量
+                        NSString *mfl=[manpdetail objectAtIndex:44];
+                        if(mfl==nil || [mfl isEqualToString:@""])
+                        {
+                            mfitweightLabel.text=[NSString stringWithFormat:@"0.0ct  X %@颗",[manpdetail objectAtIndex:41]];
+                        }else{
+                            
+                            mfitweightLabel.text=[NSString stringWithFormat:@"%@ct  X %@颗",mfl,[manpdetail objectAtIndex:41]];
+                        }
+                        
+                        //约重
+                        NSString *mwl=[manpdetail objectAtIndex:17];
+                        if(mwl==nil || [mwl isEqualToString:@""])
+                        {
+                            manweightLabel.text=@"男：0.0g";
+                        }else{
+                            manweightLabel.text=[NSString stringWithFormat:@"男：%@g",mwl];
+                        }
+                    }else{
+                        
+                        //主石
+                        NSString *mmt=[[minlaylist objectAtIndex:0] objectAtIndex:2];
+                        if((NSNull *)mmt==[NSNull null] || mmt==nil || [mmt isEqualToString:@""])
+                        {
+                            mmianinlayText.text=@"0.0";
+                        }else{
+                            mminlay=[mmt floatValue];
+                            mmianinlayText.text=[NSString stringWithFormat:@"%.2f",mminlay];
+                        }
+                        
+                        //副石重量
+                        
+                        NSString *mfl=[[winlaylist objectAtIndex:0] objectAtIndex:7];
+                        if((NSNull *)mfl==[NSNull null] || mfl==nil || [mfl isEqualToString:@""])
+                        {
+                            mfitweightLabel.text=[NSString stringWithFormat:@"0.0ct  X %@颗",[productlist objectAtIndex:41]];
+                        }else{
+                            
+                            mfitweightLabel.text=[NSString stringWithFormat:@"%.3fct  X %@颗",[mfl floatValue],[productlist objectAtIndex:41]];
+                        }
+                        
+                        //约重
+                        NSString *mwl=[[minlaylist objectAtIndex:0] objectAtIndex:3];
+                        if((NSNull *)mwl==[NSNull null] || mwl==nil || [mwl isEqualToString:@""])
+                        {
+                            manweightLabel.text=@"男：0.0g";
+                        }else{
+                            mmweight=[mwl floatValue];
+                            manweightLabel.text=[NSString stringWithFormat:@"男：%.3fg",mmweight];
+                        }
+                    }
                     
                     //净度
                     mnetText.text=@"净度";
                     //颜色
                     mcolorText.text=@"颜色";
                     //材质
-                    mtexttureText.text=@"18K黄";
+                    mtexttureText.text=@"18K白";
                 }
                 
                 [self getPrice:[NSString stringWithFormat:@"%.3f",wmweight] minlay:[NSString stringWithFormat:@"%.3f",mmweight]];
@@ -330,44 +435,44 @@
     UIButton *btn=(UIButton *)sender;
     btntag=btn.tag;
     if (btntag==0) {
-        TView.frame=CGRectMake(58, 799, 60, 180);
+        TView.frame=CGRectMake(58, 472, 60, 180);
         list=winlaylist;
     }else if (btntag==1)
     {
-        TView.frame=CGRectMake(140, 799, 54, 180);
+        TView.frame=CGRectMake(140, 472, 54, 180);
         list=netlist;
     }else if (btntag==2)
     {
-        TView.frame=CGRectMake(202, 799, 54, 180);
+        TView.frame=CGRectMake(202, 472, 54, 180);
         list=colorlist;
     }
     else if (btntag==3)
     {
-        TView.frame=CGRectMake(58, 909, 81, 180);
+        TView.frame=CGRectMake(58, 580, 81, 180);
         list=textturelist;
     }else if (btntag==4)
     {
-        TView.frame=CGRectMake(58, 949, 60, 120);
+        TView.frame=CGRectMake(58, 622, 60, 120);
         list=sizelist;
     }else if (btntag==5)
     {
-        TView.frame=CGRectMake(58, 843, 60, 120);
+        TView.frame=CGRectMake(58, 517, 60, 120);
         list=minlaylist;
     }else if (btntag==6)
     {
-        TView.frame=CGRectMake(140, 843, 54, 120);
+        TView.frame=CGRectMake(140, 517, 54, 120);
         list=mnetlist;
     }else if (btntag==7)
     {
-        TView.frame=CGRectMake(202, 843, 54, 120);
+        TView.frame=CGRectMake(202, 517, 54, 120);
         list=mcolorlist;
     }else if (btntag==8)
     {
-        TView.frame=CGRectMake(159, 910, 81, 120);
+        TView.frame=CGRectMake(159, 580, 81, 120);
         list=mtextturelist;
     }else if (btntag==9)
     {
-        TView.frame=CGRectMake(159, 950, 60, 120);
+        TView.frame=CGRectMake(159, 622, 60, 120);
         list=sizelist;
     }
     TView.hidden=NO;
@@ -436,20 +541,31 @@
 {
     NSUInteger row = [indexPath row];
     NSString *rowstring;
-    if (btntag==0) {
+    if (btntag==0 || btntag==5) {
         rowstring = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%.2f",[[[list objectAtIndex:row] objectAtIndex:2] floatValue]]];
     }else{
         rowstring = [NSString stringWithFormat:@"%@",[list objectAtIndex:row]];
     }
     
     if (btntag==0) {
+        rowindex=row;
+        wminlay=[[[list objectAtIndex:row] objectAtIndex:2] floatValue];
         wmianinlayText.text=rowstring;
-        wmweight=[[[list objectAtIndex:row] objectAtIndex:3] floatValue];
-        if ([proclass isEqualToString:@"3"] && [protypeWenProId isEqualToString:@"0"]) {
+        NSString *nowtextture=wtexttureText.text;
+        NSRange range=[nowtextture rangeOfString:@"18K"];
+        if (range.length>0) {
+            wmweight=[[[list objectAtIndex:row] objectAtIndex:3] floatValue];
             womanweightLabel.text=[NSString stringWithFormat:@"女戒：%.3fg",wmweight];
         }else{
-            womanweightLabel.text=[NSString stringWithFormat:@"%.3fg",wmweight];
+            wmweight=[[[list objectAtIndex:row] objectAtIndex:4] floatValue];
+            womanweightLabel.text=[NSString stringWithFormat:@"女戒：%.3fg",wmweight];
         }
+        
+        NSString *wfl=[[list objectAtIndex:row] objectAtIndex:7];
+        if ((NSNull*)wfl!=[NSNull null] && wfl!=nil && ![wfl isEqualToString:@""]) {
+        wfitweightLabel.text=[NSString stringWithFormat:@"%.3fct  X %@颗",[[[list objectAtIndex:row] objectAtIndex:7] floatValue],[productlist objectAtIndex:41]];
+        }
+        
     }else if (btntag==1)
     {
         wnetText.text=rowstring;
@@ -460,12 +576,40 @@
     else if (btntag==3)
     {
         wtexttureText.text=rowstring;
+        
+        NSString *nowtextture=wtexttureText.text;
+        NSRange range=[nowtextture rangeOfString:@"18K"];
+        if (range.length>0) {
+            wmweight=[[[winlaylist objectAtIndex:rowindex] objectAtIndex:3] floatValue];
+            womanweightLabel.text=[NSString stringWithFormat:@"女戒：%.3fg",wmweight];
+        }else{
+            wmweight=[[[winlaylist objectAtIndex:rowindex] objectAtIndex:4] floatValue];
+            womanweightLabel.text=[NSString stringWithFormat:@"女戒：%.3fg",wmweight];
+        }
     }else if (btntag==4)
     {
         wsizeText.text=rowstring;
     }else if (btntag==5)
     {
+        mrowindex=row;
+        mminlay=[[[list objectAtIndex:row] objectAtIndex:2] floatValue];
         mmianinlayText.text=rowstring;
+        
+        NSString *mnowtextture=mtexttureText.text;
+        NSRange range=[mnowtextture rangeOfString:@"18K"];
+        if (range.length>0) {
+            mmweight=[[[list objectAtIndex:row] objectAtIndex:3] floatValue];
+            manweightLabel.text=[NSString stringWithFormat:@"%.3fg",mmweight];
+        }else{
+            mmweight=[[[list objectAtIndex:row] objectAtIndex:4] floatValue];
+            manweightLabel.text=[NSString stringWithFormat:@"%.3fg",mmweight];
+        }
+        
+        NSString *mfl=[[list objectAtIndex:row] objectAtIndex:7];
+        if ((NSNull*)mfl!=[NSNull null] && mfl!=nil && ![mfl isEqualToString:@""]) {
+            mfitweightLabel.text=[NSString stringWithFormat:@"%.3fct  X %@颗",[mfl floatValue],[manpdetail objectAtIndex:41]];
+        }
+        
     }else if (btntag==6)
     {
         mnetText.text=rowstring;
@@ -475,6 +619,16 @@
     }else if (btntag==8)
     {
         mtexttureText.text=rowstring;
+        
+        NSString *mnowtextture=mtexttureText.text;
+        NSRange range=[mnowtextture rangeOfString:@"18K"];
+        if (range.length>0) {
+            mmweight=[[[minlaylist objectAtIndex:mrowindex] objectAtIndex:3] floatValue];
+            manweightLabel.text=[NSString stringWithFormat:@"%.3fg",mmweight];
+        }else{
+            mmweight=[[[minlaylist objectAtIndex:mrowindex] objectAtIndex:4] floatValue];
+            manweightLabel.text=[NSString stringWithFormat:@"%.3fg",mmweight];
+        }
     }else if (btntag==9)
     {
         msizeText.text=rowstring;
@@ -519,7 +673,7 @@
         entity.pvvs=wnetText.text;
         entity.psize=wsizeText.text;
         entity.pgoldtype=wtexttureText.text;
-        entity.pweight=[NSString stringWithFormat:@"%.3f",wmweight];
+        entity.pweight=wmianinlayText.text;
         entity.customerid=myDelegate.entityl.uId;
         entity.pprice=womanprice;
         entity.pname=[productlist objectAtIndex:1];
@@ -541,7 +695,7 @@
             manentity.pvvs=mnetText.text;
             manentity.psize=msizeText.text;
             manentity.pgoldtype=mtexttureText.text;
-            manentity.pweight=[NSString stringWithFormat:@"%.3f",mmweight];
+            manentity.pweight=mmianinlayText.text;
             manentity.customerid=myDelegate.entityl.uId;
             manentity.pprice=manprice;
             manentity.pname=[NSString stringWithFormat:@"%@",[manpdetail objectAtIndex:1]];

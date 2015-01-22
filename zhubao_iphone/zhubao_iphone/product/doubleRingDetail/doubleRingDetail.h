@@ -33,10 +33,14 @@
     CGRect frame;
     float wmweight;
     float mmweight;
+    float mminlay;
+    float wminlay;
     NSString *wcolor;
     NSString *wnet;
     NSString *mcolor;
     NSString *mnet;
+    NSInteger rowindex;
+    NSInteger mrowindex;
 }
 
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象

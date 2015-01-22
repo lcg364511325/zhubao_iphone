@@ -23,6 +23,13 @@
     CGRect frame;
     NSArray *btnarray;
     NSInteger isfirst;
+    NSMutableString * skey;
+    NSMutableString * svalue;
+    NSMutableArray * namelist;
+    NSMutableArray * btnlist;
+    NSArray *list;
+    NSArray *listvalue;
+    NSInteger selecttdtag;
 }
 
 @property (nonatomic,assign) id <UIApplicationDelegate> mydelegate;//当前请求过来的对象
@@ -44,6 +51,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *maxheight;
 @property (weak, nonatomic) IBOutlet UITextField *minprice;
 @property (weak, nonatomic) IBOutlet UITextField *maxprice;
+@property (weak, nonatomic) IBOutlet UITableView *selectview;
 
 
 

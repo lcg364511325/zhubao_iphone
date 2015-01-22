@@ -19,8 +19,9 @@
                 <outlet property="modelButton" destination="foh-ER-h6B" id="nM0-BV-Gix"/>
                 <outlet property="netButton" destination="dPN-Gl-R2O" id="nn3-OS-Exb"/>
                 <outlet property="noText" destination="bCG-ap-6Pc" id="FLC-X7-Jxw"/>
+                <outlet property="selectview" destination="y9h-yD-S1e" id="XuN-8G-pQF"/>
                 <outlet property="symmetryButton" destination="0To-BW-tap" id="WAW-6y-Fr7"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="3Mm-cS-GVc"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -58,7 +59,7 @@
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="choosetype:" destination="-1" eventType="touchDown" id="CRf-uj-Mse"/>
+                        <action selector="showtableview:" destination="-1" eventType="touchDown" id="Ee3-gw-SNv"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="bDn-sd-KQC">
@@ -73,7 +74,7 @@
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="choosetype:" destination="-1" eventType="touchDown" id="Vdc-ca-ikm"/>
+                        <action selector="showtableview:" destination="-1" eventType="touchDown" id="ICR-Um-Ewc"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="GBc-5H-Pbr">
@@ -88,7 +89,7 @@
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="choosetype:" destination="-1" eventType="touchDown" id="5jD-Ue-Wst"/>
+                        <action selector="showtableview:" destination="-1" eventType="touchDown" id="6Kk-mt-Wxk"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="5PJ-4M-NFW">
@@ -103,7 +104,7 @@
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="choosetype:" destination="-1" eventType="touchDown" id="CzB-wP-XuU"/>
+                        <action selector="showtableview:" destination="-1" eventType="touchDown" id="0Wy-dh-OAe"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="pye-VO-atF">
@@ -118,7 +119,7 @@
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="choosetype:" destination="-1" eventType="touchDown" id="0hv-3M-hSe"/>
+                        <action selector="showtableview:" destination="-1" eventType="touchDown" id="v7T-ff-3Gq"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Mvd-wG-eKS">
@@ -133,7 +134,7 @@
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="choosetype:" destination="-1" eventType="touchDown" id="Qzr-Yp-Sp4"/>
+                        <action selector="showtableview:" destination="-1" eventType="touchDown" id="QKP-D4-WYC"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="cS0-UA-HWQ">
@@ -148,7 +149,7 @@
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="choosetype:" destination="-1" eventType="touchDown" id="XMC-u0-fQd"/>
+                        <action selector="showtableview:" destination="-1" eventType="touchDown" id="foW-3U-4hX"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jd5-Rb-WYO">
@@ -163,7 +164,7 @@
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="choosetype:" destination="-1" eventType="touchDown" id="arN-Nh-Zx9"/>
+                        <action selector="showtableview:" destination="-1" eventType="touchDown" id="yvw-Ls-fYt"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j8A-T8-QQa">
@@ -305,6 +306,15 @@
                         <action selector="resetdata:" destination="-1" eventType="touchDown" id="eq0-NX-XjK"/>
                     </connections>
                 </button>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="y9h-yD-S1e">
+                    <rect key="frame" x="0.0" y="84" width="72" height="204"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="iQs-ea-Qsa"/>
+                        <outlet property="delegate" destination="-1" id="ZxQ-wI-QLA"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

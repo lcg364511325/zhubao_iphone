@@ -33,6 +33,7 @@
 @synthesize maxheight;
 @synthesize minprice;
 @synthesize maxprice;
+@synthesize selectview;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -111,6 +112,14 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    UITouch *touch = [touches anyObject];
+    CGPoint pt = [touch locationInView:self.view];
+    //点击其他地方消失
+    if (!CGRectContainsPoint([selectview frame], pt)) {
+        //to-do
+        selectview.hidden=YES;
+    }
+    
     [noText resignFirstResponder];
     [minheight resignFirstResponder];
     [maxheight resignFirstResponder];
@@ -128,9 +137,9 @@
 
 
 //接受回调参数
--(void)passValue:(NSString *)value key:(NSString *)key tag:(NSString *)tag
+-(void)passValue:(NSString *)value key:(NSString *)key tag:(NSInteger)tag
 {
-    NSInteger tagint=[tag integerValue];
+    NSInteger tagint=tag;
     if (!key) {
         
         value=@"";
@@ -258,14 +267,14 @@
 
 
 //选择类型
--(IBAction)choosetype:(id)sender
-{
-    UIButton *btn=(UIButton *)sender;
-    NakedDiamondselecttype *_NakedDiamondselecttype=[[NakedDiamondselecttype alloc]init];
-    _NakedDiamondselecttype.btntag=[NSString stringWithFormat:@"%d",btn.tag];
-    _NakedDiamondselecttype.delegate=self;
-    [self.navigationController pushViewController:_NakedDiamondselecttype animated:NO];
-}
+//-(IBAction)choosetype:(id)sender
+//{
+//    UIButton *btn=(UIButton *)sender;
+//    NakedDiamondselecttype *_NakedDiamondselecttype=[[NakedDiamondselecttype alloc]init];
+//    _NakedDiamondselecttype.btntag=[NSString stringWithFormat:@"%d",btn.tag];
+//    _NakedDiamondselecttype.delegate=self;
+//    [self.navigationController pushViewController:_NakedDiamondselecttype animated:NO];
+//}
 
 
 //搜索结果页面跳转
@@ -289,6 +298,98 @@
     _NakedDiamondlist.condition=condition;
     _NakedDiamondlist.mydelegate=_mydelegate;
     [self.navigationController pushViewController:_NakedDiamondlist animated:NO];
+}
+
+-(IBAction)showtableview:(id)sender
+{
+    UIButton* btn=(UIButton *)sender;
+    int btnvalue=btn.tag;
+    selecttdtag=btn.tag;
+    if (btnvalue==0) {
+        selectview.frame=CGRectMake(0, 84, 72, 184);
+        //        titleLabel.text=@"形状";
+        list=[[NSArray alloc] initWithObjects:@"形状",@"圆形",@"公主方",@"祖母绿",@"雷蒂恩",@"椭圆形",@"橄榄形",@"枕形",@"梨形",@"心形",@"辐射形",nil];
+        listvalue=[[NSArray alloc] initWithObjects:@"",@"RB",@"PE",@"EM",@"RD",@"OL",@"MQ",@"CU",@"PR",@"HT",@"ASH",nil];
+        
+    }else if(btnvalue==1)
+    {
+        //        titleLabel.text=@"颜色";
+        selectview.frame=CGRectMake(72, 84, 80, 184);
+        list=listvalue=[[NSArray alloc] initWithObjects:@"颜色",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M", nil];
+    }else if(btnvalue==2)
+    {
+        //        titleLabel.text=@"净度";
+        selectview.frame=CGRectMake(152, 84, 80, 184);
+        list=listvalue=[[NSArray alloc] initWithObjects:@"净度",@"FL",@"IF",@"VVS1",@"VVS2",@"VS1",@"VS2",@"SI1",@"SI2",@"I1",@"I2", nil];
+    }else if(btnvalue==3)
+    {
+        //        titleLabel.text=@"切工";
+        selectview.frame=CGRectMake(232, 84, 88, 184);
+        list=listvalue=[[NSArray alloc] initWithObjects:@"切工",@"EX",@"VG",@"GD",@"Fair", nil];
+    }else if(btnvalue==4)
+    {
+        //        titleLabel.text=@"抛光";
+        selectview.frame=CGRectMake(0, 129, 72, 184);
+        list=listvalue=[[NSArray alloc] initWithObjects:@"抛光",@"EX",@"VG",@"GD",@"Fair", nil];
+    }else if(btnvalue==5)
+    {
+        //        titleLabel.text=@"对称";
+        selectview.frame=CGRectMake(72, 129, 80, 184);
+        list=listvalue=[[NSArray alloc] initWithObjects:@"对称",@"EX",@"VG",@"GD",@"Fair", nil];
+    }else if(btnvalue==6)
+    {
+        //        titleLabel.text=@"荧光";
+        selectview.frame=CGRectMake(152, 129, 80, 184);
+        list=[[NSArray alloc] initWithObjects:@"荧光",@"N",@"F",@"M",@"S",@"VS", nil];
+        listvalue=[[NSArray alloc] initWithObjects:@"",@"Non,None",@"Fnt",@"Med",@"Stg,Sl",@"Vsl,Vst", nil];
+    }else if(btnvalue==7)
+    {
+        //        titleLabel.text=@"证书";
+        selectview.frame=CGRectMake(232, 129, 88, 184);
+        list=[[NSArray alloc] initWithObjects:@"证书",@"GIA",@"IGI",@"NGTC",@"HRD",@"EGL",@"Other", nil];
+        listvalue=[[NSArray alloc] initWithObjects:@"",@"GIA",@"IGI",@"NGTC",@"HRD",@"EGL",@"", nil];
+    }
+    
+    [selectview reloadData];
+    selectview.hidden=NO;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [list count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *TableSampleIdentifier = @"TableSampleIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                             TableSampleIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:TableSampleIdentifier];
+    }
+    
+    NSUInteger row = [indexPath row];
+    cell.textLabel.text = [list objectAtIndex:row];
+    cell.textLabel.font=[UIFont systemFontOfSize:12.0f];
+    cell.textLabel.textColor=[UIColor colorWithRed:102.0f/255.0f green:102.0f/255.0f blue:102.0f/255.0f alpha:1.0f];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *rowString = [list objectAtIndex:[indexPath row]];
+    NSString *value=[listvalue objectAtIndex:[indexPath row]];
+    if([rowString isEqualToString:@"全部"])
+    {
+        rowString=nil;
+        value=@"";
+    }
+    [self passValue:value key:rowString tag:selecttdtag];
+    [selectview setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
