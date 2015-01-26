@@ -38,4 +38,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *fontText;
 @property (weak, nonatomic) IBOutlet UITableView *texttureTView;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *pdSView;
+@property (strong, nonatomic) IBOutlet UIView *pdetailView;
+
 @end

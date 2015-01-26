@@ -139,7 +139,9 @@
         [productCView footerEndRefreshing];
     }];
 
-    
+    if ([conditionTView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [conditionTView setSeparatorInset:UIEdgeInsetsZero];
+    }
 }
 
 
@@ -155,7 +157,7 @@
     NSString * Upt=@"0";//获取上一次的更新时间
     if (myDelegate.entityl.puptime) {
         Upt=myDelegate.entityl.puptime;
-    }    
+    }
     //Kstr=md5(uId|type|Upt|Key|Nowt|cid)
     NSString * Kstr=[Commons md5:[NSString stringWithFormat:@"%@|%@|%@|%@|%@",uId,@"1001",Upt,apikey,nowt]];
     
@@ -179,15 +181,15 @@
     btntag=btn.tag;
     if (btntag==0) {
         conditionlist=stylearray;
-        conditionTView.frame=CGRectMake(5, 75, 80, 320);
+        conditionTView.frame=CGRectMake(2, 75, 80, 310);
     }else if (btntag==1)
     {
         conditionlist=seriearray;
-        conditionTView.frame=CGRectMake(160, 75, 80, 130);
+        conditionTView.frame=CGRectMake(152, 75, 80, 100);
     }else if (btntag==2)
     {
         conditionlist=texturearray;
-        conditionTView.frame=CGRectMake(80, 75, 80, 320);
+        conditionTView.frame=CGRectMake(72, 75, 80, 250);
     }else if (btntag==3)
     {
         conditionlist=inlayarray;
@@ -195,6 +197,11 @@
     }
     conditionTView.hidden=NO;
     [conditionTView reloadData];
+}
+
+-(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30;
 }
 
 //初始化tableview数据
@@ -219,7 +226,7 @@
     
     NSUInteger row = [indexPath row];
     cell.textLabel.text = [conditionlist objectAtIndex:row];
-    cell.textLabel.font=[UIFont systemFontOfSize:12.0f];
+    cell.textLabel.font=[UIFont systemFontOfSize:10.0f];
     cell.textLabel.textColor=[UIColor colorWithRed:152.0f/255.0f green:152.0f/255.0f blue:152.0f/255.0f alpha:1];
     return cell;
 }

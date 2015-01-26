@@ -75,7 +75,7 @@
     
     //设置scrollview属性
     [pdSView addSubview:pdetailView];
-    pdSView.contentSize=CGSizeMake(320, pdetailView.frame.size.height);
+    pdSView.contentSize=CGSizeMake(320, pdetailView.frame.size.height+30);
     pdSView.showsHorizontalScrollIndicator=NO;//不显示水平滑动线
     pdSView.showsVerticalScrollIndicator=YES;//不显示垂直滑动线
     pdSView.scrollEnabled=YES;
@@ -97,6 +97,10 @@
     countLabel.keyboardType=UIKeyboardTypeNumberPad;
     
     rowindex=0;
+    
+    if ([TView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [TView setSeparatorInset:UIEdgeInsetsZero];
+    }
     
     //要开线程来加载数据
     [self loaddata];
@@ -313,24 +317,24 @@
     UIButton *btn=(UIButton *)sender;
     btntag=btn.tag;
     if (btntag==0) {
-        TView.frame=CGRectMake(58, 462, 60, 180);
+        TView.frame=CGRectMake(58, 461, 60, 150);
         list=winlaylist;
     }else if (btntag==1)
     {
-        TView.frame=CGRectMake(140, 462, 54, 180);
+        TView.frame=CGRectMake(140, 461, 54, 140);
         list=netlist;
     }else if (btntag==2)
     {
-        TView.frame=CGRectMake(202, 462, 54, 180);
+        TView.frame=CGRectMake(202, 461, 54, 150);
         list=colorlist;
     }
     else if (btntag==3)
     {
-        TView.frame=CGRectMake(58, 531, 81, 180);
+        TView.frame=CGRectMake(58, 528, 81, 180);
         list=textturelist;
     }else if (btntag==4)
     {
-        TView.frame=CGRectMake(58, 571, 60, 120);
+        TView.frame=CGRectMake(58, 568, 60, 120);
         list=sizelist;
     }else if (btntag==5)
     {
@@ -364,6 +368,11 @@
     NSArray *parray=[dict objectForKey:@"result"];
     
     return parray;
+}
+
+-(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30;
 }
 
 //初始化tableview数据
@@ -424,7 +433,15 @@
             womanweightLabel.text=[NSString stringWithFormat:@"%.3fg",wmweight];
         }
         
-        wfitweightLabel.text=[NSString stringWithFormat:@"%.3fct  X %@颗",[[[list objectAtIndex:row] objectAtIndex:7] floatValue],[productlist objectAtIndex:41]];
+        id listobj=[[list objectAtIndex:row] objectAtIndex:7];
+        float abcd=0;
+        NSString * listobjstr=[NSString stringWithFormat:@"%@",listobj];
+        if (listobj && ![listobjstr isEqualToString:@"<null>"]) {
+            abcd=[listobj floatValue];
+        }
+
+        wfitweightLabel.text=[NSString stringWithFormat:@"%.3fct  X %@颗",abcd,[productlist objectAtIndex:41]];
+        
     }else if (btntag==1)
     {
         wnetText.text=rowstring;

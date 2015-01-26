@@ -87,7 +87,10 @@
     searchfont.backgroundColor=[UIColor colorWithRed:234.0f/255.0f green:234.0f/255.0f blue:234.0f/255.0f alpha:1];
     noText.leftView=searchfont;
     noText.leftViewMode = UITextFieldViewModeAlways;
-
+    
+    if ([selectview respondsToSelector:@selector(setSeparatorInset:)]) {
+        [selectview setSeparatorInset:UIEdgeInsetsZero];
+    }
     
 }
 
@@ -324,17 +327,17 @@
     }else if(btnvalue==3)
     {
         //        titleLabel.text=@"切工";
-        selectview.frame=CGRectMake(232, 84, 88, 184);
+        selectview.frame=CGRectMake(232, 84, 88, 170);
         list=listvalue=[[NSArray alloc] initWithObjects:@"切工",@"EX",@"VG",@"GD",@"Fair", nil];
     }else if(btnvalue==4)
     {
         //        titleLabel.text=@"抛光";
-        selectview.frame=CGRectMake(0, 129, 72, 184);
+        selectview.frame=CGRectMake(0, 129, 72, 170);
         list=listvalue=[[NSArray alloc] initWithObjects:@"抛光",@"EX",@"VG",@"GD",@"Fair", nil];
     }else if(btnvalue==5)
     {
         //        titleLabel.text=@"对称";
-        selectview.frame=CGRectMake(72, 129, 80, 184);
+        selectview.frame=CGRectMake(72, 129, 80, 180);
         list=listvalue=[[NSArray alloc] initWithObjects:@"对称",@"EX",@"VG",@"GD",@"Fair", nil];
     }else if(btnvalue==6)
     {
@@ -345,13 +348,18 @@
     }else if(btnvalue==7)
     {
         //        titleLabel.text=@"证书";
-        selectview.frame=CGRectMake(232, 129, 88, 184);
+        selectview.frame=CGRectMake(232, 129, 88, 210);
         list=[[NSArray alloc] initWithObjects:@"证书",@"GIA",@"IGI",@"NGTC",@"HRD",@"EGL",@"Other", nil];
         listvalue=[[NSArray alloc] initWithObjects:@"",@"GIA",@"IGI",@"NGTC",@"HRD",@"EGL",@"", nil];
     }
     
     [selectview reloadData];
     selectview.hidden=NO;
+}
+
+-(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

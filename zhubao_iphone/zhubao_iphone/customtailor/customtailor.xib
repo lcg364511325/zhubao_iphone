@@ -13,12 +13,14 @@
                 <outlet property="fpicimg" destination="ltg-1H-sgr" id="4Zf-75-TgA"/>
                 <outlet property="maincountText" destination="BAv-Pe-zjO" id="asu-bD-6UQ"/>
                 <outlet property="mainweiText" destination="Thf-q9-aZ8" id="LGC-vU-OxP"/>
+                <outlet property="pdSView" destination="xZC-mk-Iiz" id="XwU-Sd-5Me"/>
+                <outlet property="pdetailView" destination="i5M-Pr-FkT" id="VJ7-dH-Ak2"/>
                 <outlet property="sizeText" destination="FA5-am-AQK" id="HdK-Td-lIK"/>
                 <outlet property="spicimg" destination="hTR-aG-OFg" id="yPM-48-X4B"/>
                 <outlet property="texttureTView" destination="PW5-ll-x75" id="fLA-f4-Jqt"/>
                 <outlet property="texttureText" destination="mOj-G1-nJt" id="htx-Sb-Ris"/>
                 <outlet property="tpicimg" destination="i6Q-cx-o0e" id="PLb-r9-w7N"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="1SZ-9W-PS0" id="OfB-6y-8qo"/>
                 <outlet property="weightText" destination="QBi-gX-c4E" id="Dva-u8-Yzo"/>
             </connections>
         </placeholder>
@@ -172,16 +174,6 @@
                         <outlet property="delegate" destination="-1" id="JtL-1v-z5f"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="textbox_midbg.png" id="FA5-am-AQK">
-                    <rect key="frame" x="52" y="359" width="97" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="v0Z-ff-e07"/>
-                    </connections>
-                </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="8至12个字符" minimumFontSize="17" background="textbox_midbg.png" id="m1K-8t-5bS">
                     <rect key="frame" x="52" y="399" width="247" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -190,6 +182,16 @@
                     <textInputTraits key="textInputTraits"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="5Ld-rm-jUp"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" background="textbox_midbg.png" id="FA5-am-AQK">
+                    <rect key="frame" x="52" y="359" width="97" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="v0Z-ff-e07"/>
                     </connections>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="克" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Eol-wn-xmg">
@@ -292,6 +294,18 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+        <view contentMode="scaleToFill" id="1SZ-9W-PS0">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="xZC-mk-Iiz">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>

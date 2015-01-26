@@ -108,6 +108,10 @@
     //限制数字键盘
     wsizeText.keyboardType=UIKeyboardTypeDecimalPad;
     
+    if ([TView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [TView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
     //要开线程来加载数据
     [self loaddata];
 }
@@ -435,44 +439,44 @@
     UIButton *btn=(UIButton *)sender;
     btntag=btn.tag;
     if (btntag==0) {
-        TView.frame=CGRectMake(58, 472, 60, 180);
+        TView.frame=CGRectMake(58, 472, 68, 180);
         list=winlaylist;
     }else if (btntag==1)
     {
-        TView.frame=CGRectMake(140, 472, 54, 180);
+        TView.frame=CGRectMake(154, 472, 54, 120);
         list=netlist;
     }else if (btntag==2)
     {
-        TView.frame=CGRectMake(202, 472, 54, 180);
+        TView.frame=CGRectMake(216, 472, 54, 150);
         list=colorlist;
     }
     else if (btntag==3)
     {
-        TView.frame=CGRectMake(58, 580, 81, 180);
+        TView.frame=CGRectMake(58, 583, 80, 180);
         list=textturelist;
     }else if (btntag==4)
     {
-        TView.frame=CGRectMake(58, 622, 60, 120);
+        TView.frame=CGRectMake(58, 623, 60, 120);
         list=sizelist;
     }else if (btntag==5)
     {
-        TView.frame=CGRectMake(58, 517, 60, 120);
+        TView.frame=CGRectMake(58, 516, 68, 120);
         list=minlaylist;
     }else if (btntag==6)
     {
-        TView.frame=CGRectMake(140, 517, 54, 120);
+        TView.frame=CGRectMake(154, 516, 54, 120);
         list=mnetlist;
     }else if (btntag==7)
     {
-        TView.frame=CGRectMake(202, 517, 54, 120);
+        TView.frame=CGRectMake(216, 516, 54, 150);
         list=mcolorlist;
     }else if (btntag==8)
     {
-        TView.frame=CGRectMake(159, 580, 81, 120);
+        TView.frame=CGRectMake(154, 583, 81, 180);
         list=mtextturelist;
     }else if (btntag==9)
     {
-        TView.frame=CGRectMake(159, 622, 60, 120);
+        TView.frame=CGRectMake(154, 623, 60, 120);
         list=sizelist;
     }
     TView.hidden=NO;
@@ -502,6 +506,11 @@
     NSArray *parray=[dict objectForKey:@"result"];
     
     return parray;
+}
+
+-(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30;
 }
 
 //初始化tableview数据

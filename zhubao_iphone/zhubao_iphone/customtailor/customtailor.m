@@ -29,6 +29,9 @@
 @synthesize fontText;
 @synthesize texttureTView;
 
+@synthesize pdSView;
+@synthesize pdetailView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -48,6 +51,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    //设置scrollview属性
+    [pdSView addSubview:pdetailView];
+    pdSView.contentSize=CGSizeMake(320, pdetailView.frame.size.height);
+    pdSView.showsHorizontalScrollIndicator=NO;//不显示水平滑动线
+    pdSView.showsVerticalScrollIndicator=YES;//不显示垂直滑动线
+    pdSView.scrollEnabled=YES;
+    
+    
     texttureText.userInteractionEnabled=YES;
     textturelist=[[NSArray alloc] initWithObjects:@"18K黄", @"18K白",
                   @"18K双色", @"18K玫瑰金", @"PT900", @"Pt950", @"PD950",nil];
@@ -59,12 +70,20 @@
     fitweiText.keyboardType=UIKeyboardTypeDecimalPad;
     fitcountText.keyboardType=UIKeyboardTypeDecimalPad;
     sizeText.keyboardType=UIKeyboardTypeDecimalPad;
+    
+    
 }
 
 // 材质下拉框
 - (IBAction)mianselect:(id)sender
 {
+    texttureTView.frame=CGRectMake(52, 231, 97, 134);
     texttureTView.hidden=NO;
+}
+
+-(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
