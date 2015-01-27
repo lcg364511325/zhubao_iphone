@@ -75,7 +75,7 @@
     
     //设置scrollview属性
     [pdSView addSubview:pdetailView];
-    pdSView.contentSize=CGSizeMake(320, pdetailView.frame.size.height+30);
+    pdSView.contentSize=CGSizeMake(320, pdetailView.frame.size.height+70);
     pdSView.showsHorizontalScrollIndicator=NO;//不显示水平滑动线
     pdSView.showsVerticalScrollIndicator=YES;//不显示垂直滑动线
     pdSView.scrollEnabled=YES;
